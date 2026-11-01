@@ -13,12 +13,14 @@
   <meta property="og:url" content="https://www.thaisweets.nl/">
   <link rel="icon" href="images/logo/logo-green.png" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Serif+Thai:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="images/menu/golden-auspicious-set-360.webp" imagesrcset="images/menu/golden-auspicious-set-360.webp 360w, images/menu/golden-auspicious-set-480.webp 480w, images/menu/golden-auspicious-set.webp 640w" imagesizes="(max-width: 900px) 100vw, 42vw" fetchpriority="high">
+  <link rel="preload" as="font" href="fonts/Lora-normal-latin.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="fonts/Inter-latin.woff2" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/styles.css">
   <script>
     (function () {
+      document.documentElement.classList.add('js');
       try {
         var t = localStorage.getItem('thaisweets_theme');
         if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
@@ -28,7 +30,7 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <div class="announce" data-open-menus-announce hidden role="region" aria-label="Ordering announcement"></div>
+  <div class="announce announce--slot" data-open-menus-announce role="region" aria-label="Ordering announcement" aria-busy="true"></div>
   <header class="site-header">
     <div class="container site-header__inner">
       <a class="logo" href="index.html" aria-label="Thai Sweets home">
@@ -87,13 +89,37 @@
       </div>
       <div class="hero-collage hero-visual-animate" aria-hidden="false">
         <div class="hero-collage__wide media-frame">
-          <img src="images/menu/golden-auspicious-set.webp" width="1200" height="750" alt="Golden auspicious Thai dessert set">
+          <img
+            src="images/menu/golden-auspicious-set.webp"
+            srcset="images/menu/golden-auspicious-set-360.webp 360w, images/menu/golden-auspicious-set-480.webp 480w, images/menu/golden-auspicious-set.webp 640w"
+            sizes="(max-width: 900px) 100vw, 42vw"
+            width="640"
+            height="400"
+            alt="Golden auspicious Thai dessert set"
+            decoding="async"
+            fetchpriority="high">
         </div>
         <div class="hero-collage__sq media-frame">
-          <img src="images/menu/butterfly-pea-layer-cake.webp" width="600" height="600" alt="Butterfly pea layer cake">
+          <img
+            src="images/menu/butterfly-pea-layer-cake-sq.webp"
+            srcset="images/menu/butterfly-pea-layer-cake-400.webp 400w, images/menu/butterfly-pea-layer-cake-sq.webp 640w"
+            sizes="(max-width: 900px) 45vw, 20vw"
+            width="640"
+            height="640"
+            alt="Butterfly pea layer cake"
+            loading="lazy"
+            decoding="async">
         </div>
         <div class="hero-collage__sq media-frame">
-          <img src="images/menu/khanom-pia.webp" width="600" height="600" alt="Khanom pia pastry buns">
+          <img
+            src="images/menu/khanom-pia-sq.webp"
+            srcset="images/menu/khanom-pia-400.webp 400w, images/menu/khanom-pia-sq.webp 640w"
+            sizes="(max-width: 900px) 45vw, 20vw"
+            width="640"
+            height="640"
+            alt="Khanom pia pastry buns"
+            loading="lazy"
+            decoding="async">
         </div>
       </div>
     </section>
@@ -424,8 +450,9 @@
       "https://www.tiktok.com/@thaisweetsnl"
     ]
   }
-  </script>  <script src="js/cookie-consent.js" defer></script>
+  </script>
   <script src="js/main.js" defer></script>
   <script src="js/open-menus.js" defer></script>
+  <script src="js/cookie-consent.js" defer></script>
 </body>
 </html>

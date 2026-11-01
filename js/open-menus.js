@@ -62,6 +62,12 @@
     }
   }
 
+  function finishAnnounceSlot() {
+    if (!announceEl) return;
+    announceEl.classList.remove("announce--slot");
+    announceEl.removeAttribute("aria-busy");
+  }
+
   function showAnnounce(menus) {
     if (!announceEl) return;
     var openMenus = menus.filter(function (m) {
@@ -82,7 +88,10 @@
         return 0;
       });
       var open = openMenus[0];
-      if (!isHttpsUrl(open.url)) return;
+      if (!isHttpsUrl(open.url)) {
+        finishAnnounceSlot();
+        return;
+      }
 
       var p = document.createElement("p");
       var strong = document.createElement("strong");
@@ -98,6 +107,7 @@
       p.appendChild(a);
       announceEl.appendChild(p);
       announceEl.hidden = false;
+      finishAnnounceSlot();
       return;
     }
 
@@ -124,6 +134,7 @@
       announceEl.appendChild(p2);
       announceEl.hidden = false;
     }
+    finishAnnounceSlot();
   }
 
   function mediaFrame(imageUrl, title) {
@@ -134,9 +145,11 @@
       var img = document.createElement("img");
       img.src = imageUrl;
       img.alt = safeText(title);
-      img.width = 1200;
-      img.height = 750;
+      img.width = 1280;
+      img.height = 800;
       img.loading = "lazy";
+      img.decoding = "async";
+      img.sizes = "(max-width: 900px) 100vw, 50vw";
       img.addEventListener("error", function () {
         wrap.replaceChildren();
         wrap.classList.add("round-card__media--fallback");
@@ -400,19 +413,29 @@
       });
   }
 
-  renderSkeletons();
+  function start() {
+    renderSkeletons();
 
-  fetchMenus()
-    .then(function (data) {
-      renderMenus(data && data.menus ? data.menus : []);
-    })
-    .catch(function () {
-      if (announceEl) {
-        announceEl.replaceChildren();
-        announceEl.hidden = true;
-      }
-      gridEl.classList.add("rounds-grid--empty");
-      gridEl.replaceChildren();
-      gridEl.appendChild(buildEmptyCard());
-    });
+    fetchMenus()
+      .then(function (data) {
+        renderMenus(data && data.menus ? data.menus : []);
+      })
+      .catch(function () {
+        if (announceEl) {
+          announceEl.replaceChildren();
+          announceEl.hidden = true;
+          finishAnnounceSlot();
+        }
+        gridEl.classList.add("rounds-grid--empty");
+        gridEl.replaceChildren();
+        gridEl.appendChild(buildEmptyCard());
+      });
+  }
+
+  // Defer past first paint / LCP so Home hero work is not competing with menus API.
+  if (typeof window.requestIdleCallback === "function") {
+    window.requestIdleCallback(start, { timeout: 1800 });
+  } else {
+    window.setTimeout(start, 1);
+  }
 })();

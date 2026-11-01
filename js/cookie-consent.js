@@ -387,18 +387,28 @@
     }
   };
 
-  // Initialize when DOM is ready
+  function scheduleInit() {
+    var run = function () {
+      try {
+        initializeCookieConsent();
+      } catch (error) {
+        console.error('Cookie consent initialization error:', error);
+      }
+    };
+    // Defer past first paint / LCP so the banner does not compete with Home hero work.
+    if (typeof window.requestIdleCallback === 'function') {
+      window.requestIdleCallback(run, { timeout: 2000 });
+    } else {
+      window.setTimeout(run, 1);
+    }
+  }
+
+  // Initialize when DOM is ready (then idle)
   try {
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', function() {
-        try {
-          initializeCookieConsent();
-        } catch (error) {
-          console.error('Cookie consent initialization error:', error);
-        }
-      });
+      document.addEventListener('DOMContentLoaded', scheduleInit);
     } else {
-      initializeCookieConsent();
+      scheduleInit();
     }
   } catch (error) {
     console.error('Cookie consent setup error:', error);

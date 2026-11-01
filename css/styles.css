@@ -106,8 +106,9 @@ html.js .hero-animate {
   transform: translateY(16px);
 }
 
+/* Keep the LCP hero image visible from first paint; only nudge scale for motion. */
 html.js .hero-visual-animate {
-  opacity: 0;
+  opacity: 1;
   transform: scale(1.03);
 }
 
@@ -348,7 +349,7 @@ h3 {
   align-items: center;
 }
 
-/* Announcement */
+/* Announcement — reserve slot height while open-menus loads (limits CLS) */
 .announce {
   background: var(--green);
   color: #fff;
@@ -356,6 +357,21 @@ h3 {
   line-height: 1.4;
   text-align: center;
   padding: 10px 16px;
+  box-sizing: border-box;
+}
+
+.announce.announce--slot {
+  min-height: 2.75rem;
+}
+
+.announce.announce--slot[aria-busy="true"]:empty {
+  background: transparent;
+  padding-block: 0;
+  min-height: 2.75rem;
+}
+
+.announce[hidden] {
+  display: none;
 }
 
 .announce a {
@@ -544,7 +560,7 @@ h3 {
   padding: 14px 4px;
   color: var(--ink);
   text-decoration: none;
-  font-weight: 560;
+  font-weight: 600;
   border-bottom: 1px solid var(--line);
 }
 
@@ -702,6 +718,7 @@ h3 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
+  min-height: 12rem;
 }
 
 .round-card__media {
