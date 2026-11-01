@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Menu | Thai Sweets</title>
+  <meta name="description" content="Traditional Thai desserts, savory snacks and cakes handmade to order in Vlaardingen.">
+  <link rel="canonical" href="https://www.thaisweets.nl/menu.html">
+  <meta property="og:title" content="Menu | Thai Sweets">
+  <meta property="og:description" content="Traditional Thai desserts, savory snacks and cakes handmade to order in Vlaardingen.">
+  <meta property="og:image" content="https://www.thaisweets.nl/images/menu/golden-auspicious-set.webp">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.thaisweets.nl/menu.html">
+  <link rel="icon" href="images/logo/logo-green.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Serif+Thai:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('thaisweets_theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="logo" href="index.html" aria-label="Thai Sweets home">
+        <img class="logo-light-only" src="images/logo/logo-green.png" width="160" height="54" alt="Thai Sweets">
+        <img class="logo-dark-only" src="images/logo/logo-white.png" width="160" height="54" alt="Thai Sweets">
+      </a>
+      <nav class="nav-desktop" aria-label="Main">
+        <a href="menu.html" aria-current="page">Menu</a>
+        <a href="about.html">Our Story</a>
+        <a href="how-to-order.html">How to Order</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button type="button" class="icon-btn theme-btn" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg><svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 14.5A8.5 8.5 0 0 1 9.5 3 7 7 0 1 0 21 14.5z"/></svg>
+        </button>
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button">NL</button>
+          <button type="button" aria-current="true">EN</button>
+          <button type="button">TH</button>
+        </div>
+        <a class="btn btn--primary" href="https://thai-sweets-order.uraiwank.workers.dev">Order online <svg class="btn-arrow" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+        <button type="button" class="icon-btn menu-toggle" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile">
+      <a href="menu.html" aria-current="page">Menu</a>
+      <a href="about.html">Our Story</a>
+      <a href="how-to-order.html">How to Order</a>
+      <a href="contact.html">Contact</a>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button">NL</button>
+        <button type="button" aria-current="true">EN</button>
+        <button type="button">TH</button>
+      </div>
+      <a class="btn btn--primary" href="https://thai-sweets-order.uraiwank.workers.dev">Order online</a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="container page-hero page-hero--simple">
+      <div>
+        <p class="eyebrow">Our menu</p>
+        <h1>Authentic Thai treats, handmade fresh to order</h1>
+        <p class="lead">From traditional desserts to custom cakes, every item is crafted with care using quality ingredients. All items need at least 1 week's notice. Allergens are listed with each product on the order page.</p>
+        <nav class="menu-chips" aria-label="Menu categories">
+          <a href="#desserts">Traditional Thai Desserts</a>
+          <a href="#savory">Savory Snacks</a>
+          <a href="#cakes">Cakes &amp; Cupcakes</a>
+          <a href="#thai-food">Thai Food (coming soon)</a>
+        </nav>
+      </div>
+    </section>
+
+    <section class="container menu-section" id="desserts">
+      <div class="menu-section__intro">
+        <p class="eyebrow"><span class="thai" lang="th">ขนมไทย</span></p>
+        <h2>Traditional Thai Desserts</h2>
+        <p class="muted">Experience the art of Thai sweets with our collection of traditional desserts.</p>
+      </div>
+      <div class="featured-grid">
+          <article class="card menu-item-card" data-reveal>
+            <div class="card__media menu-item-card__media media-frame">
+              <img src="images/menu/mango-sticky-rice.webp" width="800" height="500" alt="Sticky Rice with Mango" loading="lazy">
+            </div>
+            <div class="menu-item-card__body">
+              <div class="menu-item-card__top">
+                <h3>Sticky Rice with Mango</h3>
+                <span class="price">€10</span>
+              </div>
+              <p class="thai-name">Khao Niao Ma-muang</p>
+              <p class="muted">Sweet sticky rice topped with coconut cream, served with fresh, ripe mango.</p>
+            </div>
+          </article>
+          <article class="card menu-item-card" data-reveal>
+            <div class="card__media menu-item-card__media media-frame">
+              <img src="images/menu/butterfly-pea-layer-cake.webp" width="800" height="500" alt="Butterfly Pea Layer Cake" loading="lazy">
+            </div>
+            <div class="menu-item-card__body">
+              <div class="menu-item-card__top">
+                <h3>Butterfly Pea Layer Cake</h3>
+                <span class="price">€8</span>
+              </div>
+              <p class="thai-name">Khanom Chan An-chan</p>
+              <p class="muted">A blue-hued, steamed layer dessert coloured naturally with butterfly pea flower.</p>
+            </div>
+          </article>
+          <article class="card menu-item-card" data-reveal>
+            <div class="card__media menu-item-card__media media-frame">
+              <img src="images/menu/luk-chup.webp" width="800" height="500" alt="Fruit-Shaped Mung Bean Dessert" loading="lazy">
+            </div>
+            <div class="menu-item-card__body">
+              <div class="menu-item-card__top">
+                <h3>Fruit-Shaped Mung Bean Dessert</h3>
+                <span class="price">€15</span>
+              </div>
+              <p class="thai-name">Khanom Luk Chup</p>
+              <p class="muted">Sweet mung bean paste moulded into miniature fruits and coated in jelly.</p>
+            </div>
+          </article>
+          <article class="card menu-item-card" data-reveal>
+            <div class="card__media menu-item-card__media media-frame">
+              <img src="images/menu/golden-auspicious-set.webp" width="800" height="500" alt="Golden Auspicious Set" loading="lazy">
+            </div>
+            <div class="menu-item-card__body">
+              <div class="menu-item-card__top">
+                <h3>Golden Auspicious Set</h3>
+                <span class="price">€65</span>
+              </div>
+              <p class="thai-name">Chut Su-wan Mong-kon</p>
+              <p class="muted">Five auspicious Thai desserts symbolising wealth and good fortune.</p>
+            </div>
+          </article>
+          <article class="card menu-item-card" data-reveal>
+            <div class="card__media menu-item-card__media media-frame">
+              <img src="images/menu/khanom-pia.webp" width="800" height="500" alt="Mini Pastry Bun" loading="lazy">
+            </div>
+            <div class="menu-item-card__body">
+              <div class="menu-item-card__top">
+                <h3>Mini Pastry Bun</h3>
+                <span class="price">€8</span>
+              </div>
+              <p class="thai-name">Khanom Pia</p>
+              <p class="muted">Baked round pastries with mung bean, taro, pandan or purple sweet potato.</p>
+            </div>
+          </article>
+          <article class="card menu-item-card" data-reveal>
+            <div class="card__media menu-item-card__media media-frame">
+              <img src="images/menu/tong-muan.webp" width="800" height="500" alt="Crispy Coconut Rolls" loading="lazy">
+            </div>
+            <div class="menu-item-card__body">
+              <div class="menu-item-card__top">
+                <h3>Crispy Coconut Rolls</h3>
+                <span class="price">€12</span>
+              </div>
+              <p class="thai-name">Tong Muan Boraan</p>
+              <p class="muted">Thin, crispy rolled biscuits of coconut milk and rice flour with black sesame.</p>
+            </div>
+          </article>
+          <article class="card menu-item-card" data-reveal>
+            <div class="card__media menu-item-card__media media-frame">
+              <img src="images/menu/foi-tong.webp" width="800" height="500" alt="Foi Tong" loading="lazy">
+            </div>
+            <div class="menu-item-card__body">
+              <div class="menu-item-card__top">
+                <h3>Foi Tong</h3>
+                <span class="price">€15</span>
+              </div>
+              <p class="thai-name" lang="th">ฝอยทอง</p>
+              <p class="muted">Fine strands of sweetened egg yolk drizzled into hot syrup, like golden threads.</p>
+            </div>
+          </article>
+          <article class="card menu-item-card" data-reveal>
+            <div class="card__media menu-item-card__media media-frame">
+              <img src="images/menu/tong-yib.webp" width="800" height="500" alt="Tong Yib" loading="lazy">
+            </div>
+            <div class="menu-item-card__body">
+              <div class="menu-item-card__top">
+                <h3>Tong Yib</h3>
+                <span class="price">€10</span>
+              </div>
+              <p class="thai-name" lang="th">ทองหยิบ</p>
+              <p class="muted">Sweetened egg yolk cooked in syrup and pinched into flower-like folds.</p>
+            </div>
+          </article>
+      </div>
+      <p class="also-title">Also on the menu</p>
+      <ul class="also-list">
+          <li>
+            <div>
+              <strong>Pandan Layer Cake</strong>
+              <div class="thai-name">Khanom Chan Bai Toey</div>
+            </div>
+            <span class="price">€8</span>
+            <p class="desc">Steamed, multi-layered and chewy, with the fragrance of pandan.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Taro Pudding with Coconut Cream</strong>
+              <div class="thai-name">Ta-Koh Puak</div>
+            </div>
+            <span class="price">€8</span>
+            <p class="desc">Sweet taro base topped with thick, salty coconut cream.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Cassava Pudding with Coconut Cream</strong>
+              <div class="thai-name">Ta-Koh Man Sampalang</div>
+            </div>
+            <span class="price">€8</span>
+            <p class="desc">Sweet cassava base topped with thick, salty coconut cream.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Coconut-Rice Pancakes</strong>
+              <div class="thai-name">Khanom Krok</div>
+            </div>
+            <span class="price">€8</span>
+            <p class="desc">Small grilled pancakes with a creamy coconut centre.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Sweet Coconut Milk Cups</strong>
+              <div class="thai-name">Khanom Tuay</div>
+            </div>
+            <span class="price">€8</span>
+            <p class="desc">Two-layer steamed dessert: sweet base, salty coconut cream top.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Mini Thai Crêpes</strong>
+              <div class="thai-name">Khanom Bueng</div>
+            </div>
+            <span class="price">€8</span>
+            <p class="desc">Thin, taco-shaped crêpes with meringue-like cream and toppings.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Flower-Shaped Thai Mochi</strong>
+              <div class="thai-name">Khanom A-Lua Dok Mai</div>
+            </div>
+            <span class="price">€8</span>
+            <p class="desc">Delicate sweets moulded into colourful floral shapes.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Small Thai Mochi</strong>
+              <div class="thai-name">A-Lua Boraan</div>
+            </div>
+            <span class="price">€8</span>
+            <p class="desc">Crisp outside, chewy inside coconut and flour sweet.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Large Pastry Bun (1 salted egg yolk)</strong>
+              <div class="thai-name">Khanom Pia Yai</div>
+            </div>
+            <span class="price">€8</span>
+            <p class="desc">Mung bean, taro or candied winter melon filling.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Jumbo Pastry Bun (5 salted egg yolks)</strong>
+              <div class="thai-name">Khanom Pia Jumbo</div>
+            </div>
+            <span class="price">€15</span>
+            <p class="desc">Extra-large, with mung bean, taro or winter melon.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Banana Crispy Coconut Rolls</strong>
+              <div class="thai-name">Tong Muan Kluay Hom</div>
+            </div>
+            <span class="price">€12</span>
+            <p class="desc">Crispy rolled biscuits with a fragrant banana flavour.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Thai Honeycomb Cookies</strong>
+              <div class="thai-name">Khanom Dok Jok</div>
+            </div>
+            <span class="price">€8</span>
+            <p class="desc">Delicate, crispy cookies shaped like a lotus flower.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Sampanni Shortbread Cookies</strong>
+              <div class="thai-name">Sampannee</div>
+            </div>
+            <span class="price">€8</span>
+            <p class="desc">Melt-in-your-mouth sweets of roasted tapioca flour and coconut milk.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Grilled Sticky Rice</strong>
+              <div class="thai-name">Khao Niao Ping</div>
+            </div>
+            <span class="price">€8</span>
+            <p class="desc">Coconut sticky rice with banana or taro, grilled in banana leaf.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Thai Coconut Pancake</strong>
+              <div class="thai-name">Ba-Bin Ma-prao Orn / Puak</div>
+            </div>
+            <span class="price">€8</span>
+            <p class="desc">Sweet, chewy pancake with young coconut or taro.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Steamed Sticky Rice with Coconut</strong>
+              <div class="thai-name">Khanom Sai Sai</div>
+            </div>
+            <span class="price">€8</span>
+            <p class="desc">Sweet coconut filling in soft rice paste, steamed in banana leaf.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Steamed Cassava Cake</strong>
+              <div class="thai-name">Khanom Man</div>
+            </div>
+            <span class="price">€8</span>
+            <p class="desc">Grated cassava steamed with sugar and coconut milk.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Orchid Flower Layer Cake</strong>
+              <div class="thai-name">Khanom Chan Dok Kluay Mai</div>
+            </div>
+            <span class="price">€8</span>
+            <p class="desc">A layer cake shaped like orchid flowers.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Thai Custard Cake</strong>
+              <div class="thai-name">Khanom Mor Kaeng</div>
+            </div>
+            <span class="price">€8</span>
+            <p class="desc">Baked custard with mung bean, taro or egg base.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Pandan Pudding</strong>
+              <div class="thai-name">Piak Poon Bai Toey</div>
+            </div>
+            <span class="price">€8</span>
+            <p class="desc">Soft pandan pudding with shredded coconut.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Traditional Black Pudding</strong>
+              <div class="thai-name">Piak Poon Boraan</div>
+            </div>
+            <span class="price">€8</span>
+            <p class="desc">Soft black pudding coloured with coconut husk ash.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Sticky Rice with Egg Custard</strong>
+              <div class="thai-name">Khao Niao Sang-kha-ya</div>
+            </div>
+            <span class="price">€8</span>
+            <p class="desc">Sweet sticky rice topped with creamy steamed egg custard.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Pandan Rice Noodles in Coconut Milk</strong>
+              <div class="thai-name">Lod Chong Bai Toey</div>
+            </div>
+            <span class="price">€8</span>
+            <p class="desc">Green rice flour noodles in coconut milk and palm sugar syrup.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Taro Paste</strong>
+              <div class="thai-name">Puak Kuan</div>
+            </div>
+            <span class="price">€8</span>
+            <p class="desc">Dense, stir-fried taro paste with coconut milk.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Mung Bean Paste</strong>
+              <div class="thai-name">Tua Kuan</div>
+            </div>
+            <span class="price">€8</span>
+            <p class="desc">Dense, stir-fried mung bean paste with coconut milk.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Met Kanun</strong>
+              <div class="thai-name" lang="th">เม็ดขนุน</div>
+            </div>
+            <span class="price">€10</span>
+            <p class="desc">Mung bean paste shaped like jackfruit seeds, coated in syrup.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Dara Tong</strong>
+              <div class="thai-name" lang="th">ดาราทอง</div>
+            </div>
+            <span class="price">€15</span>
+            <p class="desc">An exquisite golden sweet shaped like a tiny crown.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Happiness & Well-being Set</strong>
+              <div class="thai-name">Chut Khanom Seum Suk</div>
+            </div>
+            <span class="price">€50</span>
+            <p class="desc">Five Thai desserts for happiness and good health.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Coconut Milk Jelly</strong>
+              <div class="thai-name">Woon Ka-ti Ma-prao Orn</div>
+            </div>
+            <span class="price">€8</span>
+            <p class="desc">Smooth coconut milk jelly with young coconut meat.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Glass-Coated Coconut Jelly</strong>
+              <div class="thai-name">Woon Ka-ti Kleuap Kaew</div>
+            </div>
+            <span class="price">€8</span>
+            <p class="desc">Two-layer coconut jelly with a shiny, clear top.</p>
+          </li>
+        </ul>
+    </section>
+
+    <section class="container menu-section" id="savory">
+      <div class="menu-section__intro">
+        <p class="eyebrow"><span class="thai" lang="th">ของว่าง</span></p>
+        <h2>Savory Snacks</h2>
+        <p class="muted">Crispy, flavourful and perfect for sharing: the authentic taste of Thai street food.</p>
+      </div>
+      <div class="featured-grid">
+          <article class="card menu-item-card" data-reveal>
+            <div class="card__media menu-item-card__media media-frame">
+              <img src="images/menu/curry-puffs.webp" width="800" height="500" alt="Chicken Curry Puffs" loading="lazy">
+            </div>
+            <div class="menu-item-card__body">
+              <div class="menu-item-card__top">
+                <h3>Chicken Curry Puffs</h3>
+                <span class="price">€8</span>
+              </div>
+              <p class="thai-name">Kareepub Sai Kai</p>
+              <p class="muted">Flaky pastry filled with ground chicken and yellow curry.</p>
+            </div>
+          </article>
+          <article class="card menu-item-card" data-reveal>
+            <div class="card__media menu-item-card__media media-frame">
+              <img src="images/menu/pan-klib.webp" width="800" height="500" alt="Fried Flour Dumplings" loading="lazy">
+            </div>
+            <div class="menu-item-card__body">
+              <div class="menu-item-card__top">
+                <h3>Fried Flour Dumplings</h3>
+                <span class="price">€15</span>
+              </div>
+              <p class="thai-name">Pan Klib Sai Moo Yong Prik Pao</p>
+              <p class="muted">Crescent pastries with sweet and spicy shredded pork and chilli paste.</p>
+            </div>
+          </article>
+          <article class="card menu-item-card" data-reveal>
+            <div class="card__media menu-item-card__media media-frame">
+              <img src="images/menu/flower-bird-dumplings.webp" width="800" height="500" alt="Steamed Flower & Bird Dumplings" loading="lazy">
+            </div>
+            <div class="menu-item-card__body">
+              <div class="menu-item-card__top">
+                <h3>Steamed Flower & Bird Dumplings</h3>
+                <span class="price">€10</span>
+              </div>
+              <p class="thai-name">Khanom Chor Muang lae Jeep Nok</p>
+              <p class="muted">Intricately crafted steamed dumplings with seasoned meat.</p>
+            </div>
+          </article>
+          <article class="card menu-item-card" data-reveal>
+            <div class="card__media menu-item-card__media media-frame">
+              <img src="images/menu/glass-noodle-sausage.webp" width="800" height="500" alt="Glass Noodle Sausage" loading="lazy">
+            </div>
+            <div class="menu-item-card__body">
+              <div class="menu-item-card__top">
+                <h3>Glass Noodle Sausage</h3>
+                <span class="price">€15</span>
+              </div>
+              <p class="thai-name">Sai Krok Woon Sen</p>
+              <p class="muted">A savoury Thai sausage made with ground meat and glass noodles.</p>
+            </div>
+          </article>
+      </div>
+      <p class="also-title">Also on the menu</p>
+      <ul class="also-list">
+          <li>
+            <div>
+              <strong>Isaan Fermented Sausage</strong>
+              <div class="thai-name">Sai Krok E-saan</div>
+            </div>
+            <span class="price">€15</span>
+            <p class="desc">A tangy fermented sausage from Northeastern Thailand, served grilled.</p>
+          </li>
+          <li>
+            <div>
+              <strong>BBQ Meatballs with Dipping Sauce</strong>
+              <div class="thai-name">Look Chin</div>
+            </div>
+            <span class="price">€10</span>
+            <p class="desc">Grilled Thai-style beef or pork meatballs on skewers (10 pieces).</p>
+          </li>
+          <li>
+            <div>
+              <strong>Spring Rolls</strong>
+              <div class="thai-name">Por Pia Tod</div>
+            </div>
+            <span></span>
+            <p class="desc">Crispy rolls with mixed vegetables or added chicken.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Banana Fritters</strong>
+              <div class="thai-name">Kluay Tod</div>
+            </div>
+            <span></span>
+            <p class="desc">Sliced bananas in sweet batter, fried golden and crispy.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Fried Tempeh</strong>
+              <div class="thai-name">Tempe Tod</div>
+            </div>
+            <span></span>
+            <p class="desc">Lightly fried fermented soybean for a savoury bite.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Grilled Sticky Rice with Egg Glaze</strong>
+              <div class="thai-name">Khao Jee</div>
+            </div>
+            <span></span>
+            <p class="desc">Seasoned sticky rice, grilled and brushed with egg.</p>
+          </li>
+        </ul>
+    </section>
+
+    <section class="container menu-section" id="cakes">
+      <div class="menu-section__intro">
+        <p class="eyebrow"><span class="thai" lang="th">เค้ก &amp; คัพเค้ก</span></p>
+        <h2>Cakes &amp; Cupcakes</h2>
+        <p class="muted">Celebrate your special moments with cakes made just for you.</p>
+      </div>
+      <div class="featured-grid">
+          <article class="card menu-item-card" data-reveal>
+            <div class="card__media menu-item-card__media media-frame">
+              <img src="images/menu/young-coconut-cake.webp" width="800" height="500" alt="Young Coconut Cake" loading="lazy">
+            </div>
+            <div class="menu-item-card__body">
+              <div class="menu-item-card__top">
+                <h3>Young Coconut Cake</h3>
+                <span class="price">€35</span>
+              </div>
+              <p class="thai-name">Cake Ma-prao Orn</p>
+              <p class="muted">Soft, moist cake with fresh cream and tender young coconut.</p>
+            </div>
+          </article>
+          <article class="card menu-item-card" data-reveal>
+            <div class="card__media menu-item-card__media media-frame">
+              <img src="images/menu/rose-cupcakes.webp" width="800" height="500" alt="Rose Flower Cupcakes" loading="lazy">
+            </div>
+            <div class="menu-item-card__body">
+              <div class="menu-item-card__top">
+                <h3>Rose Flower Cupcakes</h3>
+                <span class="price">€48</span>
+              </div>
+              <p class="thai-name">12 pieces</p>
+              <p class="muted">Cupcakes decorated with delicate rose flower designs.</p>
+            </div>
+          </article>
+          <article class="card menu-item-card" data-reveal>
+            <div class="card__media menu-item-card__media media-frame">
+              <img src="images/menu/bouquet-cupcakes.webp" width="800" height="500" alt="Flower Bouquet Cupcakes" loading="lazy">
+            </div>
+            <div class="menu-item-card__body">
+              <div class="menu-item-card__top">
+                <h3>Flower Bouquet Cupcakes</h3>
+                <span class="price">€35</span>
+              </div>
+              <p class="thai-name">7 pieces</p>
+              <p class="muted">Seven cupcakes arranged as a beautiful floral bouquet.</p>
+            </div>
+          </article>
+          <article class="card menu-item-card" data-reveal>
+            <div class="card__media menu-item-card__media media-frame">
+              <img src="images/menu/mini-donut-cakes.webp" width="800" height="500" alt="Mini Donut Cakes" loading="lazy">
+            </div>
+            <div class="menu-item-card__body">
+              <div class="menu-item-card__top">
+                <h3>Mini Donut Cakes</h3>
+                <span class="price">€40</span>
+              </div>
+              <p class="thai-name">Box A, B or C</p>
+              <p class="muted">Small cake-style donuts, decorated for a sweet bite.</p>
+            </div>
+          </article>
+      </div>
+      <p class="also-title">Also on the menu</p>
+      <ul class="also-list">
+          <li>
+            <div>
+              <strong>Mini Young Coconut Cupcakes</strong>
+              <div class="thai-name">Cake Ma-prao Orn</div>
+            </div>
+            <span class="price">€4</span>
+            <p class="desc">Individual servings of soft young coconut cake.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Christmas Flower Cupcakes</strong>
+              <div class="thai-name">12 pieces</div>
+            </div>
+            <span class="price">€48</span>
+            <p class="desc">Flower-themed cupcakes for the Christmas season.</p>
+          </li>
+          <li>
+            <div>
+              <strong>Christmas Flower Bouquet</strong>
+              <div class="thai-name">7 or 11 pieces</div>
+            </div>
+            <span class="price">from €35</span>
+            <p class="desc">Cupcakes arranged as a bouquet for Christmas gatherings.</p>
+          </li>
+        </ul>
+    </section>
+
+    <section class="container menu-section" id="thai-food" style="padding-bottom:96px">
+      <div class="coming-box">
+        <span class="badge">Coming soon</span>
+        <h2 style="margin-top:16px">Thai Food</h2>
+        <p class="muted">Authentic Thai dishes will be available soon: grilled herbal chicken (Kai Yang Sa-mun Pai), chicken satay (Kai Sa-teh) and more.</p>
+        <div class="btn-row" style="margin-top:20px">
+          <a class="btn btn--primary" href="contact.html">Send me a message to be notified <svg class="btn-arrow" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="index.html" aria-label="Thai Sweets home">
+          <img src="images/logo/logo-white.png" width="160" height="54" alt="Thai Sweets">
+        </a>
+        <p>Fresh homemade Thai cuisine made with love. Vlaardingen, since 2019.</p>
+      </div>
+      <div class="footer-col">
+        <h3>Shop</h3>
+        <ul>
+          <li><a href="https://thai-sweets-order.uraiwank.workers.dev">Order online</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="how-to-order.html">How to order</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="mailto:info@thaisweets.nl">info@thaisweets.nl</a></li>
+          <li><a href="tel:+31645591043">06 45591043</a></li>
+          <li><span>Gretha Hofstralaan, Vlaardingen</span></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Follow</h3>
+        <ul>
+          <li><a href="https://www.instagram.com/thaisweetsnl/" rel="noopener noreferrer" target="_blank">Instagram</a></li>
+          <li><a href="https://www.facebook.com/thaisweetsnl" rel="noopener noreferrer" target="_blank">Facebook</a></li>
+          <li><a href="https://www.tiktok.com/@thaisweetsnl" rel="noopener noreferrer" target="_blank">TikTok</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2026 Thai Sweets · KVK 73838306 · VAT NL002463537B15</p>
+      <nav aria-label="Legal">
+        <a href="#">General Terms</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Allergens</a>
+        <a href="#cookie-settings" data-cookie-settings>Cookie settings</a>
+      </nav>
+    </div>
+  </footer>
+  <div id="cookie-consent-banner" class="hidden" role="dialog" aria-labelledby="cookie-consent-title" aria-describedby="cookie-consent-description" aria-hidden="true">
+    <div class="cookie-banner__inner">
+      <div>
+        <h2 id="cookie-consent-title">We use cookies</h2>
+        <p id="cookie-consent-description">
+          This website only uses essential cookies. If we add analytics later, we'll ask for your consent first.
+          Read more in our <a href="#">privacy policy</a>.
+        </p>
+      </div>
+      <div class="cookie-banner__actions">
+        <button type="button" id="reject-cookies" class="btn btn--secondary" aria-label="Reject all">Reject all</button>
+        <button type="button" id="manage-cookies" class="btn btn--secondary" aria-label="Manage preferences">Manage preferences</button>
+        <button type="button" id="accept-cookies" class="btn btn--primary" aria-label="Accept all">Accept all</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="cookie-preferences-modal" class="hidden" role="dialog" aria-modal="true" aria-labelledby="preferences-modal-title" aria-hidden="true">
+    <div class="cookie-modal">
+      <div class="cookie-modal__head">
+        <h2 id="preferences-modal-title">Cookie preferences</h2>
+        <button type="button" id="close-preferences-modal" class="icon-btn" aria-label="Close preferences" style="border-color:rgba(255,255,255,.35);color:#fff;background:transparent">&times;</button>
+      </div>
+      <div class="cookie-modal__body">
+        <p>We use cookies to improve your experience on our website. You can set your preferences for each type of cookie below.</p>
+        <div class="cookie-pref">
+          <div>
+            <h3>Essential cookies</h3>
+            <p>These cookies are needed for the website to work and cannot be switched off.</p>
+          </div>
+          <span class="pref-always">Always on</span>
+        </div>
+        <div class="cookie-pref">
+          <div>
+            <h3>Analytics cookies</h3>
+            <p>These cookies help us understand how visitors use our website by collecting and reporting information anonymously.</p>
+          </div>
+          <label class="checkbox-label"><span class="visually-hidden">Analytics cookies</span><input type="checkbox" id="pref-analytics" class="checkbox-input"></label>
+        </div>
+        <div class="cookie-pref">
+          <div>
+            <h3>Advertising cookies</h3>
+            <p>These cookies are used to show ads that are relevant to you and your interests.</p>
+          </div>
+          <label class="checkbox-label"><span class="visually-hidden">Advertising cookies</span><input type="checkbox" id="pref-advertising" class="checkbox-input"></label>
+        </div>
+        <div class="cookie-pref">
+          <div>
+            <h3>Functional cookies</h3>
+            <p>These cookies enable extra features, such as videos and live chat.</p>
+          </div>
+          <label class="checkbox-label"><span class="visually-hidden">Functional cookies</span><input type="checkbox" id="pref-functional" class="checkbox-input"></label>
+        </div>
+        <div class="cookie-pref">
+          <div>
+            <h3>Personalisation cookies</h3>
+            <p>These cookies are used to personalise content and ads based on your preferences and behaviour.</p>
+          </div>
+          <label class="checkbox-label"><span class="visually-hidden">Personalisation cookies</span><input type="checkbox" id="pref-personalization" class="checkbox-input"></label>
+        </div>
+        <div class="cookie-modal__actions">
+          <button type="button" id="save-preferences" class="btn btn--primary">Save preferences</button>
+          <button type="button" class="btn btn--gold" onclick="CookieConsent.accept()">Accept all</button>
+        </div>
+        <p class="form-hint" style="text-align:center">You can find more information in our <a href="#">privacy policy</a>.</p>
+      </div>
+    </div>
+  </div>
+  <script src="js/cookie-consent.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
