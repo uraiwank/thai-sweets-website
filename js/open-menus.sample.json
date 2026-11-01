@@ -1,0 +1,35 @@
+{
+  "generatedAt": "2026-11-01T10:00:00+01:00",
+  "menus": [
+    {
+      "slug": "thai-desserts-1",
+      "status": "open",
+      "tag": "Special",
+      "title": "Thai Desserts",
+      "description": "Thai sweets and snacks: khanom chan, tako, curry puffs and many more.",
+      "opensAt": null,
+      "opensAtISO": "2026-10-25T15:10:00+00:00",
+      "orderBy": "Tue 4 Nov",
+      "orderByISO": "2026-11-04T22:59:00+00:00",
+      "pickup": "Sat 8 Nov",
+      "delivery": "Vlaardingen & Schiedam",
+      "imageUrl": "https://oouogdvpefyamnctjsys.supabase.co/storage/v1/object/public/menu-images/thai-desserts-cover-photo6-1280.webp",
+      "url": "https://order.thaisweets.nl/en/thai-desserts-1"
+    },
+    {
+      "slug": "christmas-2026",
+      "status": "upcoming",
+      "tag": "Seasonal special",
+      "title": "Christmas 2026",
+      "description": "Vanilla cupcakes with piped buttercream flowers: Christmas star, wreath, pine cone and a festive greeting.",
+      "opensAt": "Sat 15 Nov",
+      "opensAtISO": "2026-11-14T23:00:00+00:00",
+      "orderBy": "Wed 10 Dec",
+      "orderByISO": "2026-12-10T21:00:00+00:00",
+      "pickup": "23–24 Dec",
+      "delivery": "Until 24 Dec",
+      "imageUrl": "https://oouogdvpefyamnctjsys.supabase.co/storage/v1/object/public/menu-images/classic-12-1600.jpg",
+      "url": "https://order.thaisweets.nl/en/christmas-2026"
+    }
+  ]
+}

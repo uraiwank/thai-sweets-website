@@ -1,20 +1,20 @@
 ﻿# Thai Sweets website
 
-Marketing site for [Thai Sweets](https://www.thaisweets.nl) (Vlaardingen). Online ordering lives in a separate app; every **Order** button links there.
+Marketing site for [Thai Sweets](https://www.thaisweets.nl) (Vlaardingen). Online ordering lives at [order.thaisweets.nl](https://order.thaisweets.nl); every **Order** button links there.
 
 ## Preview locally
 
-Open `index.html` in a browser, or from this folder:
+Serve over HTTP (not `file://`), e.g. from this folder:
 
 ```bash
-npx serve .
+npx --yes serve -l 55343 .
 ```
 
 ## Edit often
 
-- **Order-round dates** (Home announcement bar + "Open for ordering" cards): search `ROUND DATA` in `index.html`.
+- **Live open/upcoming rounds** (Home announcement bar + “Open for ordering” cards): `js/open-menus.js` fetches `https://order.thaisweets.nl/api/open-menus`. Toggle `USE_MOCK` and use `js/open-menus.sample.json` for empty/error testing.
 - **Menu items / prices**: `js/menu-data.js` (and matching sections on `menu.html` if you keep static HTML in sync).
-- **Order app URL**: search `ORDER_APP_URL` / `thai-sweets-order.uraiwank.workers.dev` across HTML files.
+- **Order app URL**: `ORDER_APP_URL` in `js/main.js` and `https://order.thaisweets.nl` in HTML.
 
 ## Stack
 

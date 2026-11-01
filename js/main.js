@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var ORDER_APP_URL = "https://thai-sweets-order.uraiwank.workers.dev";
+  var ORDER_APP_URL = "https://order.thaisweets.nl";
 
   document.documentElement.classList.add("js");
 
