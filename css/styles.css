@@ -546,13 +546,21 @@ h3 {
 
 @media (max-width: 820px) {
   .nav-desktop,
-  .header-actions .lang-switch,
   .header-actions .btn--primary {
     display: none;
   }
 
+  /* Keep NL/EN/TH visible in the header on small screens (was only inside the hamburger). */
+  .header-actions .lang-switch {
+    display: inline-flex;
+  }
+
   .menu-toggle {
     display: inline-flex;
+  }
+
+  .mobile-nav .lang-switch {
+    margin: 12px 0 4px;
   }
 }
 
