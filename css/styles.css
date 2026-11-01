@@ -1480,27 +1480,13 @@ h3 {
 .promise-photos img {
   border-radius: 22px;
   width: 100%;
-}
-
-.promise-photos img:first-child {
-  width: 85%;
-}
-
-.promise-photos img:last-child {
-  width: 85%;
-  margin-left: auto;
-  margin-top: -24px;
+  margin: 0;
 }
 
 @media (max-width: 900px) {
   .about-split,
   .promise-grid {
     grid-template-columns: 1fr;
-  }
-  .promise-photos img:first-child,
-  .promise-photos img:last-child {
-    width: 100%;
-    margin: 0;
   }
 }
 

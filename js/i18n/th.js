@@ -102,7 +102,7 @@ window.ThaiSweetsI18nData.th = {
     howCta: "รายละเอียดการจัดส่งและรับเอง",
     starsEyebrow: "ลูกค้าพูดถึงเรา",
     starsTitle: "สดใหม่ในทุกกล่อง",
-    sinceLabel: "ทำขนมไทยด้วยมือที่ Vlaardingen",
+    sinceLabel: "เริ่มเปิดร้านที่ Vlaardingen",
     storyQuote: "“ทุกออเดอร์มีความหมายกับฉันมาก”",
     starsEyebrowAlt: "คำชมจากลูกค้า",
     starsTitleAlt: "จากลูกค้าของเรา",
