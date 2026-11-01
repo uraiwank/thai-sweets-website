@@ -1,7 +1,9 @@
 /**
- * Rebuild js/i18n/{nl,th}.js from translations/{nl,th}.txt + keys.txt.
+ * Rebuild js/i18n/{nl,th}.js from translations/{nl,th}.txt + keys.txt,
+ * then merge translations/{nl,th}-extra.txt + keys-extra.txt (same rules).
  *
- * Expects the same line count as translations/en.txt (and keys.txt).
+ * Main pack: line counts must match translations/en.txt (+ keys.txt).
+ * Extra pack: line counts must match translations/en-extra.txt (+ keys-extra.txt).
  * `[BR]` in a line becomes a real newline in the string value.
  *
  * Usage:
@@ -9,7 +11,7 @@
  *   node scripts/import-translations.js --lang=nl # Dutch only
  *   node scripts/import-translations.js --lang=th # Thai only
  *
- * Does not modify en.js.
+ * Does not modify en.js. Does not create missing *-extra.txt files.
  */
 "use strict";
 
@@ -26,6 +28,15 @@ function readLines(filePath) {
   const lines = normalized.split("\n");
   if (lines.length && lines[lines.length - 1] === "") lines.pop();
   return lines;
+}
+
+function exists(filePath) {
+  try {
+    fs.accessSync(filePath);
+    return true;
+  } catch (e) {
+    return false;
+  }
 }
 
 function setPath(root, dotted, value) {
@@ -70,38 +81,47 @@ function emitObject(obj, indent) {
   return lines.join("\n");
 }
 
-function headers(lang) {
+function headers(lang, withExtra) {
+  const extraNote = withExtra ? " + keys-extra.txt / " + lang + "-extra.txt" : "";
   if (lang === "nl") {
     return [
       "/* Nederlands — Thai Sweets marketing site.",
-      " * Rebuilt by scripts/import-translations.js from translations/nl.txt + keys.txt.",
+      " * Rebuilt by scripts/import-translations.js from translations/nl.txt + keys.txt" +
+        extraNote +
+        ".",
       " */",
     ].join("\n");
   }
   return [
     "/* ไทย — Thai Sweets marketing site.",
-    " * Rebuilt by scripts/import-translations.js from translations/th.txt + keys.txt.",
+    " * Rebuilt by scripts/import-translations.js from translations/th.txt + keys.txt" +
+      extraNote +
+      ".",
     " * Review dessert names (items.*.name) after import against order-app messaging/DB.",
     " */",
   ].join("\n");
 }
 
-function buildPack(lang, keys, values) {
+function buildObject(keys, values) {
   const root = {};
   for (let i = 0; i < keys.length; i++) {
     const text = String(values[i]).split("[BR]").join("\n");
     setPath(root, keys[i], text);
   }
-  const body = emitObject(root, 0);
-  return (
-    headers(lang) +
+  return root;
+}
+
+function writePack(lang, obj, withExtra) {
+  const body = emitObject(obj, 0);
+  const out =
+    headers(lang, withExtra) +
     "\nwindow.ThaiSweetsI18nData = window.ThaiSweetsI18nData || {};\n" +
     "window.ThaiSweetsI18nData." +
     lang +
     " = " +
     body +
-    ";\n"
-  );
+    ";\n";
+  fs.writeFileSync(path.join(OUT, lang + ".js"), out, "utf8");
 }
 
 function parseLangs(argv) {
@@ -112,6 +132,56 @@ function parseLangs(argv) {
   });
   if (!langs.length) return ["nl", "th"];
   return langs;
+}
+
+function loadExtras(lang) {
+  const keysExtraPath = path.join(TRANS, "keys-extra.txt");
+  const enExtraPath = path.join(TRANS, "en-extra.txt");
+  const langExtraPath = path.join(TRANS, lang + "-extra.txt");
+
+  if (!exists(keysExtraPath) && !exists(enExtraPath) && !exists(langExtraPath)) {
+    return null;
+  }
+
+  if (!exists(keysExtraPath) || !exists(enExtraPath)) {
+    console.error(
+      "Extra translations incomplete: need both keys-extra.txt and en-extra.txt when using extras."
+    );
+    process.exit(1);
+  }
+  if (!exists(langExtraPath)) {
+    console.error(
+      "Missing " + lang + "-extra.txt (required to match en-extra.txt / keys-extra.txt)."
+    );
+    process.exit(1);
+  }
+
+  const keysExtra = readLines(keysExtraPath);
+  const enExtra = readLines(enExtraPath);
+  const langExtra = readLines(langExtraPath);
+  const expected = enExtra.length;
+
+  if (keysExtra.length !== expected) {
+    console.error(
+      "keys-extra.txt line count must match en-extra.txt (" +
+        expected +
+        "), got " +
+        keysExtra.length
+    );
+    process.exit(1);
+  }
+  if (langExtra.length !== expected) {
+    console.error(
+      lang +
+        "-extra.txt line count mismatch: expected " +
+        expected +
+        " (en-extra.txt), got " +
+        langExtra.length
+    );
+    process.exit(1);
+  }
+
+  return { keys: keysExtra, values: langExtra, count: expected };
 }
 
 function main() {
@@ -135,11 +205,26 @@ function main() {
       );
       process.exit(1);
     }
-    fs.writeFileSync(path.join(OUT, lang + ".js"), buildPack(lang, keys, values), "utf8");
-    written.push("js/i18n/" + lang + ".js");
+
+    const pack = buildObject(keys, values);
+    const extras = loadExtras(lang);
+    if (extras) {
+      for (let i = 0; i < extras.keys.length; i++) {
+        const text = String(extras.values[i]).split("[BR]").join("\n");
+        setPath(pack, extras.keys[i], text);
+      }
+    }
+
+    writePack(lang, pack, !!(extras && extras.count));
+    written.push(
+      "js/i18n/" +
+        lang +
+        ".js" +
+        (extras ? " (+" + extras.count + " extra)" : "")
+    );
   });
 
-  console.log("Wrote " + written.join(", ") + " (" + expected + " strings each).");
+  console.log("Wrote " + written.join(", ") + " (main " + expected + " strings each).");
 }
 
 main();

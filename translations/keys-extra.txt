@@ -1,0 +1,6 @@
+extra.home.desc_fallback
+extra.menu.desc_fallback
+extra.how.desc_fallback
+extra.contact.desc_fallback
+extra.notFound.privacy_policy
+extra.notFound.desc_fallback
