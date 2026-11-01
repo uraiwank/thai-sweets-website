@@ -1567,35 +1567,27 @@ h3 {
   font-weight: 600;
 }
 
-.form-card {
+.contact-cta-card {
   padding: 28px;
 }
 
-.form-card label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 6px;
-  font-size: 14px;
+.contact-cta-card h2 {
+  margin: 0 0 8px;
 }
 
-.form-card .field {
-  margin-bottom: 16px;
+.contact-cta-actions {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
 }
 
-.form-card input,
-.form-card textarea {
+.contact-cta-actions .btn {
   width: 100%;
-  border: 1px solid var(--line-strong);
-  border-radius: 14px;
-  background: var(--bg);
-  color: var(--ink);
-  font: inherit;
-  padding: 12px 14px;
+  justify-content: center;
 }
 
-.form-card textarea {
-  min-height: 140px;
-  resize: vertical;
+.btn-icon {
+  flex: 0 0 auto;
 }
 
 .form-hint {
@@ -1605,7 +1597,7 @@ h3 {
 }
 
 .form-note {
-  margin-top: 16px;
+  margin-top: 20px;
   font-size: 14px;
   color: var(--muted);
 }
@@ -1614,6 +1606,11 @@ h3 {
   .contact-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.error-page {
+  padding-block: 96px 120px;
+  min-height: 50vh;
 }
 
 /* Cookie consent — restyled */
