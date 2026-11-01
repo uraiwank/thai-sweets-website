@@ -25,7 +25,7 @@
   --coming-bg: #fbf1d3;
   --coming-ink: #5a4300;
   --shadow-soft: 0 8px 24px rgba(26, 25, 23, 0.08);
-  --logo-header: url("../images/logo/logo-green.png");
+  --logo-header: url("../images/logo/logo-horizontal.png");
   color-scheme: light;
 }
 
@@ -53,7 +53,7 @@
   --coming-bg: #3a3218;
   --coming-ink: #fbf1d3;
   --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.35);
-  --logo-header: url("../images/logo/logo-white.png");
+  --logo-header: url("../images/logo/logo-horizontal.png");
   color-scheme: dark;
 }
 
@@ -80,7 +80,7 @@
     --coming-bg: #3a3218;
     --coming-ink: #fbf1d3;
     --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.35);
-    --logo-header: url("../images/logo/logo-white.png");
+    --logo-header: url("../images/logo/logo-horizontal.png");
     color-scheme: dark;
   }
 }
@@ -415,31 +415,6 @@ h3 {
 
 .site-header.is-scrolled .logo img {
   height: 44px;
-}
-
-.logo-dark-only {
-  display: none;
-}
-
-.logo-light-only {
-  display: block;
-}
-
-[data-theme="dark"] .logo-light-only {
-  display: none;
-}
-
-[data-theme="dark"] .logo-dark-only {
-  display: block;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) .logo-light-only {
-    display: none;
-  }
-  :root:not([data-theme]) .logo-dark-only {
-    display: block;
-  }
 }
 
 .nav-desktop {

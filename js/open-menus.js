@@ -7,7 +7,7 @@
   var API_BASE = "https://order.thaisweets.nl/api/open-menus";
   var ORDER_HOME = "https://order.thaisweets.nl";
   var TIMEOUT_MS = 6000;
-  var LOGO_SRC = "images/logo/logo-green.png";
+  var LOGO_SRC = "images/logo/logo-horizontal.png";
 
   var announceEl = document.querySelector("[data-open-menus-announce]");
   var gridEl = document.querySelector("[data-open-menus-grid]");
