@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,6 +19,11 @@
   <link rel="stylesheet" href="css/styles.css">
   <script>
     (function () {
+      document.documentElement.classList.add('js');
+      try {
+        var L = localStorage.getItem('thaisweets_lang');
+        document.documentElement.lang = (L === 'nl' || L === 'en' || L === 'th') ? L : 'nl';
+      } catch (e0) { document.documentElement.lang = 'nl'; }
       try {
         var t = localStorage.getItem('thaisweets_theme');
         if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
@@ -26,54 +31,54 @@
     })();
   </script>
 </head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
+<body data-page="menu">
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
   <header class="site-header">
     <div class="container site-header__inner">
-      <a class="logo" href="index.html" aria-label="Thai Sweets home">
+      <a class="logo" href="index.html" aria-label="Thai Sweets home" data-i18n="a11y.home" data-i18n-attr="aria-label">
         <img src="images/logo/logo-horizontal.png" width="105" height="54" alt="Thai Sweets">
       </a>
-      <nav class="nav-desktop" aria-label="Main">
-        <a href="menu.html" aria-current="page">Menu</a>
-        <a href="about.html">Our Story</a>
-        <a href="how-to-order.html">How to Order</a>
-        <a href="contact.html">Contact</a>
+      <nav class="nav-desktop" aria-label="Main" data-i18n="a11y.mainNav" data-i18n-attr="aria-label">
+        <a href="menu.html" aria-current="page" data-i18n="nav.menu">Menu</a>
+        <a href="about.html" data-i18n="nav.story">Our Story</a>
+        <a href="how-to-order.html" data-i18n="nav.how">How to Order</a>
+        <a href="contact.html" data-i18n="nav.contact">Contact</a>
       </nav>
       <div class="header-actions">
-        <button type="button" class="icon-btn theme-btn" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme">
+        <button type="button" class="icon-btn theme-btn" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme" data-i18n="a11y.themeToDark" data-i18n-attr="aria-label">
           <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg><svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 14.5A8.5 8.5 0 0 1 9.5 3 7 7 0 1 0 21 14.5z"/></svg>
         </button>
-        <div class="lang-switch" role="group" aria-label="Language">
-          <button type="button">NL</button>
-          <button type="button" aria-current="true">EN</button>
-          <button type="button">TH</button>
+        <div class="lang-switch" role="group" aria-label="Language" data-i18n="a11y.language" data-i18n-attr="aria-label">
+          <button type="button" data-lang="nl" aria-label="Nederlands" aria-pressed="true" aria-current="true">NL</button>
+          <button type="button" data-lang="en" aria-label="English" aria-pressed="false">EN</button>
+          <button type="button" data-lang="th" aria-label="ไทย" aria-pressed="false">TH</button>
         </div>
-        <a class="btn btn--primary" href="https://order.thaisweets.nl">Order online <svg class="btn-arrow" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
-        <button type="button" class="icon-btn menu-toggle" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+        <a class="btn btn--primary" href="https://order.thaisweets.nl/nl/" data-order-path="/"><span data-i18n="nav.order">Order online</span> <svg class="btn-arrow" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+        <button type="button" class="icon-btn menu-toggle" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu" data-i18n="a11y.openMenu" data-i18n-attr="aria-label">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
       </div>
     </div>
-    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile">
-      <a href="menu.html" aria-current="page">Menu</a>
-      <a href="about.html">Our Story</a>
-      <a href="how-to-order.html">How to Order</a>
-      <a href="contact.html">Contact</a>
-      <div class="lang-switch" role="group" aria-label="Language">
-        <button type="button">NL</button>
-        <button type="button" aria-current="true">EN</button>
-        <button type="button">TH</button>
-      </div>
-      <a class="btn btn--primary" href="https://order.thaisweets.nl">Order online</a>
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile" data-i18n="a11y.mobileNav" data-i18n-attr="aria-label">
+      <a href="menu.html" aria-current="page" data-i18n="nav.menu">Menu</a>
+      <a href="about.html" data-i18n="nav.story">Our Story</a>
+      <a href="how-to-order.html" data-i18n="nav.how">How to Order</a>
+      <a href="contact.html" data-i18n="nav.contact">Contact</a>
+      <div class="lang-switch" role="group" aria-label="Language" data-i18n="a11y.language" data-i18n-attr="aria-label">
+          <button type="button" data-lang="nl" aria-label="Nederlands" aria-pressed="true" aria-current="true">NL</button>
+          <button type="button" data-lang="en" aria-label="English" aria-pressed="false">EN</button>
+          <button type="button" data-lang="th" aria-label="ไทย" aria-pressed="false">TH</button>
+        </div>
+      <a class="btn btn--primary" href="https://order.thaisweets.nl/nl/" data-order-path="/"><span data-i18n="nav.order">Order online</span></a>
     </nav>
   </header>
   <main id="main">
     <section class="container page-hero page-hero--simple">
       <div>
-        <p class="eyebrow">Our menu</p>
+        <p class="eyebrow" data-i18n="menu.eyebrow">Our menu</p>
         <h1>Authentic Thai treats, handmade fresh to order</h1>
         <p class="lead">From traditional desserts to custom cakes, every item is crafted with care using quality ingredients. All items need at least 1 week's notice. Allergens are listed with each product on the order page.</p>
-        <nav class="menu-chips" aria-label="Menu categories">
+        <nav class="menu-chips" aria-label="Menu categories" data-i18n="menu.chipsLabel" data-i18n-attr="aria-label">
           <a href="#desserts">Traditional Thai Desserts</a>
           <a href="#savory">Savory Snacks</a>
           <a href="#cakes">Cakes &amp; Cupcakes</a>
@@ -84,112 +89,112 @@
     <section class="container menu-section" id="desserts">
       <div class="menu-section__intro">
         <p class="eyebrow"><span class="thai" lang="th">ขนมไทย</span></p>
-        <h2>Traditional Thai Desserts</h2>
-        <p class="muted">Experience the art of Thai sweets with our collection of traditional desserts.</p>
+        <h2 data-i18n="menu.dessertsTitle">Traditional Thai Desserts</h2>
+        <p class="muted"><span data-i18n="menu.dessertsLead">Experience the art of Thai sweets with our collection of traditional desserts.</span></p>
       </div>
       <div class="featured-grid">
           <article class="card menu-item-card" data-reveal>
             <div class="card__media menu-item-card__media media-frame">
-              <img src="images/menu/mango-sticky-rice.webp" width="800" height="500" alt="Sticky Rice with Mango" loading="lazy">
+              <img src="images/menu/mango-sticky-rice.webp" width="800" height="500" alt="Sticky Rice with Mango" data-menu-item="mango" data-menu-field="alt" loading="lazy">
             </div>
             <div class="menu-item-card__body">
               <div class="menu-item-card__top">
-                <h3>Sticky Rice with Mango</h3>
+                <h3 data-menu-item="mango" data-menu-field="name">Sticky Rice with Mango</h3>
                 <span class="price">€10</span>
               </div>
               <p class="thai-name">Khao Niao Ma-muang</p>
-              <p class="muted">Sweet sticky rice topped with coconut cream, served with fresh, ripe mango.</p>
+              <p class="muted"><span data-menu-item="mango" data-menu-field="desc">Sweet sticky rice topped with coconut cream, served with fresh, ripe mango.</span></p>
             </div>
           </article>
           <article class="card menu-item-card" data-reveal>
             <div class="card__media menu-item-card__media media-frame">
-              <img src="images/menu/butterfly-pea-layer-cake.webp" width="800" height="500" alt="Butterfly Pea Layer Cake" loading="lazy">
+              <img src="images/menu/butterfly-pea-layer-cake.webp" width="800" height="500" alt="Butterfly Pea Layer Cake" data-menu-item="butterfly" data-menu-field="alt" loading="lazy">
             </div>
             <div class="menu-item-card__body">
               <div class="menu-item-card__top">
-                <h3>Butterfly Pea Layer Cake</h3>
+                <h3 data-menu-item="butterfly" data-menu-field="name">Butterfly Pea Layer Cake</h3>
                 <span class="price">€8</span>
               </div>
               <p class="thai-name">Khanom Chan An-chan</p>
-              <p class="muted">A blue-hued, steamed layer dessert coloured naturally with butterfly pea flower.</p>
+              <p class="muted"><span data-menu-item="butterfly" data-menu-field="desc">A blue-hued, steamed layer dessert coloured naturally with butterfly pea flower.</span></p>
             </div>
           </article>
           <article class="card menu-item-card" data-reveal>
             <div class="card__media menu-item-card__media media-frame">
-              <img src="images/menu/luk-chup.webp" width="800" height="500" alt="Fruit-Shaped Mung Bean Dessert" loading="lazy">
+              <img src="images/menu/luk-chup.webp" width="800" height="500" alt="Khanom Luk Chup" data-menu-item="lukchup" data-menu-field="alt" loading="lazy">
             </div>
             <div class="menu-item-card__body">
               <div class="menu-item-card__top">
-                <h3>Fruit-Shaped Mung Bean Dessert</h3>
+                <h3 data-menu-item="lukchup" data-menu-field="name">Khanom Luk Chup</h3>
                 <span class="price">€15</span>
               </div>
               <p class="thai-name">Khanom Luk Chup</p>
-              <p class="muted">Sweet mung bean paste moulded into miniature fruits and coated in jelly.</p>
+              <p class="muted"><span data-menu-item="lukchup" data-menu-field="desc">Sweet mung bean paste moulded into miniature fruits and coated in jelly.</span></p>
             </div>
           </article>
           <article class="card menu-item-card" data-reveal>
             <div class="card__media menu-item-card__media media-frame">
-              <img src="images/menu/golden-auspicious-set.webp" width="800" height="500" alt="Golden Auspicious Set" loading="lazy">
+              <img src="images/menu/golden-auspicious-set.webp" width="800" height="500" alt="Golden Auspicious Set" data-menu-item="golden" data-menu-field="alt" loading="lazy">
             </div>
             <div class="menu-item-card__body">
               <div class="menu-item-card__top">
-                <h3>Golden Auspicious Set</h3>
+                <h3 data-menu-item="golden" data-menu-field="name">Golden Auspicious Set</h3>
                 <span class="price">€65</span>
               </div>
               <p class="thai-name">Chut Su-wan Mong-kon</p>
-              <p class="muted">Five auspicious Thai desserts symbolising wealth and good fortune.</p>
+              <p class="muted"><span data-menu-item="golden" data-menu-field="desc">Five auspicious Thai desserts symbolising wealth and good fortune.</span></p>
             </div>
           </article>
           <article class="card menu-item-card" data-reveal>
             <div class="card__media menu-item-card__media media-frame">
-              <img src="images/menu/khanom-pia.webp" width="800" height="500" alt="Mini Pastry Bun" loading="lazy">
+              <img src="images/menu/khanom-pia.webp" width="800" height="500" alt="Khanom Pia" data-menu-item="pia" data-menu-field="alt" loading="lazy">
             </div>
             <div class="menu-item-card__body">
               <div class="menu-item-card__top">
-                <h3>Mini Pastry Bun</h3>
+                <h3 data-menu-item="pia" data-menu-field="name">Khanom Pia</h3>
                 <span class="price">€8</span>
               </div>
               <p class="thai-name">Khanom Pia</p>
-              <p class="muted">Baked round pastries with mung bean, taro, pandan or purple sweet potato.</p>
+              <p class="muted"><span data-menu-item="pia" data-menu-field="desc">Baked round pastries with mung bean, taro, pandan or purple sweet potato.</span></p>
             </div>
           </article>
           <article class="card menu-item-card" data-reveal>
             <div class="card__media menu-item-card__media media-frame">
-              <img src="images/menu/tong-muan.webp" width="800" height="500" alt="Crispy Coconut Rolls" loading="lazy">
+              <img src="images/menu/tong-muan.webp" width="800" height="500" alt="Tong Muan" data-menu-item="tongmuan" data-menu-field="alt" loading="lazy">
             </div>
             <div class="menu-item-card__body">
               <div class="menu-item-card__top">
-                <h3>Crispy Coconut Rolls</h3>
+                <h3 data-menu-item="tongmuan" data-menu-field="name">Tong Muan</h3>
                 <span class="price">€12</span>
               </div>
               <p class="thai-name">Tong Muan Boraan</p>
-              <p class="muted">Thin, crispy rolled biscuits of coconut milk and rice flour with black sesame.</p>
+              <p class="muted"><span data-menu-item="tongmuan" data-menu-field="desc">Thin, crispy rolled biscuits of coconut milk and rice flour with black sesame.</span></p>
             </div>
           </article>
           <article class="card menu-item-card" data-reveal>
             <div class="card__media menu-item-card__media media-frame">
-              <img src="images/menu/foi-tong.webp" width="800" height="500" alt="Foi Tong" loading="lazy">
+              <img src="images/menu/foi-tong.webp" width="800" height="500" alt="Foi Tong" data-menu-item="foitong" data-menu-field="alt" loading="lazy">
             </div>
             <div class="menu-item-card__body">
               <div class="menu-item-card__top">
-                <h3>Foi Tong</h3>
+                <h3 data-menu-item="foitong" data-menu-field="name">Foi Tong</h3>
                 <span class="price">€15</span>
               </div>
               <p class="thai-name" lang="th">ฝอยทอง</p>
-              <p class="muted">Fine strands of sweetened egg yolk drizzled into hot syrup, like golden threads.</p>
+              <p class="muted"><span data-menu-item="foitong" data-menu-field="desc">Fine strands of sweetened egg yolk drizzled into hot syrup, like golden threads.</span></p>
             </div>
           </article>
           <article class="card menu-item-card" data-reveal>
             <div class="card__media menu-item-card__media media-frame">
-              <img src="images/menu/tong-yib.webp" width="800" height="500" alt="Tong Yib" loading="lazy">
+              <img src="images/menu/tong-yib.webp" width="800" height="500" alt="Tong Yib" data-menu-item="tongyib" data-menu-field="alt" loading="lazy">
             </div>
             <div class="menu-item-card__body">
               <div class="menu-item-card__top">
-                <h3>Tong Yib</h3>
+                <h3 data-menu-item="tongyib" data-menu-field="name">Tong Yib</h3>
                 <span class="price">€10</span>
               </div>
               <p class="thai-name" lang="th">ทองหยิบ</p>
-              <p class="muted">Sweetened egg yolk cooked in syrup and pinched into flower-like folds.</p>
+              <p class="muted"><span data-menu-item="tongyib" data-menu-field="desc">Sweetened egg yolk cooked in syrup and pinched into flower-like folds.</span></p>
             </div>
           </article>
       </div>
@@ -277,7 +282,7 @@
           </li>
           <li>
             <div>
-              <strong>Banana Crispy Coconut Rolls</strong>
+              <strong>Banana Tong Muan</strong>
               <div class="thai-name">Tong Muan Kluay Hom</div>
             </div>
             <span class="price">€12</span>
@@ -441,60 +446,60 @@
     <section class="container menu-section" id="savory">
       <div class="menu-section__intro">
         <p class="eyebrow"><span class="thai" lang="th">ของว่าง</span></p>
-        <h2>Savory Snacks</h2>
+        <h2 data-i18n="menu.savoryTitle">Savory Snacks</h2>
         <p class="muted">Crispy, flavourful and perfect for sharing: the authentic taste of Thai street food.</p>
       </div>
       <div class="featured-grid">
           <article class="card menu-item-card" data-reveal>
             <div class="card__media menu-item-card__media media-frame">
-              <img src="images/menu/curry-puffs.webp" width="800" height="500" alt="Chicken Curry Puffs" loading="lazy">
+              <img src="images/menu/curry-puffs.webp" width="800" height="500" alt="Chicken Curry Puffs" data-menu-item="curry" data-menu-field="alt" loading="lazy">
             </div>
             <div class="menu-item-card__body">
               <div class="menu-item-card__top">
-                <h3>Chicken Curry Puffs</h3>
+                <h3 data-menu-item="curry" data-menu-field="name">Chicken Curry Puffs</h3>
                 <span class="price">€8</span>
               </div>
               <p class="thai-name">Kareepub Sai Kai</p>
-              <p class="muted">Flaky pastry filled with ground chicken and yellow curry.</p>
+              <p class="muted"><span data-menu-item="curry" data-menu-field="desc">Flaky pastry filled with ground chicken and yellow curry.</span></p>
             </div>
           </article>
           <article class="card menu-item-card" data-reveal>
             <div class="card__media menu-item-card__media media-frame">
-              <img src="images/menu/pan-klib.webp" width="800" height="500" alt="Fried Flour Dumplings" loading="lazy">
+              <img src="images/menu/pan-klib.webp" width="800" height="500" alt="Fried Flour Dumplings" data-menu-item="dumplings" data-menu-field="alt" loading="lazy">
             </div>
             <div class="menu-item-card__body">
               <div class="menu-item-card__top">
-                <h3>Fried Flour Dumplings</h3>
+                <h3 data-menu-item="dumplings" data-menu-field="name">Fried Flour Dumplings</h3>
                 <span class="price">€15</span>
               </div>
               <p class="thai-name">Pan Klib Sai Moo Yong Prik Pao</p>
-              <p class="muted">Crescent pastries with sweet and spicy shredded pork and chilli paste.</p>
+              <p class="muted"><span data-menu-item="dumplings" data-menu-field="desc">Crescent pastries with sweet and spicy shredded pork and chilli paste.</span></p>
             </div>
           </article>
           <article class="card menu-item-card" data-reveal>
             <div class="card__media menu-item-card__media media-frame">
-              <img src="images/menu/flower-bird-dumplings.webp" width="800" height="500" alt="Steamed Flower & Bird Dumplings" loading="lazy">
+              <img src="images/menu/flower-bird-dumplings.webp" width="800" height="500" alt="Steamed Flower & Bird Dumplings" data-menu-item="flowerbird" data-menu-field="alt" loading="lazy">
             </div>
             <div class="menu-item-card__body">
               <div class="menu-item-card__top">
-                <h3>Steamed Flower & Bird Dumplings</h3>
+                <h3 data-menu-item="flowerbird" data-menu-field="name">Steamed Flower & Bird Dumplings</h3>
                 <span class="price">€10</span>
               </div>
               <p class="thai-name">Khanom Chor Muang lae Jeep Nok</p>
-              <p class="muted">Intricately crafted steamed dumplings with seasoned meat.</p>
+              <p class="muted"><span data-menu-item="flowerbird" data-menu-field="desc">Intricately crafted steamed dumplings with seasoned meat.</span></p>
             </div>
           </article>
           <article class="card menu-item-card" data-reveal>
             <div class="card__media menu-item-card__media media-frame">
-              <img src="images/menu/glass-noodle-sausage.webp" width="800" height="500" alt="Glass Noodle Sausage" loading="lazy">
+              <img src="images/menu/glass-noodle-sausage.webp" width="800" height="500" alt="Glass Noodle Sausage" data-menu-item="sausage" data-menu-field="alt" loading="lazy">
             </div>
             <div class="menu-item-card__body">
               <div class="menu-item-card__top">
-                <h3>Glass Noodle Sausage</h3>
+                <h3 data-menu-item="sausage" data-menu-field="name">Glass Noodle Sausage</h3>
                 <span class="price">€15</span>
               </div>
               <p class="thai-name">Sai Krok Woon Sen</p>
-              <p class="muted">A savoury Thai sausage made with ground meat and glass noodles.</p>
+              <p class="muted"><span data-menu-item="sausage" data-menu-field="desc">A savoury Thai sausage made with ground meat and glass noodles.</span></p>
             </div>
           </article>
       </div>
@@ -554,60 +559,60 @@
     <section class="container menu-section" id="cakes">
       <div class="menu-section__intro">
         <p class="eyebrow"><span class="thai" lang="th">เค้ก &amp; คัพเค้ก</span></p>
-        <h2>Cakes &amp; Cupcakes</h2>
+        <h2 data-i18n="menu.cakesTitle">Cakes &amp; Cupcakes</h2>
         <p class="muted">Celebrate your special moments with cakes made just for you.</p>
       </div>
       <div class="featured-grid">
           <article class="card menu-item-card" data-reveal>
             <div class="card__media menu-item-card__media media-frame">
-              <img src="images/menu/young-coconut-cake.webp" width="800" height="500" alt="Young Coconut Cake" loading="lazy">
+              <img src="images/menu/young-coconut-cake.webp" width="800" height="500" alt="Young Coconut Cake" data-menu-item="coconutcake" data-menu-field="alt" loading="lazy">
             </div>
             <div class="menu-item-card__body">
               <div class="menu-item-card__top">
-                <h3>Young Coconut Cake</h3>
+                <h3 data-menu-item="coconutcake" data-menu-field="name">Young Coconut Cake</h3>
                 <span class="price">€35</span>
               </div>
               <p class="thai-name">Cake Ma-prao Orn</p>
-              <p class="muted">Soft, moist cake with fresh cream and tender young coconut.</p>
+              <p class="muted"><span data-menu-item="coconutcake" data-menu-field="desc">Soft, moist cake with fresh cream and tender young coconut.</span></p>
             </div>
           </article>
           <article class="card menu-item-card" data-reveal>
             <div class="card__media menu-item-card__media media-frame">
-              <img src="images/menu/rose-cupcakes.webp" width="800" height="500" alt="Rose Flower Cupcakes" loading="lazy">
+              <img src="images/menu/rose-cupcakes.webp" width="800" height="500" alt="Rose Flower Cupcakes" data-menu-item="rose" data-menu-field="alt" loading="lazy">
             </div>
             <div class="menu-item-card__body">
               <div class="menu-item-card__top">
-                <h3>Rose Flower Cupcakes</h3>
+                <h3 data-menu-item="rose" data-menu-field="name">Rose Flower Cupcakes</h3>
                 <span class="price">€48</span>
               </div>
               <p class="thai-name">12 pieces</p>
-              <p class="muted">Cupcakes decorated with delicate rose flower designs.</p>
+              <p class="muted"><span data-menu-item="rose" data-menu-field="desc">Cupcakes decorated with delicate rose flower designs.</span></p>
             </div>
           </article>
           <article class="card menu-item-card" data-reveal>
             <div class="card__media menu-item-card__media media-frame">
-              <img src="images/menu/bouquet-cupcakes.webp" width="800" height="500" alt="Flower Bouquet Cupcakes" loading="lazy">
+              <img src="images/menu/bouquet-cupcakes.webp" width="800" height="500" alt="Flower Bouquet Cupcakes" data-menu-item="bouquet" data-menu-field="alt" loading="lazy">
             </div>
             <div class="menu-item-card__body">
               <div class="menu-item-card__top">
-                <h3>Flower Bouquet Cupcakes</h3>
+                <h3 data-menu-item="bouquet" data-menu-field="name">Flower Bouquet Cupcakes</h3>
                 <span class="price">€35</span>
               </div>
               <p class="thai-name">7 pieces</p>
-              <p class="muted">Seven cupcakes arranged as a beautiful floral bouquet.</p>
+              <p class="muted"><span data-menu-item="bouquet" data-menu-field="desc">Seven cupcakes arranged as a beautiful floral bouquet.</span></p>
             </div>
           </article>
           <article class="card menu-item-card" data-reveal>
             <div class="card__media menu-item-card__media media-frame">
-              <img src="images/menu/mini-donut-cakes.webp" width="800" height="500" alt="Mini Donut Cakes" loading="lazy">
+              <img src="images/menu/mini-donut-cakes.webp" width="800" height="500" alt="Mini Donut Cakes" data-menu-item="minidonut" data-menu-field="alt" loading="lazy">
             </div>
             <div class="menu-item-card__body">
               <div class="menu-item-card__top">
-                <h3>Mini Donut Cakes</h3>
+                <h3 data-menu-item="minidonut" data-menu-field="name">Mini Donut Cakes</h3>
                 <span class="price">€40</span>
               </div>
               <p class="thai-name">Box A, B or C</p>
-              <p class="muted">Small cake-style donuts, decorated for a sweet bite.</p>
+              <p class="muted"><span data-menu-item="minidonut" data-menu-field="desc">Small cake-style donuts, decorated for a sweet bite.</span></p>
             </div>
           </article>
       </div>
@@ -643,29 +648,29 @@
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-brand">
-        <a class="logo" href="index.html" aria-label="Thai Sweets home">
+        <a class="logo" href="index.html" aria-label="Thai Sweets home" data-i18n="a11y.home" data-i18n-attr="aria-label">
           <img src="images/logo/logo-white.svg" width="105" height="54" alt="Thai Sweets">
         </a>
-        <p>Fresh homemade Thai cuisine made with love. Vlaardingen, since 2019.</p>
+        <p><span data-i18n="footer.blurb">Fresh homemade Thai cuisine made with love. Vlaardingen, since 2019.</span></p>
       </div>
       <div class="footer-col">
-        <h3>Shop</h3>
+        <h3 data-i18n="footer.shop">Shop</h3>
         <ul>
-          <li><a href="https://order.thaisweets.nl">Order online</a></li>
-          <li><a href="menu.html">Menu</a></li>
-          <li><a href="how-to-order.html">How to order</a></li>
+          <li><a href="https://order.thaisweets.nl/nl/" data-order-path="/"><span data-i18n="nav.order">Order online</span></a></li>
+          <li><a href="menu.html" data-i18n="nav.menu">Menu</a></li>
+          <li><a href="how-to-order.html" data-i18n="footer.how">How to order</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h3>Contact</h3>
+        <h3 data-i18n="footer.contact">Contact</h3>
         <ul>
           <li><a href="mailto:info@thaisweets.nl">info@thaisweets.nl</a></li>
           <li><a href="tel:+31645591043">06 45591043</a></li>
-          <li><span>Gretha Hofstralaan, Vlaardingen</span></li>
+          <li><span data-i18n="footer.address">Gretha Hofstralaan, Vlaardingen</span></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h3>Follow</h3>
+        <h3 data-i18n="footer.follow">Follow</h3>
         <ul>
           <li><a href="https://www.instagram.com/thaisweetsnl/" rel="noopener noreferrer" target="_blank">Instagram</a></li>
           <li><a href="https://www.facebook.com/thaisweetsnl" rel="noopener noreferrer" target="_blank">Facebook</a></li>
@@ -674,28 +679,28 @@
       </div>
     </div>
     <div class="container footer-bottom">
-      <p>© 2026 Thai Sweets · KVK 73838306 · VAT NL002463537B15</p>
-      <nav aria-label="Legal">
-        <a href="https://order.thaisweets.nl/en/legal#terms" rel="noopener noreferrer" target="_blank">General Terms</a>
-        <a href="https://order.thaisweets.nl/en/legal#privacy" rel="noopener noreferrer" target="_blank">Privacy Policy</a>
-        <a href="https://order.thaisweets.nl/en/legal#allergens" rel="noopener noreferrer" target="_blank">Allergens</a>
-        <a href="#cookie-settings" data-cookie-settings>Cookie settings</a>
+      <p><span data-i18n="footer.copy">© 2026 Thai Sweets · KVK 73838306 · VAT NL002463537B15</span></p>
+      <nav aria-label="Legal" data-i18n="a11y.legal" data-i18n-attr="aria-label">
+        <a href="https://order.thaisweets.nl/nl/legal#terms" data-legal="terms" rel="noopener noreferrer" target="_blank" data-i18n="footer.terms">General Terms</a>
+        <a href="https://order.thaisweets.nl/nl/legal#privacy" data-legal="privacy" rel="noopener noreferrer" target="_blank" data-i18n="footer.privacy">Privacy Policy</a>
+        <a href="https://order.thaisweets.nl/nl/legal#allergens" data-legal="allergens" rel="noopener noreferrer" target="_blank" data-i18n="footer.allergens">Allergens</a>
+        <a href="#cookie-settings" data-cookie-settings data-i18n="footer.cookies">Cookie settings</a>
       </nav>
     </div>
   </footer>
   <div id="cookie-consent-banner" class="hidden" role="dialog" aria-labelledby="cookie-consent-title" aria-describedby="cookie-consent-description" aria-hidden="true">
     <div class="cookie-banner__inner">
       <div>
-        <h2 id="cookie-consent-title">We use cookies</h2>
+        <h2 id="cookie-consent-title" data-i18n="cookies.title">We use cookies</h2>
         <p id="cookie-consent-description">
           This website only uses essential cookies. If we add analytics later, we'll ask for your consent first.
-          Read more in our <a href="https://order.thaisweets.nl/en/legal#privacy" rel="noopener noreferrer" target="_blank">Privacy Policy</a>.
+          Read more in our <a href="https://order.thaisweets.nl/nl/legal#privacy" data-legal="privacy" rel="noopener noreferrer" target="_blank" data-i18n="footer.privacy">Privacy Policy</a>.
         </p>
       </div>
       <div class="cookie-banner__actions">
-        <button type="button" id="reject-cookies" class="btn btn--secondary" aria-label="Reject all">Reject all</button>
-        <button type="button" id="manage-cookies" class="btn btn--secondary" aria-label="Manage preferences">Manage preferences</button>
-        <button type="button" id="accept-cookies" class="btn btn--primary" aria-label="Accept all">Accept all</button>
+        <button type="button" id="reject-cookies" class="btn btn--secondary" aria-label="Reject all" data-i18n="cookies.reject" data-i18n-attr="text,aria-label">Reject all</button>
+        <button type="button" id="manage-cookies" class="btn btn--secondary" aria-label="Manage preferences" data-i18n="cookies.manage" data-i18n-attr="text,aria-label">Manage preferences</button>
+        <button type="button" id="accept-cookies" class="btn btn--primary" aria-label="Accept all" data-i18n="cookies.accept" data-i18n-attr="text,aria-label">Accept all</button>
       </div>
     </div>
   </div>
@@ -703,7 +708,7 @@
   <div id="cookie-preferences-modal" class="hidden" role="dialog" aria-modal="true" aria-labelledby="preferences-modal-title" aria-hidden="true">
     <div class="cookie-modal">
       <div class="cookie-modal__head">
-        <h2 id="preferences-modal-title">Cookie preferences</h2>
+        <h2 id="preferences-modal-title" data-i18n="cookies.prefsTitle">Cookie preferences</h2>
         <button type="button" id="close-preferences-modal" class="icon-btn" aria-label="Close preferences" style="border-color:rgba(255,255,255,.35);color:#fff;background:transparent">&times;</button>
       </div>
       <div class="cookie-modal__body">
@@ -744,14 +749,18 @@
           <label class="checkbox-label"><span class="visually-hidden">Personalisation cookies</span><input type="checkbox" id="pref-personalization" class="checkbox-input"></label>
         </div>
         <div class="cookie-modal__actions">
-          <button type="button" id="save-preferences" class="btn btn--primary">Save preferences</button>
+          <button type="button" id="save-preferences" class="btn btn--primary" data-i18n="cookies.save">Save preferences</button>
           <button type="button" class="btn btn--gold" onclick="CookieConsent.accept()">Accept all</button>
         </div>
-        <p class="form-hint" style="text-align:center">You can find more information in our <a href="https://order.thaisweets.nl/en/legal#privacy" rel="noopener noreferrer" target="_blank">Privacy Policy</a>.</p>
+        <p class="form-hint" style="text-align:center">You can find more information in our <a href="https://order.thaisweets.nl/nl/legal#privacy" data-legal="privacy" rel="noopener noreferrer" target="_blank" data-i18n="footer.privacy">Privacy Policy</a>.</p>
       </div>
     </div>
   </div>
-  <script src="js/cookie-consent.js" defer></script>
+    <script src="js/i18n/nl.js" defer></script>
+  <script src="js/i18n/en.js" defer></script>
+  <script src="js/i18n/th.js" defer></script>
+  <script src="js/i18n.js" defer></script>
   <script src="js/main.js" defer></script>
+  <script src="js/cookie-consent.js" defer></script>
 </body>
 </html>

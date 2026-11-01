@@ -23,15 +23,21 @@
       : "light";
   }
 
+  function themeLabel(theme) {
+    if (window.ThaiSweetsI18n && typeof window.ThaiSweetsI18n.t === "function") {
+      return window.ThaiSweetsI18n.t(
+        theme === "dark" ? "a11y.themeToLight" : "a11y.themeToDark"
+      );
+    }
+    return theme === "dark" ? "Switch to light theme" : "Switch to dark theme";
+  }
+
   function applyTheme(theme) {
     document.documentElement.setAttribute("data-theme", theme);
     var btn = document.querySelector("[data-theme-toggle]");
     if (btn) {
       btn.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
-      btn.setAttribute(
-        "aria-label",
-        theme === "dark" ? "Switch to light theme" : "Switch to dark theme"
-      );
+      btn.setAttribute("aria-label", themeLabel(theme));
     }
   }
 
@@ -50,15 +56,7 @@
     });
   });
 
-  /* Language switcher placeholder — EN active */
-  document.querySelectorAll(".lang-switch button").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      document.querySelectorAll(".lang-switch button").forEach(function (b) {
-        b.removeAttribute("aria-current");
-      });
-      btn.setAttribute("aria-current", "true");
-    });
-  });
+  /* Language switcher is handled by js/i18n.js */
 
   /* Sticky header shrink */
   var header = document.querySelector(".site-header");

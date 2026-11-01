@@ -13,11 +13,21 @@
   var gridEl = document.querySelector("[data-open-menus-grid]");
   if (!gridEl) return;
 
+  function t(key) {
+    if (window.ThaiSweetsI18n && typeof window.ThaiSweetsI18n.t === "function") {
+      return window.ThaiSweetsI18n.t(key);
+    }
+    return key;
+  }
+
   function pageLang() {
-    var lang = (document.documentElement.getAttribute("lang") || "en").toLowerCase();
-    if (lang.indexOf("nl") === 0) return "nl";
+    if (window.ThaiSweetsI18n && typeof window.ThaiSweetsI18n.getLang === "function") {
+      return window.ThaiSweetsI18n.getLang();
+    }
+    var lang = (document.documentElement.getAttribute("lang") || "nl").toLowerCase();
+    if (lang.indexOf("en") === 0) return "en";
     if (lang.indexOf("th") === 0) return "th";
-    return "en";
+    return "nl";
   }
 
   function isHttpsUrl(value) {
@@ -95,15 +105,15 @@
 
       var p = document.createElement("p");
       var strong = document.createElement("strong");
-      strong.textContent = safeText(open.title) + " is open";
+      strong.textContent = safeText(open.title) + t("rounds.openSuffix");
       p.appendChild(strong);
-      var mid = " · Order by " + safeText(open.orderBy);
-      if (open.pickup) mid += " for pickup " + safeText(open.pickup);
+      var mid = t("rounds.orderBy") + safeText(open.orderBy);
+      if (open.pickup) mid += t("rounds.forPickup") + safeText(open.pickup);
       mid += " · ";
       p.appendChild(document.createTextNode(mid));
       var a = document.createElement("a");
       a.href = open.url;
-      a.textContent = "Order now";
+      a.textContent = t("rounds.orderNow");
       p.appendChild(a);
       announceEl.appendChild(p);
       announceEl.hidden = false;
@@ -114,18 +124,18 @@
     if (upcoming.length) {
       var next = upcoming[0];
       var p2 = document.createElement("p");
-      p2.appendChild(document.createTextNode("Next round: "));
+      p2.appendChild(document.createTextNode(t("rounds.nextRound")));
       var strong2 = document.createElement("strong");
       strong2.textContent = safeText(next.title);
       p2.appendChild(strong2);
       p2.appendChild(
         document.createTextNode(
-          " opens " + safeText(next.opensAt || "soon") + " · "
+          t("rounds.opens") + safeText(next.opensAt || t("rounds.soon")) + " · "
         )
       );
       var a2 = document.createElement("a");
       a2.href = "#notify";
-      a2.textContent = "Get notified";
+      a2.textContent = t("rounds.getNotified");
       a2.addEventListener("click", function (e) {
         e.preventDefault();
         focusNotifyEmail();
@@ -178,10 +188,10 @@
     dl.className = "round-card__meta";
     var items = [];
     if (includeOrderBy && menu.orderBy) {
-      items.push({ dt: "Order by", dd: menu.orderBy });
+      items.push({ dt: t("rounds.orderByLabel"), dd: menu.orderBy });
     }
-    if (menu.pickup) items.push({ dt: "Pickup", dd: menu.pickup });
-    if (menu.delivery) items.push({ dt: "Delivery", dd: menu.delivery });
+    if (menu.pickup) items.push({ dt: t("rounds.pickupLabel"), dd: menu.pickup });
+    if (menu.delivery) items.push({ dt: t("rounds.deliveryLabel"), dd: menu.delivery });
     if (!items.length) {
       dl.hidden = true;
       return dl;
@@ -231,8 +241,8 @@
 
     var btn = document.createElement("a");
     btn.className = "btn btn--primary";
-    btn.href = isHttpsUrl(menu.url) ? menu.url : ORDER_HOME;
-    btn.appendChild(document.createTextNode("View menu & order "));
+    btn.href = isHttpsUrl(menu.url) ? menu.url : ORDER_HOME + "/" + pageLang() + "/";
+    btn.appendChild(document.createTextNode(t("rounds.viewMenuOrder") + " "));
     btn.appendChild(arrowSvg());
     body.appendChild(btn);
 
@@ -251,8 +261,8 @@
     var badge = document.createElement("span");
     badge.className = "badge badge--opens";
     badge.textContent = menu.opensAt
-      ? "Opens " + safeText(menu.opensAt)
-      : "Opens soon";
+      ? t("rounds.opensPrefix") + safeText(menu.opensAt)
+      : t("rounds.opensSoon");
     body.appendChild(badge);
 
     var h3 = document.createElement("h3");
@@ -271,7 +281,7 @@
     var btn = document.createElement("button");
     btn.type = "button";
     btn.className = "btn btn--outline";
-    btn.textContent = "Notify me when it opens";
+    btn.textContent = t("rounds.notifyWhen");
     btn.addEventListener("click", focusNotifyEmail);
     body.appendChild(btn);
 
@@ -287,12 +297,12 @@
     body.className = "round-card__body round-card__body--empty";
 
     var h3 = document.createElement("h3");
-    h3.textContent = "No menu is open right now";
+    h3.textContent = t("rounds.emptyTitle");
     body.appendChild(h3);
 
     var p = document.createElement("p");
     p.className = "muted";
-    p.textContent = "Get an email as soon as the next round opens.";
+    p.textContent = t("rounds.emptyBody");
     body.appendChild(p);
 
     var form = document.createElement("form");
@@ -310,7 +320,7 @@
     var label = document.createElement("label");
     label.className = "visually-hidden";
     label.setAttribute("for", "rounds-notify-email");
-    label.textContent = "Email address";
+    label.textContent = t("rounds.email");
     form.appendChild(label);
 
     var input = document.createElement("input");
@@ -319,13 +329,13 @@
     input.type = "email";
     input.autocomplete = "email";
     input.required = true;
-    input.placeholder = "you@email.com";
+    input.placeholder = t("notify.placeholder");
     form.appendChild(input);
 
     var submit = document.createElement("button");
     submit.className = "btn btn--gold";
     submit.type = "submit";
-    submit.textContent = "Notify me";
+    submit.textContent = t("rounds.notifyMe");
     form.appendChild(submit);
 
     body.appendChild(form);
@@ -431,6 +441,10 @@
         gridEl.appendChild(buildEmptyCard());
       });
   }
+
+  document.addEventListener("thaisweets:lang", function () {
+    start();
+  });
 
   // Defer past first paint / LCP so Home hero work is not competing with menus API.
   if (typeof window.requestIdleCallback === "function") {

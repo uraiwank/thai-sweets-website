@@ -1122,6 +1122,41 @@ h3 {
   font: inherit;
 }
 
+.notify-form button[type="submit"]:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.notify-turnstile {
+  flex: 1 1 100%;
+  min-height: 65px;
+}
+
+.notify-status {
+  flex: 1 1 100%;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.notify-status--ok {
+  color: #d4f5d8;
+}
+
+.notify-status--error {
+  color: #ffd0c8;
+}
+
+.notify-status--pending {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.notify-consent {
+  flex: 1 1 100%;
+  margin: 0;
+  font-size: 0.85rem;
+}
+
 .visually-hidden {
   position: absolute !important;
   width: 1px;
