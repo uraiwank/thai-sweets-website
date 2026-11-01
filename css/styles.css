@@ -405,30 +405,25 @@ h3 {
   display: none;
 }
 
-[data-theme="dark"] .logo-light-only,
-:root:not([data-theme="light"]) .logo-light-only {
-  display: none;
+.logo-light-only {
+  display: block;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .logo-light-only {
-    display: none;
-  }
-  :root:not([data-theme="light"]) .logo-dark-only {
-    display: block;
-  }
+[data-theme="dark"] .logo-light-only {
+  display: none;
 }
 
 [data-theme="dark"] .logo-dark-only {
   display: block;
 }
 
-[data-theme="light"] .logo-light-only {
-  display: block;
-}
-
-[data-theme="light"] .logo-dark-only {
-  display: none;
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .logo-light-only {
+    display: none;
+  }
+  :root:not([data-theme]) .logo-dark-only {
+    display: block;
+  }
 }
 
 .nav-desktop {
