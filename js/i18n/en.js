@@ -3,19 +3,17 @@ window.ThaiSweetsI18nData = window.ThaiSweetsI18nData || {};
 window.ThaiSweetsI18nData.en = {
   meta: {
     homeTitle: "Thai Sweets | Handmade Thai desserts in Vlaardingen",
-    homeDesc:
-      "Handcrafted Thai desserts, snacks and cakes made fresh to order by Thai Sweets in Vlaardingen since 2019.",
+    homeDesc: "Handcrafted Thai desserts, snacks and cakes made fresh to order by Thai Sweets in Vlaardingen since 2019.",
     menuTitle: "Menu | Thai Sweets",
     menuDesc: "Traditional Thai desserts, savory snacks and cakes from Thai Sweets — all made fresh to order.",
     aboutTitle: "Our Story | Thai Sweets",
-    aboutDesc:
-      "Meet Nina and the story of Thai Sweets: from Nong Khai to handmade treats in Vlaardingen.",
+    aboutDesc: "Meet Nina and the story of Thai Sweets: from Nong Khai to handmade treats in Vlaardingen.",
     howTitle: "How to Order | Thai Sweets",
     howDesc: "How to order from Thai Sweets: made fresh, with at least one week’s notice.",
     contactTitle: "Contact | Thai Sweets",
     contactDesc: "Email or WhatsApp Thai Sweets in Vlaardingen about our desserts and cakes.",
     notFoundTitle: "Page not found | Thai Sweets",
-    notFoundDesc: "This page does not exist. Go home or browse the Thai Sweets menu.",
+    notFoundDesc: "This page does not exist. Go home or browse the Thai Sweets menu."
   },
   a11y: {
     skip: "Skip to content",
@@ -30,14 +28,14 @@ window.ThaiSweetsI18nData.en = {
     announce: "Ordering announcement",
     langNl: "Nederlands",
     langEn: "English",
-    langTh: "ไทย",
+    langTh: "ไทย"
   },
   nav: {
     menu: "Menu",
     story: "Our Story",
     how: "How to Order",
     contact: "Contact",
-    order: "Order online",
+    order: "Order online"
   },
   footer: {
     blurb: "Fresh homemade Thai desserts and cakes made with love by Thai Sweets. Vlaardingen, since 2019.",
@@ -50,15 +48,13 @@ window.ThaiSweetsI18nData.en = {
     allergens: "Allergens",
     cookies: "Cookie settings",
     copy: "© 2026 Thai Sweets · KVK 73838306 · VAT NL002463537B15",
-    address: "Gretha Hofstralaan, Vlaardingen",
+    address: "Gretha Hofstralaan, Vlaardingen"
   },
   home: {
     eyebrow: "Handcrafted in Vlaardingen · Since 2019",
     h1Before: "Taste the ",
     h1Accent: "tradition.",
-    // TODO: align metaphor-heavy lead with order-app tone if Nina prefers shorter copy
-    lead:
-      "Experience Thai Sweets: fragrant coconut, tropical fruits and time-honoured recipes in treats like silky mango sticky rice, young coconut cake and crispy golden curry puffs.",
+    lead: "Experience Thai Sweets: fragrant coconut, tropical fruits and time-honoured recipes in treats like silky mango sticky rice, young coconut cake and crispy golden curry puffs.",
     viewMenu: "View our menu",
     check1: "Recipes from my mom & grandmas",
     check2: "Handmade in small batches",
@@ -68,8 +64,7 @@ window.ThaiSweetsI18nData.en = {
     heroAlt3: "Khanom pia pastry buns",
     roundsEyebrow: "Open for ordering",
     roundsTitle: "Made fresh in small rounds",
-    roundsSide:
-      "Working on a pre-order basis means everything is already promised to someone, so nothing goes to waste.",
+    roundsSide: "Working on a pre-order basis means everything is already promised to someone, so nothing goes to waste.",
     roundsNoscriptTitle: "See which menus are open on our order page",
     roundsNoscriptBody: "JavaScript is off, so live rounds cannot load here.",
     menuEyebrow: "Our menu",
@@ -84,18 +79,14 @@ window.ThaiSweetsI18nData.en = {
     valuesEyebrow: "Our values",
     valuesTitle: "What goes into every box",
     value1Title: "Authenticity & heritage",
-    value1Body:
-      "Every sweet follows traditional Thai recipes cherished for generations: the real flavours of Thailand I grew up with.",
+    value1Body: "Every sweet follows traditional Thai recipes cherished for generations: the real flavours of Thailand I grew up with.",
     value2Title: "Quality",
-    value2Body:
-      "Great food starts with great ingredients. Only the freshest, finest ingredients go into everything I make.",
+    value2Body: "Great food starts with great ingredients. Only the freshest, finest ingredients go into everything I make.",
     value3Title: "Sustainability",
-    value3Body:
-      "Pre-order only means less food waste. I'm also moving step by step to eco-friendly packaging.",
+    value3Body: "Pre-order only means less food waste. I'm also moving step by step to eco-friendly packaging.",
     storyEyebrow: "Our story",
     storyTitle: "From Nong Khai to Vlaardingen",
-    storyBody:
-      "I'm Nina. Thai Sweets started from love for my mom and grandmas' desserts — now I bake them here, by hand, for you.",
+    storyBody: "I'm Nina. Thai Sweets started from love for my mom and grandmas' desserts — now I bake them here, by hand, for you.",
     storyCta: "Read our story",
     storyAlt1: "Nina as a child with her mother in Thailand",
     storyAlt2: "Hands shaping Thai dumplings",
@@ -111,8 +102,29 @@ window.ThaiSweetsI18nData.en = {
     howCta: "Delivery & pickup details",
     starsEyebrow: "What customers say",
     starsTitle: "Love in every box",
+    sinceLabel: "Handcrafting Thai treats in Vlaardingen",
+    storyQuote: "“Each order means the world to me.”",
+    starsEyebrowAlt: "Kind words",
+    starsTitleAlt: "From our customers",
+    review1: "“The Thong Muan (crispy rolled wafers) were delicious! Everything was so fresh and tasted amazing.”",
+    review2: "“The meatballs with dipping sauce were absolutely delicious!”",
+    review3: "“The sweets were so delicious, thank you so much! They really made me feel less homesick.”",
+    starsAria: "5 out of 5 stars",
+    howHomeEyebrow: "How to order",
+    howHomeTitle: "Four simple steps",
+    howHomeSide: "Everything is made fresh to order, so please allow at least <strong>1 week</strong> before your pickup or delivery date.",
+    howHome1Title: "Browse the menu",
+    howHome1Body: "Find the Thai desserts, snacks and cakes you'd like.",
+    howHome2Title: "Place your order",
+    howHome2Body: "Order online at least 1 week before your date.",
+    howHome3Title: "Confirmation",
+    howHome3Body: "I confirm availability, final price and pickup or delivery by email or WhatsApp.",
+    howHome4Title: "Enjoy your treats",
+    howHome4Body: "Pick up in Vlaardingen for free, or have it delivered.",
+    catAltDesserts: "Pandan layer cake",
+    catAltSavory: "Chicken curry puffs",
+    catAltCakes: "Rose flower cupcakes"
   },
-  /* Aligned with order-app notifyMe (en.ts) */
   notify: {
     title: "Notify me when orders open",
     body: "Leave your email and we will tell you as soon as a menu opens for orders.",
@@ -125,7 +137,7 @@ window.ThaiSweetsI18nData.en = {
     invalid: "That did not work. Check your email address and try again.",
     captcha: "Please complete the security check and try again.",
     limited: "Too many attempts. Please try again in an hour.",
-    failed: "Temporarily unavailable. Please try again later.",
+    failed: "Temporarily unavailable. Please try again later."
   },
   rounds: {
     openSuffix: " is open",
@@ -146,7 +158,7 @@ window.ThaiSweetsI18nData.en = {
     orderByLabel: "Order by",
     pickupLabel: "Pickup",
     deliveryLabel: "Delivery",
-    viewMenuOrder: "View menu & order",
+    viewMenuOrder: "View menu & order"
   },
   menu: {
     eyebrow: "Our menu",
@@ -162,174 +174,260 @@ window.ThaiSweetsI18nData.en = {
     savoryLead: "Crispy, fragrant snacks that belong at every gathering.",
     cakesTitle: "Cakes & Cupcakes",
     cakesLead: "Sweet cakes and cupcakes, baked fresh to order.",
+    alsoTitle: "Also on the menu",
+    also1_pandanlayercakeName: "Pandan Layer Cake",
+    also1_pandanlayercakeDesc: "Steamed, multi-layered and chewy, with the fragrance of pandan.",
+    also2_taropuddingwithcoconutcrName: "Taro Pudding with Coconut Cream",
+    also2_taropuddingwithcoconutcrDesc: "Sweet taro base topped with thick, salty coconut cream.",
+    also3_cassavapuddingwithcoconuName: "Cassava Pudding with Coconut Cream",
+    also3_cassavapuddingwithcoconuDesc: "Sweet cassava base topped with thick, salty coconut cream.",
+    also4_coconutricepancakesName: "Coconut-Rice Pancakes",
+    also4_coconutricepancakesDesc: "Small grilled pancakes with a creamy coconut centre.",
+    also5_sweetcoconutmilkcupsName: "Sweet Coconut Milk Cups",
+    also5_sweetcoconutmilkcupsDesc: "Two-layer steamed dessert: sweet base, salty coconut cream top.",
+    also6_minithaicrpesName: "Mini Thai Crêpes",
+    also6_minithaicrpesDesc: "Thin, taco-shaped crêpes with meringue-like cream and toppings.",
+    also7_flowershapedthaimochiName: "Flower-Shaped Thai Mochi",
+    also7_flowershapedthaimochiDesc: "Delicate sweets moulded into colourful floral shapes.",
+    also8_smallthaimochiName: "Small Thai Mochi",
+    also8_smallthaimochiDesc: "Crisp outside, chewy inside coconut and flour sweet.",
+    also9_largepastrybun1saltedeggName: "Large Pastry Bun (1 salted egg yolk)",
+    also9_largepastrybun1saltedeggDesc: "Mung bean, taro or candied winter melon filling.",
+    also10_jumbopastrybun5saltedeggName: "Jumbo Pastry Bun (5 salted egg yolks)",
+    also10_jumbopastrybun5saltedeggDesc: "Extra-large, with mung bean, taro or winter melon.",
+    also11_bananatongmuanName: "Banana Tong Muan",
+    also11_bananatongmuanDesc: "Crispy rolled biscuits with a fragrant banana flavour.",
+    also12_thaihoneycombcookiesName: "Thai Honeycomb Cookies",
+    also12_thaihoneycombcookiesDesc: "Delicate, crispy cookies shaped like a lotus flower.",
+    also13_sampannishortbreadcookieName: "Sampanni Shortbread Cookies",
+    also13_sampannishortbreadcookieDesc: "Melt-in-your-mouth sweets of roasted tapioca flour and coconut milk.",
+    also14_grilledstickyriceName: "Grilled Sticky Rice",
+    also14_grilledstickyriceDesc: "Coconut sticky rice with banana or taro, grilled in banana leaf.",
+    also15_thaicoconutpancakeName: "Thai Coconut Pancake",
+    also15_thaicoconutpancakeDesc: "Sweet, chewy pancake with young coconut or taro.",
+    also16_steamedstickyricewithcocName: "Steamed Sticky Rice with Coconut",
+    also16_steamedstickyricewithcocDesc: "Sweet coconut filling in soft rice paste, steamed in banana leaf.",
+    also17_steamedcassavacakeName: "Steamed Cassava Cake",
+    also17_steamedcassavacakeDesc: "Grated cassava steamed with sugar and coconut milk.",
+    also18_orchidflowerlayercakeName: "Orchid Flower Layer Cake",
+    also18_orchidflowerlayercakeDesc: "A layer cake shaped like orchid flowers.",
+    also19_thaicustardcakeName: "Thai Custard Cake",
+    also19_thaicustardcakeDesc: "Baked custard with mung bean, taro or egg base.",
+    also20_pandanpuddingName: "Pandan Pudding",
+    also20_pandanpuddingDesc: "Soft pandan pudding with shredded coconut.",
+    also21_traditionalblackpuddingName: "Traditional Black Pudding",
+    also21_traditionalblackpuddingDesc: "Soft black pudding coloured with coconut husk ash.",
+    also22_stickyricewitheggcustardName: "Sticky Rice with Egg Custard",
+    also22_stickyricewitheggcustardDesc: "Sweet sticky rice topped with creamy steamed egg custard.",
+    also23_pandanricenoodlesincoconName: "Pandan Rice Noodles in Coconut Milk",
+    also23_pandanricenoodlesincoconDesc: "Green rice flour noodles in coconut milk and palm sugar syrup.",
+    also24_taropasteName: "Taro Paste",
+    also24_taropasteDesc: "Dense, stir-fried taro paste with coconut milk.",
+    also25_mungbeanpasteName: "Mung Bean Paste",
+    also25_mungbeanpasteDesc: "Dense, stir-fried mung bean paste with coconut milk.",
+    also26_happinesswellbeingsetName: "Happiness & Well-being Set",
+    also26_happinesswellbeingsetDesc: "Five Thai desserts for happiness and good health.",
+    also27_coconutmilkjellyName: "Coconut Milk Jelly",
+    also27_coconutmilkjellyDesc: "Smooth coconut milk jelly with young coconut meat.",
+    also28_glasscoatedcoconutjellyName: "Glass-Coated Coconut Jelly",
+    also28_glasscoatedcoconutjellyDesc: "Two-layer coconut jelly with a shiny, clear top.",
+    also29_isaanfermentedsausageName: "Isaan Fermented Sausage",
+    also29_isaanfermentedsausageDesc: "A tangy fermented sausage from Northeastern Thailand, served grilled.",
+    also30_bbqmeatballswithdippingsName: "BBQ Meatballs with Dipping Sauce",
+    also30_bbqmeatballswithdippingsDesc: "Grilled Thai-style beef or pork meatballs on skewers (10 pieces).",
+    also31_springrollsName: "Spring Rolls",
+    also31_springrollsDesc: "Crispy rolls with mixed vegetables or added chicken.",
+    also32_bananafrittersName: "Banana Fritters",
+    also32_bananafrittersDesc: "Sliced bananas in sweet batter, fried golden and crispy.",
+    also33_friedtempehName: "Fried Tempeh",
+    also33_friedtempehDesc: "Lightly fried fermented soybean for a savoury bite.",
+    also34_grilledstickyricewitheggName: "Grilled Sticky Rice with Egg Glaze",
+    also34_grilledstickyricewitheggDesc: "Seasoned sticky rice, grilled and brushed with egg.",
+    also35_miniyoungcoconutcupcakesName: "Mini Young Coconut Cupcakes",
+    also35_miniyoungcoconutcupcakesDesc: "Individual servings of soft young coconut cake.",
+    also36_christmasflowercupcakesName: "Christmas Flower Cupcakes",
+    also36_christmasflowercupcakesDesc: "Flower-themed cupcakes for the Christmas season.",
+    also37_christmasflowerbouquetName: "Christmas Flower Bouquet",
+    also37_christmasflowerbouquetDesc: "Cupcakes arranged as a bouquet for Christmas gatherings.",
+    alsoMetKanunName: "Met Kanun",
+    alsoMetKanunDesc: "Mung bean paste shaped like jackfruit seeds, coated in syrup.",
+    alsoDaraTongName: "Dara Tong",
+    alsoDaraTongDesc: "An exquisite golden sweet shaped like a tiny crown."
   },
-  /* Dessert display names: keep Thai dessert names (Foi Tong, Khanom Pia, …) as on the live menu. */
   items: {
     mango: {
       name: "Sticky Rice with Mango",
       desc: "Sweet sticky rice topped with coconut cream, served with fresh, ripe mango.",
-      alt: "Sticky Rice with Mango",
+      alt: "Sticky Rice with Mango"
     },
     butterfly: {
       name: "Butterfly Pea Layer Cake",
       desc: "A blue-hued, steamed layer dessert coloured naturally with butterfly pea flower.",
-      alt: "Butterfly Pea Layer Cake",
+      alt: "Butterfly Pea Layer Cake"
     },
     lukchup: {
       name: "Khanom Luk Chup",
       desc: "Sweet mung bean paste moulded into miniature fruits and coated in jelly.",
-      alt: "Khanom Luk Chup",
+      alt: "Khanom Luk Chup"
     },
     golden: {
       name: "Golden Auspicious Set",
       desc: "Five auspicious Thai desserts symbolising wealth and good fortune.",
-      alt: "Golden Auspicious Set",
+      alt: "Golden Auspicious Set"
     },
     pia: {
       name: "Khanom Pia",
       desc: "Baked round pastries with mung bean, taro, pandan or purple sweet potato.",
-      alt: "Khanom Pia",
+      alt: "Khanom Pia"
     },
     tongmuan: {
       name: "Tong Muan",
       desc: "Thin, crispy rolled biscuits of coconut milk and rice flour with black sesame.",
-      alt: "Tong Muan",
+      alt: "Tong Muan"
     },
     foitong: {
       name: "Foi Tong",
       desc: "Fine strands of sweetened egg yolk drizzled into hot syrup, like golden threads.",
-      alt: "Foi Tong",
+      alt: "Foi Tong"
     },
     tongyib: {
       name: "Tong Yib",
       desc: "Sweetened egg yolk cooked in syrup and pinched into flower-like folds.",
-      alt: "Tong Yib",
+      alt: "Tong Yib"
     },
     curry: {
       name: "Chicken Curry Puffs",
       desc: "Flaky pastry filled with ground chicken and yellow curry.",
-      alt: "Chicken Curry Puffs",
+      alt: "Chicken Curry Puffs"
     },
     dumplings: {
       name: "Fried Flour Dumplings",
       desc: "Crescent pastries with sweet and spicy shredded pork and chilli paste.",
-      alt: "Fried Flour Dumplings",
+      alt: "Fried Flour Dumplings"
     },
     flowerbird: {
       name: "Steamed Flower & Bird Dumplings",
       desc: "Intricately crafted steamed dumplings with seasoned meat.",
-      alt: "Steamed Flower & Bird Dumplings",
+      alt: "Steamed Flower & Bird Dumplings"
     },
     sausage: {
       name: "Glass Noodle Sausage",
       desc: "A savoury Thai sausage made with ground meat and glass noodles.",
-      alt: "Glass Noodle Sausage",
+      alt: "Glass Noodle Sausage"
     },
     coconutcake: {
       name: "Young Coconut Cake",
       desc: "Soft, moist cake with fresh cream and tender young coconut.",
-      alt: "Young Coconut Cake",
+      alt: "Young Coconut Cake"
     },
     rose: {
       name: "Rose Flower Cupcakes",
       desc: "Cupcakes decorated with delicate rose flower designs.",
-      alt: "Rose Flower Cupcakes",
+      alt: "Rose Flower Cupcakes"
     },
     bouquet: {
       name: "Flower Bouquet Cupcakes",
       desc: "Seven cupcakes arranged as a beautiful floral bouquet.",
-      alt: "Flower Bouquet Cupcakes",
+      alt: "Flower Bouquet Cupcakes"
     },
     minidonut: {
       name: "Mini Donut Cakes",
       desc: "Small cake-style donuts, decorated for a sweet bite.",
-      alt: "Mini Donut Cakes",
-    },
+      alt: "Mini Donut Cakes"
+    }
   },
   about: {
     eyebrow: "Our mission & history",
     title: "Sharing the flavours of Thailand, one bite at a time",
     lead: "Handcrafting authentic Thai treats at Thai Sweets in Vlaardingen since 2019, and bringing joy with every order.",
     altHero: "Nina as a child with her mother in Thailand",
+    hiTitle: "Hi, I'm Nina",
+    hiBody: "Thai Sweets is my passion and my connection to home. I grew up in Nong Khai, Thailand, learning to cook in my mom's food shop alongside my grandmas. After training at Suan Dusit International Culinary School, I moved to Vlaardingen and started handcrafting authentic Thai desserts, snacks and cakes from my home kitchen.",
+    hiBody2: "Making these Thai treats isn't just my business: it's my way of staying connected to home and sharing that connection with you. Whether it's a sweet dessert, a savoury snack or a special cake, each order means the world to me. Thank you for supporting my small business and letting me bring a little taste of Thailand into your life.",
+    tl1Strong: "Nong Khai",
+    tl1Body: "Helping in my mom's food shop, learning recipes from my mom and grandmas.",
+    tl2Strong: "Bangkok",
+    tl2Body: "Trained at Suan Dusit International Culinary School.",
+    tl3Strong: "2019",
+    tl3Body: "Started Thai Sweets in my home kitchen in Vlaardingen.",
+    promiseEyebrow: "Our promise & connection",
+    promiseTitle: "As close to Thailand as possible",
+    promiseLead: "Every order is made with care. We use only fresh, high-quality ingredients, preparing everything by hand in small batches, for the true, authentic taste of Thai sweets in every bite.",
+    promise1: "Everything handmade by me in small batches from my home kitchen",
+    promise2: "Authentic flavours from my home kitchen to yours",
+    promise3: "Freshness and quality in every ingredient",
+    exploreMenu: "Explore the menu",
+    altMom: "Nina's mother cooking in Thailand",
+    altHands: "Hands preparing Thai dumplings"
   },
   how: {
     eyebrow: "How to order",
     title: "Made fresh, just for you",
-    notice:
-      "Everything is made fresh to order, so I need <strong>at least 1 week's notice</strong> before your pickup or delivery date.",
+    notice: "Everything is made fresh to order, so I need <strong>at least 1 week's notice</strong> before your pickup or delivery date.",
     step1Title: "Browse our menu",
     step1Body: "Take a look at Thai Sweets desserts, snacks and cakes to find what you'd like.",
     step2Title: "Place your order",
-    step2Body:
-      "Order online with your details and the items you'd like. Remember: at least 1 week's notice.",
+    step2Body: "Order online with your details and the items you'd like. Remember: at least 1 week's notice.",
     step3Title: "Confirm your order",
-    step3Body:
-      "I'll contact you by email or WhatsApp to confirm availability, the final price (including any delivery fee) and pickup or delivery.",
+    step3Body: "I'll contact you by email or WhatsApp to confirm availability, the final price (including any delivery fee) and pickup or delivery.",
     step3Hint: "Payment details follow after confirmation.",
     step4Title: "Enjoy your treats",
-    step4Body:
-      "Pick up your order or have it delivered on your chosen date. Everything is made fresh just for you.",
+    step4Body: "Pick up your order or have it delivered on your chosen date. Everything is made fresh just for you.",
     deliveryTitle: "Delivery & pickup",
     areasTitle: "Delivery areas & minimums",
-    // TODO: Nina — confirm exact delivery rules
     areas1: "Vlaardingen & Schiedam: regular delivery, minimum order €50.",
-    areas2:
-      "Other nearby areas: delivery may be possible depending on date, time and location. Please ask.",
+    areas2: "Other nearby areas: delivery may be possible depending on date, time and location. Please ask.",
     costTitle: "Delivery cost",
     costBody: "Delivery fees depend on distance. I'll confirm the exact cost when you place your order.",
     pickupTitle: "Prefer pickup?",
     pickupBody: "Pick up your order in Vlaardingen (Gretha Hofstralaan) at no extra cost.",
     startOrder: "Start your order",
-    viewMenu: "View the menu",
+    viewMenu: "View the menu"
   },
   contact: {
     eyebrow: "Get in touch",
     title: "We'd love to hear from you",
-    lead:
-      "Have a question about Thai Sweets? Email or WhatsApp us and we'll get back to you as soon as possible.",
+    lead: "Have a question about Thai Sweets? Email or WhatsApp us and we'll get back to you as soon as possible.",
     follow: "Follow us",
     reachTitle: "Reach us directly",
     reachBody: "Choose email or WhatsApp — no form needed.",
     emailUs: "Email us",
     emailUsAria: "Email us at info@thaisweets.nl",
     whatsapp: "WhatsApp",
-    allergy:
-      "Have an allergy? Our kitchen also works with peanuts, tree nuts, sesame and soy. Please contact us before ordering.",
-    pickup: "Gretha Hofstralaan, Vlaardingen (pickup)",
+    allergy: "Have an allergy? Our kitchen also works with peanuts, tree nuts, sesame and soy. Please contact us before ordering.",
+    pickup: "Gretha Hofstralaan, Vlaardingen (pickup)"
   },
   notFound: {
     title: "Page not found",
     body: "This page does not exist (anymore). Go back home or browse the menu.",
     home: "Go home",
-    menu: "View menu",
+    menu: "View menu"
   },
   cookies: {
     title: "We use cookies",
-    body:
-      "This website only uses essential cookies. If we add analytics later, we'll ask for your consent first. Read more in our ",
+    body: "This website only uses essential cookies. If we add analytics later, we'll ask for your consent first. Read more in our ",
     privacyLink: "Privacy Policy",
     reject: "Reject all",
     manage: "Manage preferences",
     accept: "Accept all",
     prefsTitle: "Cookie preferences",
-    prefsIntro:
-      "We use cookies to improve your experience on our website. You can set your preferences for each type of cookie below.",
+    prefsIntro: "We use cookies to improve your experience on our website. You can set your preferences for each type of cookie below.",
     essentialTitle: "Essential cookies",
     essentialBody: "These cookies are needed for the website to work and cannot be switched off.",
     alwaysOn: "Always on",
     analyticsTitle: "Analytics cookies",
-    analyticsBody:
-      "These cookies help us understand how visitors use our website by collecting and reporting information anonymously.",
+    analyticsBody: "These cookies help us understand how visitors use our website by collecting and reporting information anonymously.",
     adsTitle: "Advertising cookies",
     adsBody: "These cookies are used to show ads that are relevant to you and your interests.",
     functionalTitle: "Functional cookies",
     functionalBody: "These cookies enable extra features, such as videos and live chat.",
     personalTitle: "Personalisation cookies",
-    personalBody:
-      "These cookies are used to personalise content and ads based on your preferences and behaviour.",
+    personalBody: "These cookies are used to personalise content and ads based on your preferences and behaviour.",
     save: "Save preferences",
     acceptAll: "Accept all",
     moreInfo: "You can find more information in our ",
     close: "Close preferences",
-  },
+    bodyBanner: "This website only uses essential cookies. If we add analytics later, we'll ask for your consent first. Read more in our ",
+    moreInfoPrefix: "You can find more information in our "
+  }
 };

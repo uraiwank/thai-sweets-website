@@ -90,6 +90,28 @@ Pick up in Vlaardingen or get delivery. Made fresh, just for you.
 Delivery & pickup details
 What customers say
 Love in every box
+Handcrafting Thai treats in Vlaardingen
+“Each order means the world to me.”
+Kind words
+From our customers
+“The Thong Muan (crispy rolled wafers) were delicious! Everything was so fresh and tasted amazing.”
+“The meatballs with dipping sauce were absolutely delicious!”
+“The sweets were so delicious, thank you so much! They really made me feel less homesick.”
+5 out of 5 stars
+How to order
+Four simple steps
+Everything is made fresh to order, so please allow at least <strong>1 week</strong> before your pickup or delivery date.
+Browse the menu
+Find the Thai desserts, snacks and cakes you'd like.
+Place your order
+Order online at least 1 week before your date.
+Confirmation
+I confirm availability, final price and pickup or delivery by email or WhatsApp.
+Enjoy your treats
+Pick up in Vlaardingen for free, or have it delivered.
+Pandan layer cake
+Chicken curry puffs
+Rose flower cupcakes
 Notify me when orders open
 Leave your email and we will tell you as soon as a menu opens for orders.
 Email address
@@ -134,6 +156,85 @@ Savory Snacks
 Crispy, fragrant snacks that belong at every gathering.
 Cakes & Cupcakes
 Sweet cakes and cupcakes, baked fresh to order.
+Also on the menu
+Pandan Layer Cake
+Steamed, multi-layered and chewy, with the fragrance of pandan.
+Taro Pudding with Coconut Cream
+Sweet taro base topped with thick, salty coconut cream.
+Cassava Pudding with Coconut Cream
+Sweet cassava base topped with thick, salty coconut cream.
+Coconut-Rice Pancakes
+Small grilled pancakes with a creamy coconut centre.
+Sweet Coconut Milk Cups
+Two-layer steamed dessert: sweet base, salty coconut cream top.
+Mini Thai Crêpes
+Thin, taco-shaped crêpes with meringue-like cream and toppings.
+Flower-Shaped Thai Mochi
+Delicate sweets moulded into colourful floral shapes.
+Small Thai Mochi
+Crisp outside, chewy inside coconut and flour sweet.
+Large Pastry Bun (1 salted egg yolk)
+Mung bean, taro or candied winter melon filling.
+Jumbo Pastry Bun (5 salted egg yolks)
+Extra-large, with mung bean, taro or winter melon.
+Banana Tong Muan
+Crispy rolled biscuits with a fragrant banana flavour.
+Thai Honeycomb Cookies
+Delicate, crispy cookies shaped like a lotus flower.
+Sampanni Shortbread Cookies
+Melt-in-your-mouth sweets of roasted tapioca flour and coconut milk.
+Grilled Sticky Rice
+Coconut sticky rice with banana or taro, grilled in banana leaf.
+Thai Coconut Pancake
+Sweet, chewy pancake with young coconut or taro.
+Steamed Sticky Rice with Coconut
+Sweet coconut filling in soft rice paste, steamed in banana leaf.
+Steamed Cassava Cake
+Grated cassava steamed with sugar and coconut milk.
+Orchid Flower Layer Cake
+A layer cake shaped like orchid flowers.
+Thai Custard Cake
+Baked custard with mung bean, taro or egg base.
+Pandan Pudding
+Soft pandan pudding with shredded coconut.
+Traditional Black Pudding
+Soft black pudding coloured with coconut husk ash.
+Sticky Rice with Egg Custard
+Sweet sticky rice topped with creamy steamed egg custard.
+Pandan Rice Noodles in Coconut Milk
+Green rice flour noodles in coconut milk and palm sugar syrup.
+Taro Paste
+Dense, stir-fried taro paste with coconut milk.
+Mung Bean Paste
+Dense, stir-fried mung bean paste with coconut milk.
+Happiness & Well-being Set
+Five Thai desserts for happiness and good health.
+Coconut Milk Jelly
+Smooth coconut milk jelly with young coconut meat.
+Glass-Coated Coconut Jelly
+Two-layer coconut jelly with a shiny, clear top.
+Isaan Fermented Sausage
+A tangy fermented sausage from Northeastern Thailand, served grilled.
+BBQ Meatballs with Dipping Sauce
+Grilled Thai-style beef or pork meatballs on skewers (10 pieces).
+Spring Rolls
+Crispy rolls with mixed vegetables or added chicken.
+Banana Fritters
+Sliced bananas in sweet batter, fried golden and crispy.
+Fried Tempeh
+Lightly fried fermented soybean for a savoury bite.
+Grilled Sticky Rice with Egg Glaze
+Seasoned sticky rice, grilled and brushed with egg.
+Mini Young Coconut Cupcakes
+Individual servings of soft young coconut cake.
+Christmas Flower Cupcakes
+Flower-themed cupcakes for the Christmas season.
+Christmas Flower Bouquet
+Cupcakes arranged as a bouquet for Christmas gatherings.
+Met Kanun
+Mung bean paste shaped like jackfruit seeds, coated in syrup.
+Dara Tong
+An exquisite golden sweet shaped like a tiny crown.
 Sticky Rice with Mango
 Sweet sticky rice topped with coconut cream, served with fresh, ripe mango.
 Sticky Rice with Mango
@@ -186,6 +287,24 @@ Our mission & history
 Sharing the flavours of Thailand, one bite at a time
 Handcrafting authentic Thai treats at Thai Sweets in Vlaardingen since 2019, and bringing joy with every order.
 Nina as a child with her mother in Thailand
+Hi, I'm Nina
+Thai Sweets is my passion and my connection to home. I grew up in Nong Khai, Thailand, learning to cook in my mom's food shop alongside my grandmas. After training at Suan Dusit International Culinary School, I moved to Vlaardingen and started handcrafting authentic Thai desserts, snacks and cakes from my home kitchen.
+Making these Thai treats isn't just my business: it's my way of staying connected to home and sharing that connection with you. Whether it's a sweet dessert, a savoury snack or a special cake, each order means the world to me. Thank you for supporting my small business and letting me bring a little taste of Thailand into your life.
+Nong Khai
+Helping in my mom's food shop, learning recipes from my mom and grandmas.
+Bangkok
+Trained at Suan Dusit International Culinary School.
+2019
+Started Thai Sweets in my home kitchen in Vlaardingen.
+Our promise & connection
+As close to Thailand as possible
+Every order is made with care. We use only fresh, high-quality ingredients, preparing everything by hand in small batches, for the true, authentic taste of Thai sweets in every bite.
+Everything handmade by me in small batches from my home kitchen
+Authentic flavours from my home kitchen to yours
+Freshness and quality in every ingredient
+Explore the menu
+Nina's mother cooking in Thailand
+Hands preparing Thai dumplings
 How to order
 Made fresh, just for you
 Everything is made fresh to order, so I need <strong>at least 1 week's notice</strong> before your pickup or delivery date.
@@ -246,3 +365,5 @@ Save preferences
 Accept all
 You can find more information in our 
 Close preferences
+This website only uses essential cookies. If we add analytics later, we'll ask for your consent first. Read more in our 
+You can find more information in our 
