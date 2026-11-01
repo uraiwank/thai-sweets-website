@@ -91,7 +91,6 @@ home.howCta
 home.starsEyebrow
 home.starsTitle
 home.sinceLabel
-home.storyQuote
 home.starsEyebrowAlt
 home.starsTitleAlt
 home.review1

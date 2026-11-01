@@ -103,7 +103,6 @@ window.ThaiSweetsI18nData.en = {
     starsEyebrow: "What customers say",
     starsTitle: "Love in every box",
     sinceLabel: "Handcrafting Thai treats in Vlaardingen",
-    storyQuote: "“Each order means the world to me.”",
     starsEyebrowAlt: "Kind words",
     starsTitleAlt: "From our customers",
     review1: "“The Thong Muan (crispy rolled wafers) were delicious! Everything was so fresh and tasted amazing.”",

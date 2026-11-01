@@ -103,7 +103,6 @@ window.ThaiSweetsI18nData.nl = {
     starsEyebrow: "Wat klanten zeggen",
     starsTitle: "Liefde in elke doos",
     sinceLabel: "Handgemaakte Thaise lekkernijen in Vlaardingen",
-    storyQuote: "“Elke bestelling betekent de wereld voor mij.”",
     starsEyebrowAlt: "Lieve woorden",
     starsTitleAlt: "Van onze klanten",
     review1: "“De Thong Muan (knapperige rolwafels) waren heerlijk! Alles was zo vers en smaakte fantastisch.”",

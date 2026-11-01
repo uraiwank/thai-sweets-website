@@ -103,7 +103,6 @@ window.ThaiSweetsI18nData.th = {
     starsEyebrow: "ลูกค้าพูดถึงเรา",
     starsTitle: "สดใหม่ในทุกกล่อง",
     sinceLabel: "เริ่มเปิดร้านที่ Vlaardingen",
-    storyQuote: "“ทุกออเดอร์มีความหมายกับฉันมาก”",
     starsEyebrowAlt: "คำชมจากลูกค้า",
     starsTitleAlt: "จากลูกค้าของเรา",
     review1: "“ทองม้วนกรอบอร่อยมาก! ทุกอย่างสดใหม่และรสชาติดีสุด ๆ”",
