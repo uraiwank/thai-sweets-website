@@ -4,3 +4,8 @@ extra.how.desc_fallback
 extra.contact.desc_fallback
 extra.notFound.privacy_policy
 extra.notFound.desc_fallback
+extra.menu.pieces12
+extra.menu.pieces7
+extra.menu.boxABC
+extra.menu.pieces7or11
+extra.menu.fromPrice35

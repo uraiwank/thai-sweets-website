@@ -108,7 +108,7 @@ window.ThaiSweetsI18nData.nl = {
     starsEyebrowAlt: "Lieve woorden",
     starsTitleAlt: "Van onze klanten",
     review1: "“De Thong Muan (knapperige rolwafeltjes) waren heerlijk! Alles was zo vers en smaakte geweldig.”",
-    review2: "“De gegrilde balletjes met dipsaus waren echt heerlijk!”",
+    review2: "“De balletjes met dipsaus waren absoluut heerlijk!”",
     review3: "“De lekkernijen waren zo lekker, heel erg bedankt! Ik had er echt wat minder heimwee door.”",
     starsAria: "5 van de 5 sterren",
     howHomeEyebrow: "Zo bestel je",
@@ -436,7 +436,12 @@ window.ThaiSweetsI18nData.nl = {
       desc_fallback: "Ambachtelijke Thaise desserts, snacks en taarten, sinds 2019 vers op bestelling gemaakt in Vlaardingen."
     },
     menu: {
-      desc_fallback: "Traditionele Thaise desserts, hartige snacks en taarten, met de hand op bestelling gemaakt in Vlaardingen."
+      desc_fallback: "Traditionele Thaise desserts, hartige snacks en taarten, met de hand op bestelling gemaakt in Vlaardingen.",
+      pieces12: "12 stuks",
+      pieces7: "7 stuks",
+      boxABC: "Doos A, B of C",
+      pieces7or11: "7 of 11 stuks",
+      fromPrice35: "vanaf €35"
     },
     how: {
       desc_fallback: "Bestel Thaise desserts minimaal een week van tevoren. Afhalen in Vlaardingen of bezorging in de buurt."

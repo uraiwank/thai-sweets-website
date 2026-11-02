@@ -428,5 +428,17 @@ window.ThaiSweetsI18nData.en = {
     close: "Close preferences",
     bodyBanner: "This website only uses essential cookies. If we add analytics later, we'll ask for your consent first. Read more in our ",
     moreInfoPrefix: "You can find more information in our "
+  },
+  extra: {
+    menu: {
+      pieces12: "12 pieces",
+      pieces7: "7 pieces",
+      boxABC: "Box A, B or C",
+      pieces7or11: "7 or 11 pieces",
+      fromPrice35: "from €35"
+    },
+    notFound: {
+      privacy_policy: "privacy policy"
+    }
   }
 };

@@ -437,7 +437,12 @@ window.ThaiSweetsI18nData.th = {
       desc_fallback: "ขนมไทย ของว่าง และเค้กทำมือ ทำสดตามออร์เดอร์ที่ Vlaardingen ตั้งแต่ปี 2019"
     },
     menu: {
-      desc_fallback: "ขนมไทยโบราณ ของว่าง และเค้ก ทำมือตามออร์เดอร์ที่ Vlaardingen"
+      desc_fallback: "ขนมไทยโบราณ ของว่าง และเค้ก ทำมือตามออร์เดอร์ที่ Vlaardingen",
+      pieces12: "12 ชิ้น",
+      pieces7: "7 ชิ้น",
+      boxABC: "กล่อง A, B หรือ C",
+      pieces7or11: "7 หรือ 11 ชิ้น",
+      fromPrice35: "เริ่มต้น €35"
     },
     how: {
       desc_fallback: "สั่งขนมไทยล่วงหน้าอย่างน้อย 1 สัปดาห์ รับเองที่ Vlaardingen หรือจัดส่งในพื้นที่ใกล้เคียง"
