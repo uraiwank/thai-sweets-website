@@ -1,13 +1,22 @@
 /**
- * i18n engine — loads packs from js/i18n/{nl,en,th}.js into ThaiSweetsI18nData.
+ * i18n engine — loads packs from js/i18n/{nl,en}.js into ThaiSweetsI18nData.
  * Dutch (nl) is the default.
+ *
+ * Thai is hidden test mode only: ?lang=th turns it on for this browser (remembered),
+ * ?lang=nl or ?lang=en turns it off. th.js is loaded only while Thai is on, and the
+ * page gets <meta name="robots" content="noindex">. See HANDOFF.md.
  */
 (function () {
   "use strict";
 
   var STORAGE_KEY = "thaisweets_lang";
   var ORDER = "https://order.thaisweets.nl";
-  var SUPPORTED = { nl: true, en: true, th: true };
+  var THAI_PACK_URL = null;
+  try {
+    THAI_PACK_URL = new URL("i18n/th.js", document.currentScript.src).href;
+  } catch (e) {}
+  // Thai stays false (NL + EN only) unless test mode switches it on below.
+  var SUPPORTED = { nl: true, en: true, th: false };
   var lang = "nl";
 
   function packs() {
@@ -173,7 +182,44 @@
     });
   }
 
+  // Test mode: ?lang=th|nl|en. Only "th" turns Thai on; nl/en turn it off again.
+  function thaiTestMode() {
+    var q = null;
+    try {
+      q = new URLSearchParams(window.location.search).get("lang");
+    } catch (e) {}
+    if (q === "th" || q === "nl" || q === "en") {
+      try {
+        localStorage.setItem(STORAGE_KEY, q);
+      } catch (e) {}
+      return q === "th";
+    }
+    try {
+      return localStorage.getItem(STORAGE_KEY) === "th";
+    } catch (e) {}
+    return false;
+  }
+
+  function loadThai() {
+    if (!THAI_PACK_URL) return;
+    var meta = document.createElement("meta");
+    meta.name = "robots";
+    meta.content = "noindex";
+    document.head.appendChild(meta);
+    var s = document.createElement("script");
+    s.src = THAI_PACK_URL;
+    s.onload = function () {
+      SUPPORTED.th = true;
+      lang = "th";
+      apply();
+      document.dispatchEvent(new CustomEvent("thaisweets:lang", { detail: { lang: lang } }));
+    };
+    document.head.appendChild(s);
+  }
+
+  var thaiOn = thaiTestMode();
   lang = readStored() || "nl";
+  if (thaiOn) loadThai();
 
   window.ThaiSweetsI18n = {
     t: t,
