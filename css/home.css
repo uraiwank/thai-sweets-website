@@ -102,7 +102,6 @@ h1, h2, h3, p { margin: 0; }
 }
 .round-card__media { position: relative; background: var(--band); }
 .round-card__media img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
-.round-card--upcoming .round-card__media img { filter: saturate(0.75); }
 .round-card__media--fallback { display: flex; align-items: center; justify-content: center; aspect-ratio: 16 / 9; }
 .round-card__media--fallback img { width: 160px; height: auto; aspect-ratio: auto; }
 .status {
