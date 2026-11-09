@@ -18,6 +18,38 @@
     });
   });
 
+  /* Photo carousel: native scroll-snap, buttons page through the photos. */
+  var car = document.querySelector("[data-carousel]");
+  if (car) {
+    var track = car.querySelector("[data-carousel-track]");
+    var prevBtn = car.querySelector("[data-carousel-prev]");
+    var nextBtn = car.querySelector("[data-carousel-next]");
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    var updateButtons = function () {
+      var max = track.scrollWidth - track.clientWidth;
+      var atStart = track.scrollLeft <= 2;
+      var atEnd = track.scrollLeft >= max - 2;
+      var focused = document.activeElement;
+      prevBtn.disabled = atStart;
+      nextBtn.disabled = atEnd;
+      // A disabled button loses focus; hand it to the other one.
+      if (focused === prevBtn && atStart) nextBtn.focus();
+      else if (focused === nextBtn && atEnd) prevBtn.focus();
+    };
+    var page = function (dir) {
+      var item = track.querySelector(".carousel__item");
+      var step = item.getBoundingClientRect().width + 16;
+      var visible = Math.max(1, Math.floor(track.clientWidth / step));
+      track.scrollBy({ left: dir * step * visible, behavior: reduce.matches ? "auto" : "smooth" });
+    };
+    prevBtn.addEventListener("click", function () { page(-1); });
+    nextBtn.addEventListener("click", function () { page(1); });
+    track.addEventListener("scroll", updateButtons, { passive: true });
+    window.addEventListener("resize", updateButtons);
+    updateButtons();
+  }
+
   var root = document.querySelector("[data-reviews]");
   if (!root) return;
 

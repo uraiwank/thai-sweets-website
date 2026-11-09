@@ -165,9 +165,22 @@ h1, h2, h3, p { margin: 0; }
 /* Gallery */
 .gallery-title { font: 500 40px/1.2 var(--serif); text-align: center; margin-bottom: 8px; }
 .gallery-lead { color: var(--muted); text-align: center; margin-bottom: 32px; }
-.gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
-.gallery img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 14px; display: block; }
-.gallery img:first-child { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; height: 100%; }
+.carousel__track {
+  display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
+  scrollbar-width: none; padding-bottom: 4px;
+}
+.carousel__track::-webkit-scrollbar { display: none; }
+@media (prefers-reduced-motion: no-preference) { .carousel__track { scroll-behavior: smooth; } }
+.carousel__item { margin: 0; flex: 0 0 calc((100% - 48px) / 4); scroll-snap-align: start; }
+.carousel__item img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 14px; display: block; }
+.carousel__item figcaption { margin-top: 8px; font-size: 14px; line-height: 1.4; color: var(--muted); }
+.carousel__controls { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }
+.carousel__controls button {
+  width: 44px; height: 44px; border-radius: 999px; border: 1px solid var(--line-strong); background: #fff;
+  color: var(--ink); font: 600 18px var(--sans); cursor: pointer;
+}
+.carousel__controls button:hover:not(:disabled) { background: var(--band); }
+.carousel__controls button:disabled { opacity: 0.4; cursor: not-allowed; }
 
 /* About + reviews */
 .band--pink { background: #f7eaee; }
@@ -251,11 +264,14 @@ h1, h2, h3, p { margin: 0; }
 
 @media (max-width: 860px) {
   .hero, .about, .ways { grid-template-columns: minmax(0, 1fr); gap: 24px; }
-  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .carousel__item { flex-basis: calc((100% - 32px) / 3); }
   .foot { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .foot__col--lead { grid-column: 1 / -1; }
   .hero-wrap { padding-top: 40px; }
   .gallery-title { font-size: 32px; }
+}
+@media (max-width: 600px) {
+  .carousel__item { flex-basis: 78%; }
 }
 @media (max-width: 480px) {
   .site-header__inner { padding: 0 16px; gap: 8px; }
