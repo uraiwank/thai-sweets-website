@@ -3,11 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Thai Sweets | Handmade Thai desserts in Vlaardingen</title>
-  <meta name="description" content="Handcrafted Thai desserts, snacks and cakes made fresh to order in Vlaardingen since 2019.">
+  <title>Thai Sweets | Thaise desserts vers op bestelling in Vlaardingen</title>
+  <meta name="description" content="Echte Thaise desserts, snacks en taarten, vers gemaakt in kleine rondes in Vlaardingen. Kies je lekkernijen, kies een tijd en betaal online.">
+  <meta name="color-scheme" content="light">
   <link rel="canonical" href="https://www.thaisweets.nl/">
-  <meta property="og:title" content="Thai Sweets | Handmade Thai desserts in Vlaardingen">
-  <meta property="og:description" content="Handcrafted Thai desserts, snacks and cakes made fresh to order in Vlaardingen since 2019.">
+  <meta property="og:title" content="Thai Sweets | Thaise desserts vers op bestelling in Vlaardingen">
+  <meta property="og:description" content="Echte Thaise desserts, snacks en taarten, vers gemaakt in kleine rondes in Vlaardingen. Kies je lekkernijen, kies een tijd en betaal online.">
   <meta property="og:image" content="https://www.thaisweets.nl/images/menu/golden-auspicious-set.webp">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.thaisweets.nl/">
@@ -15,11 +16,11 @@
   <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
   <link rel="icon" href="favicon-48.png" type="image/png" sizes="48x48">
   <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180">
-  <link rel="preload" as="image" href="images/menu/golden-auspicious-set-360.webp" imagesrcset="images/menu/golden-auspicious-set-360.webp 360w, images/menu/golden-auspicious-set-480.webp 480w, images/menu/golden-auspicious-set.webp 640w" imagesizes="(max-width: 900px) 100vw, 42vw" fetchpriority="high">
+  <link rel="preload" as="image" href="images/menu/golden-auspicious-set-360.webp" imagesrcset="images/menu/golden-auspicious-set-360.webp 360w, images/menu/golden-auspicious-set-480.webp 480w, images/menu/golden-auspicious-set.webp 640w" imagesizes="(max-width: 860px) 100vw, 536px" fetchpriority="high">
   <link rel="preload" as="font" href="fonts/Lora-normal-latin.woff2" type="font/woff2" crossorigin>
   <link rel="preload" as="font" href="fonts/Inter-latin.woff2" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/fonts.css">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/home.css">
   <script>
     (function () {
       document.documentElement.classList.add('js');
@@ -27,342 +28,138 @@
         var L = localStorage.getItem('thaisweets_lang');
         document.documentElement.lang = (L === 'nl' || L === 'en') ? L : 'nl';
       } catch (e0) { document.documentElement.lang = 'nl'; }
-      try {
-        var t = localStorage.getItem('thaisweets_theme');
-        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
-      } catch (e) {}
     })();
   </script>
 </head>
 <body data-page="home">
-  <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
-  <div class="announce announce--slot" data-open-menus-announce role="region" aria-label="Ordering announcement" data-i18n="a11y.announce" data-i18n-attr="aria-label" aria-busy="true"></div>
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Naar de inhoud</a>
+
+  <!-- News bar: automatic from the rounds API (js/open-menus.js); fallback text = home2.news in js/i18n/home.js -->
+  <div class="news" role="region" aria-label="Nieuws" data-i18n="home2.newsLabel" data-i18n-attr="aria-label"><span data-news>Vers gemaakt op bestelling · Vlaardingen</span></div>
+
   <header class="site-header">
-    <div class="container site-header__inner">
-      <a class="logo" href="index.html" aria-label="Thai Sweets home" data-i18n="a11y.home" data-i18n-attr="aria-label">
-        <img src="images/logo/logo-horizontal.png" width="105" height="54" alt="Thai Sweets">
+    <div class="site-header__inner">
+      <a class="logo" href="#top" aria-label="Thai Sweets, naar boven" data-i18n="home2.homeLabel" data-i18n-attr="aria-label">
+        <img src="images/logo/logo-horizontal.png" width="1086" height="559" alt="Thai Sweets">
       </a>
-      <nav class="nav-desktop" aria-label="Main" data-i18n="a11y.mainNav" data-i18n-attr="aria-label">
-        <a href="menu.html" data-i18n="nav.menu">Menu</a>
-        <a href="about.html" data-i18n="nav.story">Our Story</a>
-        <a href="how-to-order.html" data-i18n="nav.how">How to Order</a>
-        <a href="contact.html" data-i18n="nav.contact">Contact</a>
-      </nav>
       <div class="header-actions">
-        <button type="button" class="icon-btn theme-btn" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme" data-i18n="a11y.themeToDark" data-i18n-attr="aria-label">
-          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg><svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 14.5A8.5 8.5 0 0 1 9.5 3 7 7 0 1 0 21 14.5z"/></svg>
-        </button>
-        <div class="lang-switch" role="group" aria-label="Language" data-i18n="a11y.language" data-i18n-attr="aria-label">
-          <button type="button" data-lang="nl" aria-label="Nederlands" aria-pressed="true" aria-current="true">NL</button>
-          <button type="button" data-lang="en" aria-label="English" aria-pressed="false">EN</button>
+        <div class="lang-switch" role="group" aria-label="Taal">
+          <button type="button" data-lang="nl" aria-label="NL, Nederlands" aria-pressed="true">NL</button>
+          <button type="button" data-lang="en" aria-label="EN, English" aria-pressed="false">EN</button>
         </div>
-        <a class="btn btn--primary" href="https://order.thaisweets.nl/nl/" data-order-path="/"><span data-i18n="nav.order">Order online</span> <svg class="btn-arrow" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
-        <button type="button" class="icon-btn menu-toggle" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu" data-i18n="a11y.openMenu" data-i18n-attr="aria-label">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-        </button>
+        <a class="btn btn--sm" href="https://order.thaisweets.nl/nl" data-order-path="/" data-i18n="home2.order">Bestellen</a>
       </div>
     </div>
-    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile" data-i18n="a11y.mobileNav" data-i18n-attr="aria-label">
-      <a href="menu.html" data-i18n="nav.menu">Menu</a>
-      <a href="about.html" data-i18n="nav.story">Our Story</a>
-      <a href="how-to-order.html" data-i18n="nav.how">How to Order</a>
-      <a href="contact.html" data-i18n="nav.contact">Contact</a>
-      <div class="lang-switch" role="group" aria-label="Language" data-i18n="a11y.language" data-i18n-attr="aria-label">
-          <button type="button" data-lang="nl" aria-label="Nederlands" aria-pressed="true" aria-current="true">NL</button>
-          <button type="button" data-lang="en" aria-label="English" aria-pressed="false">EN</button>
-        </div>
-      <a class="btn btn--primary" href="https://order.thaisweets.nl/nl/" data-order-path="/"><span data-i18n="nav.order">Order online</span></a>
-    </nav>
   </header>
+
   <main id="main">
-    <section class="container hero">
-      <div>
-        <p class="eyebrow hero-animate" data-i18n="home.eyebrow">Handcrafted in Vlaardingen · Since 2019</p>
-        <h1 class="hero-animate" data-i18n-home-h1>Taste the <span class="accent-italic">tradition.</span></h1>
-        <p class="lead hero-animate" data-i18n="home.lead">Experience the art of Thai sweets…</p>
-        <div class="btn-row hero-animate">
-          <a class="btn btn--primary btn--hero" href="https://order.thaisweets.nl/nl/" data-order-path="/"><span data-i18n="nav.order">Order online</span> <svg class="btn-arrow" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
-          <a class="btn btn--secondary btn--hero" href="menu.html" data-i18n="home.viewMenu">View our menu</a>
+    <section id="top" class="hero-wrap">
+      <div class="hero">
+        <div class="hero__text">
+          <h1 data-i18n="home2.heroTitle" data-i18n-attr="html">Thaise desserts, vers gemaakt <span class="accent">op bestelling</span></h1>
+          <p data-i18n="home2.heroText">Echte Thaise recepten, vers gemaakt in kleine rondes. Kies je lekkernijen, kies een tijd, betaal online – klaar.</p>
+          <a class="btn" href="https://order.thaisweets.nl/nl" data-order-path="/" data-i18n="home2.heroCta">Bestel nu →</a>
         </div>
-        <ul class="checklist hero-animate">
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="home.check1">Recipes from my mom & grandmas</span></li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><span data-i18n="home.check2">Handmade in small batches</span></span></li>
-            <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><span data-i18n="home.check3">Pre-order only, no waste</span></span></li>
-        </ul>
-      </div>
-      <div class="hero-collage hero-visual-animate" aria-hidden="false">
-        <div class="hero-collage__wide media-frame">
-          <img
-            src="images/menu/golden-auspicious-set.webp"
-            srcset="images/menu/golden-auspicious-set-360.webp 360w, images/menu/golden-auspicious-set-480.webp 480w, images/menu/golden-auspicious-set.webp 640w"
-            sizes="(max-width: 900px) 100vw, 42vw"
-            width="640"
-            height="400"
-            alt="Golden auspicious Thai dessert set" data-i18n="home.heroAlt1" data-i18n-attr="alt"
-            decoding="async"
-            fetchpriority="high">
-        </div>
-        <div class="hero-collage__sq media-frame">
-          <img
-            src="images/menu/butterfly-pea-layer-cake-sq.webp"
-            srcset="images/menu/butterfly-pea-layer-cake-400.webp 400w, images/menu/butterfly-pea-layer-cake-sq.webp 640w"
-            sizes="(max-width: 900px) 45vw, 20vw"
-            width="640"
-            height="640"
-            alt="Butterfly pea layer cake" data-i18n="home.heroAlt2" data-i18n-attr="alt"
-            loading="lazy"
-            decoding="async">
-        </div>
-        <div class="hero-collage__sq media-frame">
-          <img
-            src="images/menu/khanom-pia-sq.webp"
-            srcset="images/menu/khanom-pia-400.webp 400w, images/menu/khanom-pia-sq.webp 640w"
-            sizes="(max-width: 900px) 45vw, 20vw"
-            width="640"
-            height="640"
-            alt="Khanom pia pastry buns" data-i18n="home.heroAlt3" data-i18n-attr="alt"
-            loading="lazy"
-            decoding="async">
-        </div>
+        <img class="hero__img" src="images/menu/golden-auspicious-set.webp" srcset="images/menu/golden-auspicious-set-360.webp 360w, images/menu/golden-auspicious-set-480.webp 480w, images/menu/golden-auspicious-set.webp 640w" sizes="(max-width: 860px) 100vw, 536px" width="640" height="360" fetchpriority="high" alt="Gouden geluksset met vijf Thaise desserts" data-i18n="home2.heroAlt" data-i18n-attr="alt">
       </div>
     </section>
 
-    <section class="section section--band" id="rounds">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <div>
-            <p class="eyebrow" data-i18n="home.roundsEyebrow">Open for ordering</p>
-            <h2 data-i18n="home.roundsTitle">Made fresh in small rounds</h2>
+    <section id="bestellen" class="section rounds" aria-labelledby="open-title">
+      <h2 class="section-title" id="open-title" data-i18n="home2.openTitle">Nu te bestellen</h2>
+      <div class="rounds-grid" data-open-menus-grid aria-busy="true"></div>
+      <p class="visually-hidden" role="status" data-open-menus-status></p>
+    </section>
+
+    <section class="section band--green" aria-labelledby="ways-title">
+      <div style="max-width:1120px;margin:0 auto">
+        <h2 class="section-title" id="ways-title" data-i18n="home2.waysTitle">Zo bestel je bij ons</h2>
+        <div class="ways">
+          <div class="way">
+            <h3 data-i18n="home2.way1Title">Feest of evenement</h3>
+            <p data-i18n="home2.way1Text">Kies zelf een datum, minstens 7 dagen vooruit. Vanaf €200.</p>
+            <a href="https://order.thaisweets.nl/nl" data-order-path="/" data-i18n="home2.way1Cta">Bestel op maat →</a>
           </div>
-          <p class="section-head__side"><span data-i18n="home.roundsSide">Working on a pre-order basis means everything is already promised to someone, so nothing goes to waste.</span></p>
-        </div>
-        <div class="rounds-grid" data-open-menus-grid aria-live="polite">
-          <noscript>
-            <article class="card round-card round-card--empty">
-              <div class="round-card__body round-card__body--empty">
-                <h3 data-i18n="home.roundsNoscriptTitle">See which menus are open on our order page</h3>
-                <p class="muted" data-i18n="home.roundsNoscriptBody">JavaScript is off, so live rounds cannot load here.</p>
-                <a class="btn btn--primary" href="https://order.thaisweets.nl/nl/" data-order-path="/"><span data-i18n="nav.order">Order online</span></a>
-              </div>
-            </article>
-          </noscript>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="menu-preview">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <div>
-            <p class="eyebrow" data-i18n="home.menuEyebrow">Our menu</p>
-            <h2 data-i18n="home.menuTitle">Authentic Thai treats, all made fresh to order</h2>
+          <div class="way">
+            <h3 data-i18n="home2.way2Title">Taarten &amp; cupcakes</h3>
+            <p data-i18n="home2.way2Text">Voor een verjaardag of feest, op bestelling gemaakt.</p>
+            <a href="https://order.thaisweets.nl/nl" data-order-path="/" data-i18n="home2.way2Cta">Bestel een taart →</a>
           </div>
-          <p class="section-head__side"><a href="menu.html" data-i18n="home.menuSeeAll">See the full menu →</a></p>
-        </div>
-        <div class="cat-grid">
-          <a class="card cat-card" href="menu.html#desserts" data-reveal>
-            <div class="cat-card__media media-frame">
-              <img src="images/menu/pandan-layer-cake.webp" width="800" height="1000" alt="Pandan layer cake" data-i18n="home.catAltDesserts" data-i18n-attr="alt" loading="lazy">
-            </div>
-            <div class="cat-card__body">
-              <span class="thai" lang="th">ขนมไทย</span>
-              <h3 data-i18n="home.catDesserts">Traditional Thai Desserts</h3>
-              <p class="muted" data-i18n="home.catDessertsMeta">Layer cakes, luk chup, golden sweets · from €8</p>
-            </div>
-          </a>
-          <a class="card cat-card" href="menu.html#savory" data-reveal>
-            <div class="cat-card__media media-frame">
-              <img src="images/menu/curry-puffs.webp" width="800" height="1000" alt="Chicken curry puffs" data-i18n="home.catAltSavory" data-i18n-attr="alt" loading="lazy">
-            </div>
-            <div class="cat-card__body">
-              <span class="thai" lang="th">ของว่าง</span>
-              <h3 data-i18n="home.catSavory">Savory Snacks</h3>
-              <p class="muted" data-i18n="home.catSavoryMeta">Curry puffs, sausages, dumplings · from €8</p>
-            </div>
-          </a>
-          <a class="card cat-card" href="menu.html#cakes" data-reveal>
-            <div class="cat-card__media media-frame">
-              <img src="images/menu/rose-cupcakes.webp" width="800" height="1000" alt="Rose flower cupcakes" data-i18n="home.catAltCakes" data-i18n-attr="alt" loading="lazy">
-            </div>
-            <div class="cat-card__body">
-              <span class="thai" lang="th">เค้ก &amp; คัพเค้ก</span>
-              <h3 data-i18n="home.catCakes">Cakes &amp; Cupcakes</h3>
-              <p class="muted" data-i18n="home.catCakesMeta">Flower cupcakes, young coconut cake · from €4</p>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--band" id="values">
-      <div class="container">
-        <div data-reveal>
-          <p class="eyebrow" data-i18n="home.valuesEyebrow">Our values</p>
-          <h2 data-i18n="home.valuesTitle">What goes into every box</h2>
-        </div>
-        <div class="values-grid" style="margin-top:36px">
-          <article class="card value-card" data-reveal>
-            <div class="value-num">01</div>
-            <h3 data-i18n="home.value1Title">Authenticity &amp; heritage</h3>
-            <p class="muted" data-i18n="home.value1Body">Every sweet follows traditional Thai recipes cherished for generations: the real flavours of Thailand I grew up with.</p>
-          </article>
-          <article class="card value-card" data-reveal>
-            <div class="value-num">02</div>
-            <h3 data-i18n="home.value2Title">Quality</h3>
-            <p class="muted" data-i18n="home.value2Body">Great food starts with great ingredients. Only the freshest, finest ingredients go into everything I make.</p>
-          </article>
-          <article class="card value-card" data-reveal>
-            <div class="value-num">03</div>
-            <h3 data-i18n="home.value3Title">Sustainability</h3>
-            <p class="muted" data-i18n="home.value3Body">Pre-order only means less food waste. I'm also moving step by step to eco-friendly packaging.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="story">
-      <div class="container story-grid">
-        <div class="story-photos" data-reveal>
-          <div class="story-photos__tall media-frame">
-            <img src="images/story/nina-and-mom.webp" width="800" height="1000" alt="Nina as a child with her mother in Thailand" data-i18n="home.storyAlt1" data-i18n-attr="alt" loading="lazy">
-          </div>
-          <div class="story-tile">
-            <strong>2019</strong>
-            <span data-i18n="home.sinceLabel">Handcrafting Thai treats in Vlaardingen</span>
+          <div class="way">
+            <h3 data-i18n="home2.way3Title">Zakelijk</h3>
+            <p data-i18n="home2.way3Text">Voor horeca, toko’s en catering, in grotere aantallen.</p>
+            <a href="mailto:info@thaisweets.nl?subject=Zakelijk" data-i18n="home2.way3Mail" data-i18n-attr="href"><span data-i18n="home2.way3Cta">Neem contact op →</span></a>
           </div>
         </div>
-        <div data-reveal>
-          <p class="eyebrow" data-i18n="home.storyEyebrow">Our story</p>
-          <h2 data-i18n="home.storyTitle">From Nong Khai to Vlaardingen</h2>
-          <p class="lead" data-i18n="home.storyBody">I'm Nina. Thai Sweets started from love for my mom and grandmas' desserts — now I bake them here, by hand, for you.</p>
-          <a href="about.html" data-i18n="home.storyCta">Read our story</a>
-        </div>
       </div>
     </section>
 
-    <section class="section section--band" id="reviews">
-      <div class="container">
-        <div data-reveal>
-          <p class="eyebrow" data-i18n="home.starsEyebrowAlt">Kind words</p>
-          <h2 data-i18n="home.starsTitleAlt">From our customers</h2>
-        </div>
-        <div class="reviews-grid" style="margin-top:36px">
-        <article class="card review-card" data-reveal>
-          <div class="stars" role="img" aria-label="5 out of 5 stars" data-i18n="home.starsAria" data-i18n-attr="aria-label"><span class="star-animate" data-reveal><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 2.9 6.3L22 9.3l-5 4.8 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.8 7.1-1z"/></svg></span><span class="star-animate" data-reveal><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 2.9 6.3L22 9.3l-5 4.8 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.8 7.1-1z"/></svg></span><span class="star-animate" data-reveal><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 2.9 6.3L22 9.3l-5 4.8 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.8 7.1-1z"/></svg></span><span class="star-animate" data-reveal><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 2.9 6.3L22 9.3l-5 4.8 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.8 7.1-1z"/></svg></span><span class="star-animate" data-reveal><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 2.9 6.3L22 9.3l-5 4.8 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.8 7.1-1z"/></svg></span></div>
-          <p data-i18n="home.review1">“The Thong Muan (crispy rolled wafers) were delicious! Everything was so fresh and tasted amazing.”</p>
-          <cite>B., Leiden</cite>
-        </article>
-        <article class="card review-card" data-reveal>
-          <div class="stars" role="img" aria-label="5 out of 5 stars" data-i18n="home.starsAria" data-i18n-attr="aria-label"><span class="star-animate" data-reveal><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 2.9 6.3L22 9.3l-5 4.8 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.8 7.1-1z"/></svg></span><span class="star-animate" data-reveal><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 2.9 6.3L22 9.3l-5 4.8 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.8 7.1-1z"/></svg></span><span class="star-animate" data-reveal><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 2.9 6.3L22 9.3l-5 4.8 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.8 7.1-1z"/></svg></span><span class="star-animate" data-reveal><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 2.9 6.3L22 9.3l-5 4.8 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.8 7.1-1z"/></svg></span><span class="star-animate" data-reveal><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 2.9 6.3L22 9.3l-5 4.8 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.8 7.1-1z"/></svg></span></div>
-          <p data-i18n="home.review2">“The meatballs with dipping sauce were absolutely delicious!”</p>
-          <cite>A., Rotterdam</cite>
-        </article>
-        <article class="card review-card" data-reveal>
-          <div class="stars" role="img" aria-label="5 out of 5 stars" data-i18n="home.starsAria" data-i18n-attr="aria-label"><span class="star-animate" data-reveal><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 2.9 6.3L22 9.3l-5 4.8 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.8 7.1-1z"/></svg></span><span class="star-animate" data-reveal><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 2.9 6.3L22 9.3l-5 4.8 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.8 7.1-1z"/></svg></span><span class="star-animate" data-reveal><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 2.9 6.3L22 9.3l-5 4.8 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.8 7.1-1z"/></svg></span><span class="star-animate" data-reveal><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 2.9 6.3L22 9.3l-5 4.8 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.8 7.1-1z"/></svg></span><span class="star-animate" data-reveal><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 2.9 6.3L22 9.3l-5 4.8 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.8 7.1-1z"/></svg></span></div>
-          <p data-i18n="home.review3">“The sweets were so delicious, thank you so much! They really made me feel less homesick.”</p>
-          <cite>W., Zoetermeer</cite>
-        </article>
-        </div>
+    <section class="section" aria-labelledby="gallery-title">
+      <h2 class="gallery-title" id="gallery-title" data-i18n="home2.galleryTitle">Wat we maken</h2>
+      <p class="gallery-lead" data-i18n="home2.galleryText">Sommige lekkernijen maken we alleen op maat.</p>
+      <div class="gallery">
+        <img src="images/menu/butterfly-pea-layer-cake.webp" width="640" height="360" loading="lazy" decoding="async" alt="Laagjescake met vlinderbloem" data-i18n="home2.galleryAlt1" data-i18n-attr="alt">
+        <img src="images/menu/mango-sticky-rice.webp" width="640" height="360" loading="lazy" decoding="async" alt="Kleefrijst met mango" data-i18n="home2.galleryAlt2" data-i18n-attr="alt">
+        <img src="images/menu/young-coconut-cake.webp" width="640" height="360" loading="lazy" decoding="async" alt="Cake met jonge kokos" data-i18n="home2.galleryAlt3" data-i18n-attr="alt">
+        <img src="images/menu/curry-puffs.webp" width="640" height="360" loading="lazy" decoding="async" alt="Currypasteitjes met kip" data-i18n="home2.galleryAlt4" data-i18n-attr="alt">
+        <img src="images/menu/rose-cupcakes.webp" width="640" height="360" loading="lazy" decoding="async" alt="Rozencupcakes" data-i18n="home2.galleryAlt5" data-i18n-attr="alt">
       </div>
     </section>
 
-    <section class="section" id="how">
-      <div class="container">
-        <div class="section-head" data-reveal>
-          <div>
-            <p class="eyebrow" data-i18n="home.howHomeEyebrow">How to order</p>
-            <h2 data-i18n="home.howHomeTitle">Four simple steps</h2>
-          </div>
-          <p class="section-head__side" data-i18n="home.howHomeSide" data-i18n-attr="html">Everything is made fresh to order, so please allow at least <strong>1 week</strong> before your pickup or delivery date.</p>
-        </div>
-        <div class="steps-grid">
-          <article class="step-card" data-reveal>
-            <div class="step-num">01</div>
-            <h3 data-i18n="home.howHome1Title">Browse the menu</h3>
-            <p class="muted" data-i18n="home.howHome1Body">Find the Thai desserts, snacks and cakes you'd like.</p>
-          </article>
-          <article class="step-card" data-reveal>
-            <div class="step-num">02</div>
-            <h3 data-i18n="home.howHome2Title">Place your order</h3>
-            <p class="muted" data-i18n="home.howHome2Body">Order online at least 1 week before your date.</p>
-          </article>
-          <article class="step-card" data-reveal>
-            <div class="step-num">03</div>
-            <h3 data-i18n="home.howHome3Title">Confirmation</h3>
-            <p class="muted" data-i18n="home.howHome3Body">I confirm availability, final price and pickup or delivery by email or WhatsApp.</p>
-          </article>
-          <article class="step-card" data-reveal>
-            <div class="step-num">04</div>
-            <h3 data-i18n="home.howHome4Title">Enjoy your treats</h3>
-            <p class="muted" data-i18n="home.howHome4Body">Pick up in Vlaardingen for free, or have it delivered.</p>
-          </article>
-        </div>
-        <a class="btn btn--secondary" href="how-to-order.html" data-reveal><span data-i18n="home.howCta">Delivery &amp; pickup details</span> <svg class="btn-arrow" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
-      </div>
-    </section>
-
-    <section class="section section--tight" id="notify">
-      <div class="container">
-        <div class="notify" data-reveal>
-          <div>
-            <h2 data-i18n="notify.title">Never miss a menu round</h2>
-            <p data-i18n="notify.body">We email you only when a new menu opens for ordering. Unsubscribe any time.</p>
-          </div>
-          <form class="notify-form" id="notify-form" novalidate>
-            <label class="visually-hidden" for="notify-email" data-i18n="notify.email">Email address</label>
-            <input id="notify-email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="200" required data-i18n="notify.placeholder" data-i18n-attr="placeholder" placeholder="you@email.com">
-            <button class="btn btn--gold" type="submit" data-i18n="notify.button">Notify me</button>
-            <div id="notify-turnstile" class="notify-turnstile"></div>
-            <p id="notify-status" class="notify-status" role="status" aria-live="polite" hidden></p>
-            <p class="notify-consent muted" data-i18n="notify.consent">We only email you about menus opening. You can unsubscribe in every email.</p>
-          </form>
+    <section id="over-ons" class="section band--pink" aria-labelledby="about-title">
+      <div class="about">
+        <img class="about__img" src="images/menu/tong-muan.webp" width="640" height="360" loading="lazy" decoding="async" alt="Knapperige Tong Muan-rolletjes" data-i18n="home2.aboutAlt" data-i18n-attr="alt">
+        <div class="about__text">
+          <h2 id="about-title" data-i18n="home2.aboutTitle">Over ons</h2>
+          <p data-i18n="home2.aboutText">Sinds 2019 maken we in Vlaardingen Thaise desserts, snacks en taarten. Alles vers en alleen op bestelling, met de echte smaak van Thailand.</p>
+          <figure class="reviews" aria-roledescription="carrousel" aria-label="Reviews van klanten" data-reviews>
+            <div class="reviews__live" aria-live="off" data-reviews-live>
+              <blockquote data-reviews-text>“De Thong Muan waren heerlijk! Alles was zo vers en smaakte geweldig.”</blockquote>
+              <figcaption><span class="stars" role="img" aria-label="5 van de 5 sterren">★★★★★</span> <span data-reviews-name>B., Leiden</span> · <span data-reviews-pos>1 van 3</span></figcaption>
+            </div>
+            <div class="reviews__controls">
+              <button type="button" data-reviews-prev aria-label="Vorige review">‹</button>
+              <button type="button" data-reviews-next aria-label="Volgende review">›</button>
+              <button type="button" class="reviews__toggle" data-reviews-toggle aria-pressed="false">Pauzeer</button>
+            </div>
+          </figure>
         </div>
       </div>
     </section>
   </main>
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <a class="logo" href="index.html" aria-label="Thai Sweets home" data-i18n="a11y.home" data-i18n-attr="aria-label">
-          <img src="images/logo/logo-white.svg" width="105" height="54" alt="Thai Sweets">
-        </a>
-        <p><span data-i18n="footer.blurb">Fresh homemade Thai cuisine made with love. Vlaardingen, since 2019.</span></p>
+
+  <footer id="contact" class="site-footer">
+    <div class="site-footer__inner">
+      <div class="foot">
+        <div class="foot__col foot__col--lead">
+          <h2 data-i18n="home2.footTitle">Zin in iets lekkers?</h2>
+          <p data-i18n="home2.footText">Thaise desserts, snacks en taarten, met liefde gemaakt in Vlaardingen.</p>
+          <a class="btn btn--gold" href="https://order.thaisweets.nl/nl" data-order-path="/" data-i18n="home2.footCta">Online bestellen →</a>
+        </div>
+        <div class="foot__col">
+          <h3 data-i18n="home2.contact">Contact</h3>
+          <a href="mailto:info@thaisweets.nl">info@thaisweets.nl</a>
+          <a href="tel:+31645591043">06 45591043</a>
+          <a href="https://wa.me/31645591043" rel="noopener noreferrer" target="_blank">WhatsApp</a>
+          <span data-i18n="home2.pickup">Afhalen: Gretha Hofstralaan, Vlaardingen</span>
+        </div>
+        <div class="foot__col">
+          <h3 data-i18n="home2.follow">Volg ons</h3>
+          <a href="https://www.instagram.com/thaisweetsnl/" rel="noopener noreferrer" target="_blank">Instagram</a>
+          <a href="https://www.facebook.com/thaisweetsnl" rel="noopener noreferrer" target="_blank">Facebook</a>
+          <a href="https://www.tiktok.com/@thaisweetsnl" rel="noopener noreferrer" target="_blank">TikTok</a>
+        </div>
+        <div class="foot__col">
+          <h3 data-i18n="home2.info">Info</h3>
+          <a href="https://order.thaisweets.nl/nl/legal#terms" data-legal="terms" rel="noopener noreferrer" target="_blank" data-i18n="home2.terms">Algemene voorwaarden</a>
+          <a href="https://order.thaisweets.nl/nl/legal#privacy" data-legal="privacy" rel="noopener noreferrer" target="_blank" data-i18n="home2.privacy">Privacybeleid</a>
+          <a href="https://order.thaisweets.nl/nl/legal#allergens" data-legal="allergens" rel="noopener noreferrer" target="_blank" data-i18n="home2.allergens">Allergenen</a>
+          <a href="#cookie-settings" data-cookie-settings data-i18n="home2.cookies">Cookie-instellingen</a>
+        </div>
       </div>
-      <div class="footer-col">
-        <h3 data-i18n="footer.shop">Shop</h3>
-        <ul>
-          <li><a href="https://order.thaisweets.nl/nl/" data-order-path="/"><span data-i18n="nav.order">Order online</span></a></li>
-          <li><a href="menu.html" data-i18n="nav.menu">Menu</a></li>
-          <li><a href="how-to-order.html" data-i18n="footer.how">How to order</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h3 data-i18n="footer.contact">Contact</h3>
-        <ul>
-          <li><a href="mailto:info@thaisweets.nl">info@thaisweets.nl</a></li>
-          <li><a href="tel:+31645591043">06 45591043</a></li>
-          <li><span data-i18n="footer.address">Gretha Hofstralaan, Vlaardingen</span></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h3 data-i18n="footer.follow">Follow</h3>
-        <ul>
-          <li><a href="https://www.instagram.com/thaisweetsnl/" rel="noopener noreferrer" target="_blank">Instagram</a></li>
-          <li><a href="https://www.facebook.com/thaisweetsnl" rel="noopener noreferrer" target="_blank">Facebook</a></li>
-          <li><a href="https://www.tiktok.com/@thaisweetsnl" rel="noopener noreferrer" target="_blank">TikTok</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="container footer-bottom">
-      <p><span data-i18n="footer.copy">© 2026 Thai Sweets · KVK 73838306 · VAT NL002463537B15</span></p>
-      <nav aria-label="Legal" data-i18n="a11y.legal" data-i18n-attr="aria-label">
-        <a href="https://order.thaisweets.nl/nl/legal#terms" data-legal="terms" rel="noopener noreferrer" target="_blank" data-i18n="footer.terms">General Terms</a>
-        <a href="https://order.thaisweets.nl/nl/legal#privacy" data-legal="privacy" rel="noopener noreferrer" target="_blank" data-i18n="footer.privacy">Privacy Policy</a>
-        <a href="https://order.thaisweets.nl/nl/legal#allergens" data-legal="allergens" rel="noopener noreferrer" target="_blank" data-i18n="footer.allergens">Allergens</a>
-        <a href="#cookie-settings" data-cookie-settings data-i18n="footer.cookies">Cookie settings</a>
-      </nav>
+      <p class="foot-legal" data-i18n="home2.copy">© 2026 Thai Sweets · KVK 73838306 · btw NL002463537B15</p>
     </div>
   </footer>
+
   <div id="cookie-consent-banner" class="hidden" role="dialog" aria-labelledby="cookie-consent-title" aria-describedby="cookie-consent-description" aria-hidden="true">
     <div class="cookie-banner__inner">
       <div>
@@ -376,7 +173,7 @@
       </div>
     </div>
   </div>
-
+  
   <div id="cookie-preferences-modal" class="hidden" role="dialog" aria-modal="true" aria-labelledby="preferences-modal-title" aria-hidden="true">
     <div class="cookie-modal">
       <div class="cookie-modal__head">
@@ -449,10 +246,11 @@
     ]
   }
   </script>
-    <script src="js/i18n/nl.js" defer></script>
+  <script src="js/i18n/nl.js" defer></script>
   <script src="js/i18n/en.js" defer></script>
+  <script src="js/i18n/home.js" defer></script>
   <script src="js/i18n.js" defer></script>
-  <script src="js/main.js" defer></script>
+  <script src="js/home.js" defer></script>
   <script src="js/open-menus.js" defer></script>
   <script src="js/notify.js" defer></script>
   <script src="js/cookie-consent.js" defer></script>

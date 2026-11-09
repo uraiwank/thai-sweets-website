@@ -1,5 +1,5 @@
 /**
- * Home notify form → POST https://order.thaisweets.nl/api/notify
+ * Home notify form (rendered by js/open-menus.js) → POST https://order.thaisweets.nl/api/notify
  * Body max 2KB JSON: { email, lang, turnstileToken, menuId: null }
  */
 (function () {
@@ -10,13 +10,11 @@
   var SCRIPT_SRC = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
   var SCRIPT_ID = "cf-turnstile-script";
 
-  var form = document.getElementById("notify-form");
-  if (!form) return;
-
-  var emailInput = document.getElementById("notify-email");
-  var submitBtn = form.querySelector('button[type="submit"]');
-  var statusEl = document.getElementById("notify-status");
-  var widgetHost = document.getElementById("notify-turnstile");
+  var form = null;
+  var emailInput = null;
+  var submitBtn = null;
+  var statusEl = null;
+  var widgetHost = null;
   var widgetId = null;
   var token = null;
   var sending = false;
@@ -122,7 +120,7 @@
     return t("notify.failed");
   }
 
-  form.addEventListener("submit", function (e) {
+  function onSubmit(e) {
     e.preventDefault();
     if (sending) return;
     if (!emailInput) return;
@@ -185,29 +183,51 @@
       .finally(function () {
         resetTurnstile();
       });
-  });
+  }
 
   document.addEventListener("thaisweets:lang", function () {
     if (widgetId != null && window.turnstile) {
       try {
         window.turnstile.remove(widgetId);
       } catch (e) {}
-      widgetId = null;
     }
+    widgetId = null;
     token = null;
-    if (window.turnstile) renderWidget();
-    setSending(false);
   });
 
-  setSending(false);
+  // The form is rendered by js/open-menus.js (inside a round card or the empty state),
+  // so bind whenever a new form is announced.
+  function setup() {
+    var el = document.getElementById("notify-form");
+    if (!el || el === form) return;
+    if (widgetId != null && window.turnstile) {
+      try {
+        window.turnstile.remove(widgetId);
+      } catch (e) {}
+    }
+    form = el;
+    emailInput = document.getElementById("notify-email");
+    submitBtn = form.querySelector('button[type="submit"]');
+    statusEl = document.getElementById("notify-status");
+    widgetHost = document.getElementById("notify-turnstile");
+    widgetId = null;
+    token = null;
+    sending = false;
+    form.addEventListener("submit", onSubmit);
+    setSending(false);
 
-  loadTurnstile()
-    .then(function () {
-      renderWidget();
-      setSending(false);
-    })
-    .catch(function () {
-      setStatus("error", t("notify.captcha"));
-      setSending(false);
-    });
+    loadTurnstile()
+      .then(function () {
+        if (form !== el) return;
+        renderWidget();
+        setSending(false);
+      })
+      .catch(function () {
+        setStatus("error", t("notify.captcha"));
+        setSending(false);
+      });
+  }
+
+  document.addEventListener("thaisweets:notify-form", setup);
+  setup();
 })();

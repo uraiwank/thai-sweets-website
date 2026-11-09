@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Thai Sweets – Home (short)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&amp;family=Inter:wght@400;500;600&amp;display=swap">
+<style>
+body{margin:0;background:#FBF8F3}
+a{color:#0B6043}a:hover{color:#094F37}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center}
+.ways{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.gallery img:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto!important;height:100%}
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center}
+.foot{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:40px}
+.round{display:grid;grid-template-columns:200px minmax(0,1fr) auto;gap:24px;align-items:center}
+@media (max-width: 860px){
+.hero,.about,.ways{grid-template-columns:minmax(0,1fr);gap:24px}
+.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}
+.round{grid-template-columns:minmax(0,1fr)}
+.foot{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+}
+</style>
+</helmet>
+
+<div style="font-family: Inter, system-ui, sans-serif; color: #1A1917; background: #FBF8F3; font-size: 16px; line-height: 1.6">
+
+<!-- News bar -->
+<div role="region" aria-label="News" style="background: #0B6043; color: #FFFFFF; padding: 10px 24px; text-align: center; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase">New: Christmas cupcakes 2026 · orders open Sat 15 Nov</div>
+
+<!-- Header: logo, language, one button -->
+<header style="position: sticky; top: 0; z-index: 10; background: #FFFFFF; border-bottom: 1px solid #E8E0D4">
+<div style="max-width: 1120px; margin: 0 auto; padding: 0 24px; height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 16px">
+<a href="#top" aria-label="Thai Sweets, back to top" style="display: flex; align-items: center"><img src="/_blob/118fd41993db28bf5f0a46e5730c71f1" alt="Thai Sweets" style="height: 44px; width: auto; display: block"></a>
+<div style="display: flex; align-items: center; gap: 12px">
+<div role="group" aria-label="Language" style="display: flex; border: 1px solid #E8E0D4; border-radius: 999px; padding: 3px">
+<button type="button" aria-pressed="false" style="min-width: 44px; height: 38px; border: 0; border-radius: 999px; background: transparent; color: #5E574F; font: 600 13px Inter, sans-serif">NL</button>
+<button type="button" aria-pressed="true" style="min-width: 44px; height: 38px; border: 0; border-radius: 999px; background: #0B6043; color: #FFFFFF; font: 600 13px Inter, sans-serif">EN</button>
+</div>
+<a href="https://order.thaisweets.nl/en" style="display: inline-flex; align-items: center; height: 44px; padding: 0 20px; border-radius: 999px; background: #0B6043; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 15px">Order</a>
+</div>
+</div>
+</header>
+
+<!-- 1. Hero: one photo, one line, one button -->
+<section id="top" style="max-width: 1120px; margin: 0 auto; padding: 64px 24px 56px">
+<div class="hero">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<h1 style="margin: 0; font-family: Lora, Georgia, serif; font-weight: 500; font-size: clamp(38px, 5vw, 60px); line-height: 1.1">Thai desserts, freshly made <span style="font-style: italic; color: #0B6043">to order</span></h1>
+<p style="margin: 0; max-width: 460px; font-size: 18px; color: #5E574F">Real Thai recipes, made fresh in small rounds. Pick your treats, choose a time, pay online – done.</p>
+<div style="padding-top: 4px">
+<a href="https://order.thaisweets.nl/en" style="display: inline-flex; align-items: center; height: 52px; padding: 0 28px; border-radius: 999px; background: #0B6043; color: #FFFFFF; text-decoration: none; font-weight: 600">Order now →</a>
+</div>
+</div>
+<img src="/_blob/6c0fdf5436c16441bcd79db5a6f936d9" alt="Golden lucky set with five Thai desserts" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 24px; display: block">
+</div>
+</section>
+
+<!-- 2. Open now (live from the order app) -->
+<section aria-labelledby="open-title" style="background: #FFFFFF; border-top: 1px solid #E8E0D4; border-bottom: 1px solid #E8E0D4; padding: 64px max(24px, calc((100% - 1072px) / 2))">
+<h2 id="open-title" style="margin: 0 0 16px; font-family: Lora, Georgia, serif; font-weight: 500; font-size: 32px">Order now</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px">
+<article style="background: #FFFFFF; border: 1px solid #E8E0D4; border-radius: 24px; overflow: hidden; display: flex; flex-direction: column">
+<div style="position: relative">
+<img src="/_blob/5f5647a44b6dd7dd709aad1b2b147546" alt="Pandan layer cake on a banana leaf" style="width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block">
+<span style="position: absolute; top: 16px; left: 16px; display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px; background: #0B6043; color: #FFFFFF; font-size: 13px; font-weight: 600"><span aria-hidden="true" style="width: 7px; height: 7px; border-radius: 50%; background: #FFC72C; display: inline-block"></span>Open now</span>
+</div>
+<div style="padding: 28px; display: flex; flex-direction: column; gap: 16px; flex: 1 1 auto">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<p style="margin: 0; font-size: 13px; font-weight: 600; color: #A84462">Special</p>
+<h3 style="margin: 0; font-family: Lora, Georgia, serif; font-weight: 500; font-size: 28px; line-height: 1.2">Thai desserts</h3>
+<p style="margin: 0; color: #5E574F">Thai sweets and snacks: khanom chan, tako, curry puffs and much more.</p>
+</div>
+<dl style="margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; padding: 16px 0; border-top: 1px solid #E8E0D4; border-bottom: 1px solid #E8E0D4">
+<div><dt style="font-size: 12px; color: #5E574F; text-transform: uppercase; letter-spacing: 0.06em">Order by</dt><dd style="margin: 2px 0 0; font-weight: 600">Tue 4 Nov</dd></div>
+<div><dt style="font-size: 12px; color: #5E574F; text-transform: uppercase; letter-spacing: 0.06em">Pickup</dt><dd style="margin: 2px 0 0; font-weight: 600">Sat 8 Nov</dd></div>
+<div><dt style="font-size: 12px; color: #5E574F; text-transform: uppercase; letter-spacing: 0.06em">Delivery</dt><dd style="margin: 2px 0 0; font-weight: 600">Vlaardingen &amp; Schiedam</dd></div>
+</dl>
+<a href="https://order.thaisweets.nl/en/thai-desserts-1" style="margin-top: auto; display: inline-flex; justify-content: center; align-items: center; height: 52px; border-radius: 999px; background: #0B6043; color: #FFFFFF; text-decoration: none; font-weight: 600">See menu &amp; order →</a>
+</div>
+</article>
+<article style="background: #FFFFFF; border: 1px solid #E8E0D4; border-radius: 24px; overflow: hidden; display: flex; flex-direction: column">
+<div style="position: relative">
+<img src="/_blob/20c563aafa69fa766e1eef78b3cd0fed" alt="Cupcakes with buttercream flowers" style="width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; filter: saturate(0.75)">
+<span style="position: absolute; top: 16px; left: 16px; padding: 6px 12px; border-radius: 999px; background: #FBF1D3; color: #5A4300; font-size: 13px; font-weight: 600">Opens Sat 15 Nov</span>
+</div>
+<div style="padding: 28px; display: flex; flex-direction: column; gap: 16px; flex: 1 1 auto">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<p style="margin: 0; font-size: 13px; font-weight: 600; color: #A84462">Seasonal special</p>
+<h3 style="margin: 0; font-family: Lora, Georgia, serif; font-weight: 500; font-size: 28px; line-height: 1.2">Christmas 2026</h3>
+<p style="margin: 0; color: #5E574F">Vanilla cupcakes with piped buttercream flowers: poinsettia, wreath, pine cone and a festive greeting.</p>
+</div>
+<dl style="margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; padding: 16px 0; border-top: 1px solid #E8E0D4; border-bottom: 1px solid #E8E0D4">
+<div><dt style="font-size: 12px; color: #5E574F; text-transform: uppercase; letter-spacing: 0.06em">Order by</dt><dd style="margin: 2px 0 0; font-weight: 600">Wed 10 Dec</dd></div>
+<div><dt style="font-size: 12px; color: #5E574F; text-transform: uppercase; letter-spacing: 0.06em">Pickup</dt><dd style="margin: 2px 0 0; font-weight: 600">23–24 Dec</dd></div>
+<div><dt style="font-size: 12px; color: #5E574F; text-transform: uppercase; letter-spacing: 0.06em">Delivery</dt><dd style="margin: 2px 0 0; font-weight: 600">Until 24 Dec</dd></div>
+</dl>
+<form style="margin-top: auto; display: flex; flex-direction: column; gap: 8px">
+<label for="notify-email" style="font-size: 14px; font-weight: 600">Email me when it opens</label>
+<div style="display: flex; gap: 8px; flex-wrap: wrap">
+<input id="notify-email" type="email" autocomplete="email" placeholder="you@email.com" style="flex: 1 1 180px; min-width: 0; height: 52px; padding: 0 16px; border: 1px solid #8A8178; border-radius: 999px; font: 400 16px Inter, sans-serif; color: #1A1917; background: #FFFFFF">
+<button type="submit" style="height: 52px; padding: 0 22px; border-radius: 999px; border: 1px solid #0B6043; background: #FFFFFF; color: #0B6043; font: 600 16px Inter, sans-serif">Sign up</button>
+</div>
+</form>
+</div>
+</article>
+</div>
+</section>
+
+<!-- 3. Three ways to order -->
+<section aria-labelledby="ways-title" style="background: #0B6043; color: #FFFFFF; padding: 64px max(24px, calc((100% - 1072px) / 2))">
+<div style="max-width: 1120px; margin: 0 auto">
+<h2 id="ways-title" style="margin: 0 0 28px; font-family: Lora, Georgia, serif; font-weight: 500; font-size: 32px; color: #FFFFFF">How to order</h2>
+<div class="ways">
+<div style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-size: 19px; font-weight: 600; color: #FFFFFF">Party or event</h3>
+<p style="margin: 0; color: #DDEBE3; flex: 1">Pick your own date, at least 7 days ahead. From €200.</p>
+<a href="https://order.thaisweets.nl/en" style="font-weight: 600; padding: 10px 0; color: #FFC72C">Custom order →</a>
+</div>
+<div style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-size: 19px; font-weight: 600; color: #FFFFFF">Cakes &amp; cupcakes</h3>
+<p style="margin: 0; color: #DDEBE3; flex: 1">For a birthday or party, made to order.</p>
+<a href="https://order.thaisweets.nl/en" style="font-weight: 600; padding: 10px 0; color: #FFC72C">Order a cake →</a>
+</div>
+<div style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 8px">
+<h3 style="margin: 0; font-size: 19px; font-weight: 600; color: #FFFFFF">Business</h3>
+<p style="margin: 0; color: #DDEBE3; flex: 1">For restaurants, Asian shops and catering, in larger quantities.</p>
+<a href="mailto:info@thaisweets.nl?subject=Business" style="font-weight: 600; padding: 10px 0; color: #FFC72C">Get in touch →</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 4. Gallery: photos only -->
+<section aria-labelledby="gallery-title" style="padding: 64px max(24px, calc((100% - 1072px) / 2))">
+<h2 id="gallery-title" style="margin: 0 0 8px; font-family: Lora, Georgia, serif; font-weight: 500; font-size: 40px; text-align: center">What we make</h2>
+<p style="margin: 0 0 32px; color: #5E574F; text-align: center">Some treats are made for custom orders only.</p>
+<div class="gallery">
+<img src="/_blob/b60de55177a561ac16d8634f77a9d47f" alt="Butterfly pea layer cake" style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 14px; display: block">
+<img src="/_blob/d4a0e1b74a9d163cb5412d938a9c005b" alt="Mango sticky rice" style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 14px; display: block">
+<img src="/_blob/446ba2aafee958dd19e57636a39978ed" alt="Young coconut cake" style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 14px; display: block">
+<img src="/_blob/9d62d1e921712cdf61a678e8d973c751" alt="Chicken curry puffs" style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 14px; display: block">
+<img src="/_blob/20c563aafa69fa766e1eef78b3cd0fed" alt="Rose cupcakes" style="width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 14px; display: block">
+</div>
+</section>
+
+<!-- 5. About + one review -->
+<section id="over-ons" aria-labelledby="about-title" style="background: #F7EAEE; padding: 64px max(24px, calc((100% - 1072px) / 2))">
+<div class="about">
+<img src="/_blob/2dbda0389fdf5aa63867b4d1b7acb7e4" alt="Crispy Tong Muan rolls" style="width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 24px; display: block">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<h2 id="about-title" style="margin: 0; font-family: Lora, Georgia, serif; font-weight: 500; font-size: 28px">About us</h2>
+<p style="margin: 0; font-size: 17px; color: #4F4842">Since 2019 we have been making Thai desserts, snacks and cakes in Vlaardingen. Everything fresh and only to order, with the real taste of Thailand.</p>
+<figure aria-roledescription="carousel" aria-label="Customer reviews" style="margin: 0; padding: 24px 0 0; border-top: 1px solid #E3C9D1; display: flex; flex-direction: column; gap: 12px">
+<div aria-live="{{live}}" style="min-height: 96px">
+<blockquote style="margin: 0; font-family: Lora, Georgia, serif; font-size: 24px; line-height: 1.35; font-style: italic">“{{review.text}}”</blockquote>
+<figcaption style="margin-top: 8px; font-size: 14px; color: #5E574F"><span aria-label="5 out of 5 stars" role="img" style="color: #A84462">★★★★★</span> {{review.name}} · {{pos}}</figcaption>
+</div>
+<div style="display: flex; gap: 8px; align-items: center">
+<button type="button" onClick="{{prev}}" aria-label="Previous review" style="width: 44px; height: 44px; border-radius: 999px; border: 1px solid #CFC4B4; background: #FFFFFF; color: #1A1917; font: 600 18px Inter, sans-serif; cursor: pointer">‹</button>
+<button type="button" onClick="{{next}}" aria-label="Next review" style="width: 44px; height: 44px; border-radius: 999px; border: 1px solid #CFC4B4; background: #FFFFFF; color: #1A1917; font: 600 18px Inter, sans-serif; cursor: pointer">›</button>
+<button type="button" onClick="{{toggle}}" aria-pressed="{{paused}}" style="height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid #CFC4B4; background: #FFFFFF; color: #1A1917; font: 600 14px Inter, sans-serif; cursor: pointer">{{toggleLabel}}</button>
+</div>
+</figure>
+</div>
+</div>
+</section>
+
+<!-- 6. Footer: contact in one row -->
+<footer id="contact" style="background: #0F3D2D; color: #F3EEE7; scroll-margin-top: 72px">
+<div style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 32px; display: flex; flex-direction: column; gap: 48px">
+<div class="foot">
+<div style="display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-family: Lora, Georgia, serif; font-weight: 500; font-size: 32px; line-height: 1.2">Craving something sweet?</h2>
+<p style="margin: 0; color: #D9D2C7; max-width: 340px">Thai desserts, snacks and cakes, made with love in Vlaardingen.</p>
+<a href="https://order.thaisweets.nl/en" style="align-self: flex-start; display: inline-flex; align-items: center; height: 48px; padding: 0 24px; border-radius: 999px; background: #FFC72C; color: #1A1917; text-decoration: none; font-weight: 600">Order online →</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<h3 style="margin: 0; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #A9C9BA">Contact</h3>
+<a href="mailto:info@thaisweets.nl" style="color: #F3EEE7">info@thaisweets.nl</a>
+<a href="tel:+31645591043" style="color: #F3EEE7">06 45591043</a>
+<a href="https://wa.me/31645591043" style="color: #F3EEE7">WhatsApp</a>
+<span style="color: #D9D2C7">Pickup: Gretha Hofstralaan, Vlaardingen</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<h3 style="margin: 0; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #A9C9BA">Follow us</h3>
+<a href="https://www.instagram.com/thaisweetsnl/" style="color: #F3EEE7">Instagram</a>
+<a href="https://www.facebook.com/thaisweetsnl" style="color: #F3EEE7">Facebook</a>
+<a href="https://www.tiktok.com/@thaisweetsnl" style="color: #F3EEE7">TikTok</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<h3 style="margin: 0; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: #A9C9BA">Info</h3>
+<a href="https://order.thaisweets.nl/en/legal#terms" style="color: #F3EEE7">Terms and conditions</a>
+<a href="https://order.thaisweets.nl/en/legal#privacy" style="color: #F3EEE7">Privacy policy</a>
+<a href="https://order.thaisweets.nl/en/legal#allergens" style="color: #F3EEE7">Allergens</a>
+<a href="#cookie-instellingen" style="color: #F3EEE7">Cookie settings</a>
+</div>
+</div>
+<p style="margin: 0; padding-top: 24px; border-top: 1px solid #2A5646; font-size: 13px; color: #A9C9BA">© 2026 Thai Sweets · KVK 73838306 · VAT NL002463537B15</p>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3600}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { i: 0, paused: false, manual: false };
+this.reviews = [
+{ text: 'The Thong Muan were delicious! Everything was so fresh and tasted great.', name: 'B., Leiden' },
+{ text: 'The balls with dipping sauce were absolutely delicious!', name: 'A., Rotterdam' },
+{ text: 'The treats were so tasty, thank you so much! They really made me feel a bit less homesick.', name: 'W., Zoetermeer' }
+];
+}
+componentDidMount() {
+this.timer = setInterval(() => {
+if (!this.state.paused) this.setState({ i: (this.state.i + 1) % this.reviews.length });
+}, 60000);
+}
+componentWillUnmount() { clearInterval(this.timer); }
+go(step) {
+var n = this.reviews.length;
+this.setState({ i: (this.state.i + step + n) % n, manual: true });
+}
+renderVals() {
+var i = this.state.i;
+return {
+review: this.reviews[i],
+pos: (i + 1) + ' of ' + this.reviews.length,
+live: (this.state.paused || this.state.manual) ? 'polite' : 'off',
+paused: this.state.paused ? 'true' : 'false',
+toggleLabel: this.state.paused ? 'Play' : 'Pause',
+prev: () => this.go(-1),
+next: () => this.go(1),
+toggle: () => this.setState({ paused: !this.state.paused })
+};
+}
+}
+</script>
+</body>
+</html>

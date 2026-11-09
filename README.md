@@ -12,9 +12,10 @@ npx --yes serve -l 55343 .
 
 ## Edit often
 
-- **Live open/upcoming rounds** (Home announcement bar + “Open for ordering” cards): `js/open-menus.js` fetches `https://order.thaisweets.nl/api/open-menus`. Toggle `USE_MOCK` and use `js/open-menus.sample.json` for empty/error testing.
-- **Menu items / prices**: `js/menu-data.js` (and matching sections on `menu.html` if you keep static HTML in sync).
-- **Order app URL**: `ORDER_APP_URL` in `js/main.js` and `https://order.thaisweets.nl` in HTML.
+- **News bar**: `home2.news` in `js/i18n/home.js` (one line per language).
+- **Page texts (NL/EN)**: `js/i18n/home.js` (`home2.*`); styles in `css/home.css`.
+- **Live open/upcoming rounds**: `js/open-menus.js` fetches `https://order.thaisweets.nl/api/open-menus`. On localhost use `?rounds=sample|empty|error` to test; the email form is `js/notify.js`.
+- **Order app URL**: `https://order.thaisweets.nl` in `index.html` and `js/i18n.js`.
 
 ## Stack
 
@@ -22,8 +23,4 @@ Plain static HTML + CSS + vanilla JS. No build step. Deployable to Cloudflare Pa
 
 ## Pages
 
-- `index.html` — Home
-- `menu.html` — Menu
-- `about.html` — Our Story
-- `how-to-order.html` — How to Order
-- `contact.html` — Contact
+- `index.html` — the whole site (one page, NL + EN). `about.html`, `contact.html` and `menu.html` are replaced; `_redirects` sends them to `/`.

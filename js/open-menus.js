@@ -1,7 +1,8 @@
 (function () {
   "use strict";
 
-  /* Flip to true to force local sample (empty/error testing: edit sample or set a bad API URL). */
+  /* Flip to true to force the local sample (js/open-menus.sample.json).
+     On localhost you can also use ?rounds=sample | upcoming | empty | error. */
   var USE_MOCK = false;
 
   var API_BASE = "https://order.thaisweets.nl/api/open-menus";
@@ -9,7 +10,6 @@
   var TIMEOUT_MS = 6000;
   var LOGO_SRC = "images/logo/logo-horizontal.png";
 
-  var announceEl = document.querySelector("[data-open-menus-announce]");
   var gridEl = document.querySelector("[data-open-menus-grid]");
   if (!gridEl) return;
 
@@ -38,33 +38,10 @@
     return value == null ? "" : String(value);
   }
 
-  function arrowSvg() {
-    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svg.setAttribute("class", "btn-arrow");
-    svg.setAttribute("width", "18");
-    svg.setAttribute("height", "18");
-    svg.setAttribute("viewBox", "0 0 24 24");
-    svg.setAttribute("aria-hidden", "true");
-    svg.setAttribute("fill", "none");
-    svg.setAttribute("stroke", "currentColor");
-    svg.setAttribute("stroke-width", "1.8");
-    svg.setAttribute("stroke-linecap", "round");
-    svg.setAttribute("stroke-linejoin", "round");
-    var p1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    p1.setAttribute("d", "M5 12h14");
-    var p2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    p2.setAttribute("d", "m13 6 6 6-6 6");
-    svg.appendChild(p1);
-    svg.appendChild(p2);
-    return svg;
-  }
-
   function focusNotifyEmail() {
-    var banner = document.querySelector(".notify");
+    var form = document.getElementById("notify-form");
     var input = document.getElementById("notify-email");
-    if (banner) {
-      banner.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
+    if (form) form.scrollIntoView({ behavior: "smooth", block: "center" });
     if (input) {
       window.setTimeout(function () {
         input.focus();
@@ -72,124 +49,58 @@
     }
   }
 
-  function finishAnnounceSlot() {
-    if (!announceEl) return;
-    announceEl.classList.remove("announce--slot");
-    announceEl.removeAttribute("aria-busy");
-  }
-
-  function showAnnounce(menus) {
-    if (!announceEl) return;
-    var openMenus = menus.filter(function (m) {
-      return m.status === "open";
-    });
-    var upcoming = menus.filter(function (m) {
-      return m.status === "upcoming";
-    });
-
-    announceEl.replaceChildren();
-    announceEl.hidden = true;
-
-    if (openMenus.length) {
-      openMenus.sort(function (a, b) {
-        var ai = a.orderByISO || "";
-        var bi = b.orderByISO || "";
-        if (ai && bi) return ai < bi ? -1 : ai > bi ? 1 : 0;
-        return 0;
-      });
-      var open = openMenus[0];
-      if (!isHttpsUrl(open.url)) {
-        finishAnnounceSlot();
-        return;
-      }
-
-      var p = document.createElement("p");
-      var strong = document.createElement("strong");
-      strong.textContent = safeText(open.title) + t("rounds.openSuffix");
-      p.appendChild(strong);
-      var mid = t("rounds.orderBy") + safeText(open.orderBy);
-      if (open.pickup) mid += t("rounds.forPickup") + safeText(open.pickup);
-      mid += " · ";
-      p.appendChild(document.createTextNode(mid));
-      var a = document.createElement("a");
-      a.href = open.url;
-      a.textContent = t("rounds.orderNow");
-      p.appendChild(a);
-      announceEl.appendChild(p);
-      announceEl.hidden = false;
-      finishAnnounceSlot();
-      return;
-    }
-
-    if (upcoming.length) {
-      var next = upcoming[0];
-      var p2 = document.createElement("p");
-      p2.appendChild(document.createTextNode(t("rounds.nextRound")));
-      var strong2 = document.createElement("strong");
-      strong2.textContent = safeText(next.title);
-      p2.appendChild(strong2);
-      p2.appendChild(
-        document.createTextNode(
-          t("rounds.opens") + safeText(next.opensAt || t("rounds.soon")) + " · "
-        )
-      );
-      var a2 = document.createElement("a");
-      a2.href = "#notify";
-      a2.textContent = t("rounds.getNotified");
-      a2.addEventListener("click", function (e) {
-        e.preventDefault();
-        focusNotifyEmail();
-      });
-      p2.appendChild(a2);
-      announceEl.appendChild(p2);
-      announceEl.hidden = false;
-    }
-    finishAnnounceSlot();
-  }
-
-  function mediaFrame(imageUrl, title) {
+  function mediaFrame(imageUrl, title, status) {
     var wrap = document.createElement("div");
-    wrap.className = "card__media round-card__media media-frame";
+    wrap.className = "round-card__media";
+
+    function fallback() {
+      wrap.classList.add("round-card__media--fallback");
+      var logo = document.createElement("img");
+      logo.src = LOGO_SRC;
+      logo.alt = "";
+      logo.width = 160;
+      logo.height = 82;
+      wrap.insertBefore(logo, wrap.firstChild);
+    }
 
     if (isHttpsUrl(imageUrl)) {
       var img = document.createElement("img");
       img.src = imageUrl;
       img.alt = safeText(title);
       img.width = 1280;
-      img.height = 800;
+      img.height = 720;
       img.loading = "lazy";
       img.decoding = "async";
-      img.sizes = "(max-width: 900px) 100vw, 50vw";
       img.addEventListener("error", function () {
-        wrap.replaceChildren();
-        wrap.classList.add("round-card__media--fallback");
-        var logo = document.createElement("img");
-        logo.src = LOGO_SRC;
-        logo.alt = "";
-        logo.width = 160;
-        logo.height = 54;
-        wrap.appendChild(logo);
+        img.remove();
+        fallback();
       });
       wrap.appendChild(img);
     } else {
-      wrap.classList.add("round-card__media--fallback");
-      var logo = document.createElement("img");
-      logo.src = LOGO_SRC;
-      logo.alt = "";
-      logo.width = 160;
-      logo.height = 54;
-      wrap.appendChild(logo);
+      fallback();
     }
+    if (status) wrap.appendChild(status);
     return wrap;
   }
 
-  function metaRow(menu, includeOrderBy) {
+  function statusBadge(text, isOpen) {
+    var span = document.createElement("span");
+    span.className = "status" + (isOpen ? "" : " status--soon");
+    if (isOpen) {
+      var dot = document.createElement("span");
+      dot.className = "dot";
+      dot.setAttribute("aria-hidden", "true");
+      span.appendChild(dot);
+    }
+    span.appendChild(document.createTextNode(text));
+    return span;
+  }
+
+  function metaRow(menu) {
     var dl = document.createElement("dl");
     dl.className = "round-card__meta";
     var items = [];
-    if (includeOrderBy && menu.orderBy) {
-      items.push({ dt: t("rounds.orderByLabel"), dd: menu.orderBy });
-    }
+    if (menu.orderBy) items.push({ dt: t("rounds.orderByLabel"), dd: menu.orderBy });
     if (menu.pickup) items.push({ dt: t("rounds.pickupLabel"), dd: menu.pickup });
     if (menu.delivery) items.push({ dt: t("rounds.deliveryLabel"), dd: menu.delivery });
     if (!items.length) {
@@ -211,79 +122,116 @@
     return dl;
   }
 
+  function cardHead(menu) {
+    var head = document.createElement("div");
+    head.className = "round-card__head";
+    if (menu.tag) {
+      var tag = document.createElement("p");
+      tag.className = "round-card__tag";
+      tag.textContent = safeText(menu.tag);
+      head.appendChild(tag);
+    }
+    var h3 = document.createElement("h3");
+    h3.textContent = safeText(menu.title);
+    head.appendChild(h3);
+    if (menu.description) {
+      var desc = document.createElement("p");
+      desc.className = "round-card__desc";
+      desc.textContent = safeText(menu.description);
+      head.appendChild(desc);
+    }
+    return head;
+  }
+
+  /* The notify form is created here; js/notify.js binds to it on the event below. */
+  function buildNotifyForm() {
+    var form = document.createElement("form");
+    form.id = "notify-form";
+    form.className = "notify-form";
+    form.noValidate = true;
+
+    var label = document.createElement("label");
+    label.setAttribute("for", "notify-email");
+    label.textContent = t("home2.notifyLabel");
+    form.appendChild(label);
+
+    var row = document.createElement("div");
+    row.className = "notify-form__row";
+    var input = document.createElement("input");
+    input.id = "notify-email";
+    input.name = "email";
+    input.type = "email";
+    input.autocomplete = "email";
+    input.required = true;
+    input.placeholder = t("notify.placeholder");
+    row.appendChild(input);
+    var submit = document.createElement("button");
+    submit.type = "submit";
+    submit.className = "btn btn--outline";
+    submit.textContent = t("home2.notifyButton");
+    row.appendChild(submit);
+    form.appendChild(row);
+
+    var widget = document.createElement("div");
+    widget.id = "notify-turnstile";
+    widget.className = "notify-turnstile";
+    form.appendChild(widget);
+
+    var status = document.createElement("p");
+    status.id = "notify-status";
+    status.className = "notify-status";
+    status.setAttribute("role", "status");
+    status.setAttribute("aria-live", "polite");
+    status.hidden = true;
+    form.appendChild(status);
+    return form;
+  }
+
+  function announceNotifyForm() {
+    document.dispatchEvent(new CustomEvent("thaisweets:notify-form"));
+  }
+
   function buildOpenCard(menu) {
     var article = document.createElement("article");
-    article.className = "card round-card";
-    article.appendChild(mediaFrame(menu.imageUrl, menu.title));
+    article.className = "round-card";
+    article.appendChild(mediaFrame(menu.imageUrl, menu.title, statusBadge(t("rounds.openNow"), true)));
 
     var body = document.createElement("div");
     body.className = "round-card__body";
-
-    if (menu.tag) {
-      var badge = document.createElement("span");
-      badge.className = "badge";
-      badge.textContent = safeText(menu.tag);
-      body.appendChild(badge);
-    }
-
-    var h3 = document.createElement("h3");
-    h3.textContent = safeText(menu.title);
-    body.appendChild(h3);
-
-    if (menu.description) {
-      var desc = document.createElement("p");
-      desc.className = "muted";
-      desc.textContent = safeText(menu.description);
-      body.appendChild(desc);
-    }
-
-    body.appendChild(metaRow(menu, true));
+    body.appendChild(cardHead(menu));
+    body.appendChild(metaRow(menu));
 
     var btn = document.createElement("a");
-    btn.className = "btn btn--primary";
+    btn.className = "btn";
     btn.href = isHttpsUrl(menu.url) ? menu.url : ORDER_HOME + "/" + pageLang() + "/";
-    btn.appendChild(document.createTextNode(t("rounds.viewMenuOrder") + " "));
-    btn.appendChild(arrowSvg());
+    btn.textContent = t("rounds.viewMenuOrder") + " →";
     body.appendChild(btn);
 
     article.appendChild(body);
     return article;
   }
 
-  function buildUpcomingCard(menu) {
+  function buildUpcomingCard(menu, withForm) {
     var article = document.createElement("article");
-    article.className = "card round-card";
-    article.appendChild(mediaFrame(menu.imageUrl, menu.title));
+    article.className = "round-card round-card--upcoming";
+    var soon = menu.opensAt ? t("rounds.opensPrefix") + safeText(menu.opensAt) : t("rounds.opensSoon");
+    article.appendChild(mediaFrame(menu.imageUrl, menu.title, statusBadge(soon, false)));
 
     var body = document.createElement("div");
     body.className = "round-card__body";
+    body.appendChild(cardHead(menu));
+    body.appendChild(metaRow(menu));
 
-    var badge = document.createElement("span");
-    badge.className = "badge badge--opens";
-    badge.textContent = menu.opensAt
-      ? t("rounds.opensPrefix") + safeText(menu.opensAt)
-      : t("rounds.opensSoon");
-    body.appendChild(badge);
-
-    var h3 = document.createElement("h3");
-    h3.textContent = safeText(menu.title);
-    body.appendChild(h3);
-
-    if (menu.description) {
-      var desc = document.createElement("p");
-      desc.className = "muted";
-      desc.textContent = safeText(menu.description);
-      body.appendChild(desc);
+    if (withForm) {
+      body.appendChild(buildNotifyForm());
+    } else {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "btn btn--outline";
+      btn.textContent = t("rounds.notifyWhen");
+      btn.addEventListener("click", focusNotifyEmail);
+      body.appendChild(btn);
     }
-
-    body.appendChild(metaRow(menu, false));
-
-    var btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "btn btn--outline";
-    btn.textContent = t("rounds.notifyWhen");
-    btn.addEventListener("click", focusNotifyEmail);
-    body.appendChild(btn);
 
     article.appendChild(body);
     return article;
@@ -291,79 +239,89 @@
 
   function buildEmptyCard() {
     var article = document.createElement("article");
-    article.className = "card round-card round-card--empty";
+    article.className = "round-card round-card--empty";
 
     var body = document.createElement("div");
-    body.className = "round-card__body round-card__body--empty";
+    body.className = "round-card__body";
 
+    var head = document.createElement("div");
+    head.className = "round-card__head";
     var h3 = document.createElement("h3");
     h3.textContent = t("rounds.emptyTitle");
-    body.appendChild(h3);
-
+    head.appendChild(h3);
     var p = document.createElement("p");
-    p.className = "muted";
+    p.className = "round-card__desc";
     p.textContent = t("rounds.emptyBody");
-    body.appendChild(p);
+    head.appendChild(p);
+    body.appendChild(head);
 
-    var form = document.createElement("form");
-    form.className = "notify-form round-empty-form";
-    form.action = "#";
-    form.method = "get";
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      focusNotifyEmail();
-      var src = form.querySelector('input[type="email"]');
-      var dest = document.getElementById("notify-email");
-      if (src && dest && src.value) dest.value = src.value;
-    });
-
-    var label = document.createElement("label");
-    label.className = "visually-hidden";
-    label.setAttribute("for", "rounds-notify-email");
-    label.textContent = t("rounds.email");
-    form.appendChild(label);
-
-    var input = document.createElement("input");
-    input.id = "rounds-notify-email";
-    input.name = "email";
-    input.type = "email";
-    input.autocomplete = "email";
-    input.required = true;
-    input.placeholder = t("notify.placeholder");
-    form.appendChild(input);
-
-    var submit = document.createElement("button");
-    submit.className = "btn btn--gold";
-    submit.type = "submit";
-    submit.textContent = t("rounds.notifyMe");
-    form.appendChild(submit);
-
-    body.appendChild(form);
+    body.appendChild(buildNotifyForm());
     article.appendChild(body);
     return article;
   }
 
+  /* Static placeholders while loading (no shimmer). */
   function renderSkeletons() {
-    gridEl.classList.remove("rounds-grid--empty");
+    gridEl.setAttribute("aria-busy", "true");
     gridEl.replaceChildren();
     for (var i = 0; i < 2; i++) {
       var sk = document.createElement("article");
-      sk.className = "card round-card round-card--skeleton";
+      sk.className = "round-card round-card--skeleton";
       sk.setAttribute("aria-hidden", "true");
       var media = document.createElement("div");
-      media.className = "card__media round-card__media media-frame skeleton-block";
+      media.className = "round-card__media skeleton-block";
       var body = document.createElement("div");
       body.className = "round-card__body";
-      body.innerHTML =
-        '<span class="skeleton-line skeleton-line--badge"></span>' +
-        '<span class="skeleton-line skeleton-line--title"></span>' +
-        '<span class="skeleton-line"></span>' +
-        '<span class="skeleton-line"></span>' +
-        '<span class="skeleton-line skeleton-line--btn"></span>';
+      ["badge", "title", "", "", "btn"].forEach(function (mod) {
+        var line = document.createElement("span");
+        line.className = "skeleton-line" + (mod ? " skeleton-line--" + mod : "");
+        body.appendChild(line);
+      });
       sk.appendChild(media);
       sk.appendChild(body);
       gridEl.appendChild(sk);
     }
+  }
+
+  /* Green news bar: open round, else next upcoming round, else the fallback text (home2.news). */
+  function setNews(list) {
+    var el = document.querySelector("[data-news]");
+    if (!el) return;
+    var open = null;
+    var next = null;
+    (list || []).forEach(function (m) {
+      if (m.status === "open" && isHttpsUrl(m.url) && !open) open = m;
+      if (m.status === "upcoming" && m.opensAt) {
+        if (!next || (m.opensAtISO || "") < (next.opensAtISO || "")) next = m;
+      }
+    });
+    var round = open || next;
+    if (!round) {
+      el.textContent = t("home2.news");
+      return;
+    }
+    var text = t(open ? "home2.newsOpen" : "home2.newsUpcoming")
+      .replace("{title}", safeText(round.title))
+      .replace("{orderBy}", safeText(round.orderBy))
+      .replace("{opensAt}", safeText(round.opensAt));
+    var a = document.createElement("a");
+    a.href = open ? round.url : "#bestellen";
+    a.textContent = text;
+    el.replaceChildren(a);
+  }
+
+  /* Until data arrives keep what the bar shows; only fill the fallback when it has no round link. */
+  function newsFallbackIfNoRound() {
+    var el = document.querySelector("[data-news]");
+    if (el && !el.querySelector("a")) el.textContent = t("home2.news");
+  }
+
+  function renderEmpty() {
+    setNews(null);
+    gridEl.setAttribute("aria-busy", "false");
+    gridEl.replaceChildren();
+    gridEl.appendChild(buildEmptyCard());
+    announceNotifyForm();
   }
 
   function renderMenus(menus) {
@@ -380,31 +338,52 @@
       return 0;
     });
 
-    showAnnounce(list);
-
-    gridEl.replaceChildren();
     if (!list.length) {
-      gridEl.classList.add("rounds-grid--empty");
-      gridEl.appendChild(buildEmptyCard());
+      renderEmpty();
       return;
     }
 
-    gridEl.classList.remove("rounds-grid--empty");
+    setNews(list);
+    gridEl.setAttribute("aria-busy", "false");
+    gridEl.replaceChildren();
+    var formPlaced = false;
     list.forEach(function (menu) {
-      gridEl.appendChild(
-        menu.status === "upcoming" ? buildUpcomingCard(menu) : buildOpenCard(menu)
-      );
+      if (menu.status === "upcoming") {
+        gridEl.appendChild(buildUpcomingCard(menu, !formPlaced));
+        formPlaced = true;
+      } else {
+        gridEl.appendChild(buildOpenCard(menu));
+      }
     });
+    if (formPlaced) announceNotifyForm();
+  }
+
+  /* Local testing only (localhost): ?rounds=sample | upcoming | empty | error */
+  function testMode() {
+    if (!/^(localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname)) return null;
+    try {
+      return new URLSearchParams(window.location.search).get("rounds");
+    } catch (e) {
+      return null;
+    }
   }
 
   function fetchMenus() {
-    if (USE_MOCK) {
-      return fetch("js/open-menus.sample.json", { cache: "no-store" }).then(
-        function (res) {
-          if (!res.ok) throw new Error("mock unavailable");
-          return res.json();
+    var mode = testMode();
+    if (mode === "empty") return Promise.resolve({ menus: [] });
+    if (mode === "error") return Promise.reject(new Error("forced error"));
+    if (USE_MOCK || mode === "sample" || mode === "upcoming") {
+      return fetch("js/open-menus.sample.json", { cache: "no-store" }).then(function (res) {
+        if (!res.ok) throw new Error("mock unavailable");
+        return res.json();
+      }).then(function (data) {
+        if (mode === "upcoming") {
+          data.menus = data.menus.filter(function (m) {
+            return m.status === "upcoming";
+          });
         }
-      );
+        return data;
+      });
     }
 
     var controller = new AbortController();
@@ -424,6 +403,7 @@
   }
 
   function start() {
+    newsFallbackIfNoRound();
     renderSkeletons();
 
     fetchMenus()
@@ -431,14 +411,7 @@
         renderMenus(data && data.menus ? data.menus : []);
       })
       .catch(function () {
-        if (announceEl) {
-          announceEl.replaceChildren();
-          announceEl.hidden = true;
-          finishAnnounceSlot();
-        }
-        gridEl.classList.add("rounds-grid--empty");
-        gridEl.replaceChildren();
-        gridEl.appendChild(buildEmptyCard());
+        renderEmpty();
       });
   }
 
@@ -446,7 +419,7 @@
     start();
   });
 
-  // Defer past first paint / LCP so Home hero work is not competing with menus API.
+  // Defer past first paint / LCP so the hero is not competing with the menus API.
   if (typeof window.requestIdleCallback === "function") {
     window.requestIdleCallback(start, { timeout: 1800 });
   } else {
