@@ -18,7 +18,9 @@
     meta: {
       homeTitle: "Thai Sweets | Thaise desserts vers op bestelling in Vlaardingen",
       homeDesc:
-        "Echte Thaise desserts, snacks en taarten, vers gemaakt in kleine rondes in Vlaardingen. Kies je lekkernijen, kies een tijd en betaal online."
+        "Echte Thaise desserts, snacks en taarten, vers gemaakt in kleine rondes in Vlaardingen. Kies je lekkernijen, kies een tijd en betaal online.",
+      notfoundTitle: "Pagina niet gevonden | Thai Sweets",
+      notfoundDesc: "Deze pagina bestaat niet (meer)."
     },
     a11y: { langNl: "NL, Nederlands", langEn: "EN, English" },
     rounds: {
@@ -106,6 +108,10 @@
       cookies: "Cookie-instellingen",
       copy: "© 2026 Thai Sweets · KVK 73838306 · btw NL002463537B15",
       homeLabel: "Thai Sweets, naar boven",
+      homeLink: "Thai Sweets, naar de startpagina",
+      nfTitle: "Pagina niet gevonden",
+      nfText: "Deze pagina bestaat niet (meer).",
+      nfCta: "Naar de startpagina",
       roundsLoading: "Rondes laden…"
     }
   });
@@ -114,7 +120,9 @@
     meta: {
       homeTitle: "Thai Sweets | Thai desserts made fresh to order in Vlaardingen",
       homeDesc:
-        "Real Thai desserts, snacks and cakes, made fresh in small rounds in Vlaardingen. Pick your treats, choose a time and pay online."
+        "Real Thai desserts, snacks and cakes, made fresh in small rounds in Vlaardingen. Pick your treats, choose a time and pay online.",
+      notfoundTitle: "Page not found | Thai Sweets",
+      notfoundDesc: "This page doesn't exist (any more)."
     },
     a11y: { langNl: "NL, Nederlands", langEn: "EN, English" },
     rounds: {
@@ -201,6 +209,10 @@
       cookies: "Cookie settings",
       copy: "© 2026 Thai Sweets · KVK 73838306 · VAT NL002463537B15",
       homeLabel: "Thai Sweets, back to top",
+      homeLink: "Thai Sweets, to the home page",
+      nfTitle: "Page not found",
+      nfText: "This page doesn't exist (any more).",
+      nfCta: "Back to the home page",
       roundsLoading: "Loading rounds…"
     }
   });

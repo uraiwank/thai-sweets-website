@@ -217,6 +217,15 @@ h1, h2, h3, p { margin: 0; }
 .foot__col span { color: #d9d2c7; }
 .foot-legal { padding-top: 24px; border-top: 1px solid #2a5646; font-size: 13px; color: #a9c9ba; }
 
+/* 404 */
+.notfound { max-width: 1120px; margin: 0 auto; padding: 96px 24px 120px; display: flex; flex-direction: column; gap: 20px; align-items: flex-start; }
+body[data-page="notfound"] { display: flex; flex-direction: column; min-height: 100vh; }
+body[data-page="notfound"] .notfound { flex: 1 0 auto; width: 100%; }
+body[data-page="notfound"] .site-footer { margin-top: auto; }
+.notfound__code { font-size: 13px; font-weight: 600; letter-spacing: 0.1em; color: var(--pink); }
+.notfound h1 { font: 500 clamp(38px, 5vw, 60px)/1.1 var(--serif); }
+.notfound__text { font-size: 18px; color: var(--muted); }
+
 /* Cookie banner + preferences (behaviour in js/cookie-consent.js) */
 .form-hint { font-size: 14px; color: var(--muted); }
 .icon-btn {

@@ -1,0 +1,33 @@
+# Not uploaded to Cloudflare, so not public. Same syntax as .gitignore.
+# (wrangler already skips .git and node_modules; _headers and _redirects are used by Cloudflare, not served.)
+
+# Deploy config
+wrangler.jsonc
+.assetsignore
+.git*
+
+# Photos only used by the old About page
+images/story/
+
+# Notes, handoffs, docs, design files
+*.md
+docs/
+design-v2/
+design-v3/
+taste-test/
+
+# Translation sources and review files
+translations/
+*.xlsx
+*.pdf
+
+# Build scripts, tooling output, editor/agent folders, scratch
+scripts/
+.lighthouse/
+.claude/
+package*.json
+node_modules/
+*.log
+*.key
+.env*
+.wrangler/

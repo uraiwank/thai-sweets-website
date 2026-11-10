@@ -1,0 +1,15 @@
+{
+  // Static site served by a Cloudflare Worker (static assets only: no Worker script, bindings or variables).
+  // Deployed on push to main with "npx wrangler deploy". The name must match the Worker in the dashboard.
+  "name": "thai-sweets-website",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./",
+    // Unknown addresses get /404.html with status 404 (nearest 404.html up the path).
+    "not_found_handling": "404-page"
+  },
+  // Keep Workers Logs on (it is enabled in the dashboard; a config without this would switch it off).
+  "observability": {
+    "enabled": true
+  }
+}
