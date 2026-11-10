@@ -31,7 +31,7 @@ Nina decided Thai comes later, after her review. Thai is hidden, not removed:
 3. Drop the noindex meta, and add `/th/` URLs to the sitemap/hreflang if wanted.
 
 ## State
-- Branch `feat/short-design` (new one-page design, from `cursor/translation-export-cc1f`), in sync with `origin/main` (latest code commit `de825dd`, then the HANDOFF update), pushed to `origin/main` and `origin/feat/short-design` (workers.dev preview only). Update this line (count + latest commit) whenever a commit is made. Built on `cursor/notify-i18n-cc1f` (`4972e2b`).
+- Branch `feat/short-design` (new one-page design, from `cursor/translation-export-cc1f`), in sync with `origin/main` (latest code commit `4b88583`, then the HANDOFF update), pushed to `origin/main` and `origin/feat/short-design` (workers.dev preview only). Update this line (count + latest commit) whenever a commit is made. Built on `cursor/notify-i18n-cc1f` (`4972e2b`).
 - Done (local only):
   - Notify form → `POST /api/notify` with Turnstile (site key matches the order app), `menuId: null`, aria-live messages.
   - NL / EN / TH language switch; order and legal links follow `/{nl|en|th}/`.
