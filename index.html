@@ -69,6 +69,7 @@
     <section id="bestellen" class="section rounds" aria-labelledby="open-title">
       <h2 class="section-title" id="open-title" data-i18n="home2.openTitle">Nu te bestellen</h2>
       <div class="rounds-grid" data-open-menus-grid aria-busy="true"></div>
+      <p class="visually-hidden" role="status" aria-live="polite" data-notify-live></p>
       <p class="visually-hidden" role="status" data-open-menus-status></p>
     </section>
 
@@ -250,6 +251,27 @@
       <p class="foot-legal" data-i18n="home2.copy">© 2026 Thai Sweets · KVK 73838306 · btw NL002463537B15</p>
     </div>
   </footer>
+
+  <dialog id="notify-dialog" class="notify-dialog" aria-labelledby="notify-title" aria-describedby="notify-desc">
+    <div class="notify-dialog__head">
+      <div class="notify-dialog__intro">
+        <h2 id="notify-title"></h2>
+        <p id="notify-desc"></p>
+      </div>
+      <button type="button" class="notify-dialog__close" data-notify-close aria-label="Sluiten" data-i18n="home2.dlgClose" data-i18n-attr="aria-label">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+      </button>
+    </div>
+    <form id="notify-dialog-form" class="notify-form" novalidate>
+      <label for="notify-dialog-email" data-i18n="home2.emailLabel">E-mailadres</label>
+      <input id="notify-dialog-email" class="notify-input notify-input--dialog" type="email" name="email" autocomplete="email" autofocus required data-notify-email aria-describedby="notify-dialog-error">
+      <p id="notify-dialog-error" class="notify-error" role="alert" data-notify-error hidden></p>
+      <div class="notify-turnstile" data-notify-widget></div>
+      <p class="notify-status" role="status" data-notify-status hidden></p>
+      <button type="submit" class="btn notify-submit" data-i18n="home2.notifyButton">Aanmelden</button>
+    </form>
+    <p class="notify-dialog__foot"><span data-i18n="home2.unsub">Afmelden kan in elke mail.</span> <a href="https://order.thaisweets.nl/nl/legal#privacy" data-legal="privacy" rel="noopener noreferrer" target="_blank" data-i18n="home2.privacyShort">Privacy</a></p>
+  </dialog>
 
   <div id="cookie-consent-banner" class="hidden" role="dialog" aria-labelledby="cookie-consent-title" aria-describedby="cookie-consent-description" aria-hidden="true">
     <div class="cookie-banner__inner">

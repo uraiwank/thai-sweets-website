@@ -30,6 +30,21 @@
       "delivery": "Until 24 Dec",
       "imageUrl": "https://oouogdvpefyamnctjsys.supabase.co/storage/v1/object/public/menu-images/christmas-2026-d06hoy-1280.webp",
       "url": "https://order.thaisweets.nl/en/christmas-2026"
+    },
+    {
+      "slug": "thai-dessert-2612",
+      "status": "upcoming",
+      "tag": "Special",
+      "title": "Thai Dessert",
+      "description": "Thai sweets and snacks: khanom chan, tako, curry puffs and more.",
+      "opensAt": "Sun 22 Nov",
+      "opensAtISO": "2026-11-21T23:00:00+00:00",
+      "orderBy": "Wed 2 Dec",
+      "orderByISO": "2026-12-02T22:59:00+00:00",
+      "pickup": "Sat 6 Dec",
+      "delivery": "Sat 6 Dec",
+      "imageUrl": "https://oouogdvpefyamnctjsys.supabase.co/storage/v1/object/public/menu-images/thai-dessert-2612-wvpu2g-1280.webp",
+      "url": "https://order.thaisweets.nl/en/thai-dessert-2612"
     }
   ]
 }

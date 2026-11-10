@@ -1,6 +1,15 @@
 /**
- * Home notify form (rendered by js/open-menus.js) → POST https://order.thaisweets.nl/api/notify
- * Body max 2KB JSON: { email, lang, turnstileToken, menuId: null }
+ * "Mail me when it opens" signup → POST https://order.thaisweets.nl/api/notify
+ * Body max 2KB JSON: { email, lang, turnstileToken, menuId }
+ *
+ * Two places use it, both rendered/owned elsewhere:
+ *  - the modal <dialog id="notify-dialog"> (opened from an upcoming-round card, ThaiSweetsNotify.open)
+ *  - the inline form in the "no menu open" box (js/open-menus.js announces it with "thaisweets:notify-form")
+ * Turnstile is rendered only while one of these forms is shown, never on the page itself.
+ *
+ * menuId: the endpoint takes a menu UUID or null (null = every menu that opens). /api/open-menus has no
+ * ids yet, so this sends menu.id when the API provides it and null otherwise. The dialog texts follow:
+ * per-round texts with an id, the general "when a menu opens" texts without.
  */
 (function () {
   "use strict";
@@ -9,15 +18,7 @@
   var SITE_KEY = "0x4AAAAAAFWuqbo-gwLmvDr8";
   var SCRIPT_SRC = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
   var SCRIPT_ID = "cf-turnstile-script";
-
-  var form = null;
-  var emailInput = null;
-  var submitBtn = null;
-  var statusEl = null;
-  var widgetHost = null;
-  var widgetId = null;
-  var token = null;
-  var sending = false;
+  var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   function t(key) {
     if (window.ThaiSweetsI18n && typeof window.ThaiSweetsI18n.t === "function") {
@@ -36,79 +37,28 @@
     return "nl";
   }
 
-  function setStatus(kind, message) {
-    if (!statusEl) return;
-    statusEl.textContent = message || "";
-    statusEl.hidden = !message;
-    statusEl.setAttribute("data-status", kind || "");
-    statusEl.className = "notify-status" + (kind ? " notify-status--" + kind : "");
-  }
-
-  function setSending(on) {
-    sending = on;
-    if (submitBtn) {
-      submitBtn.disabled = on || !token;
-      submitBtn.setAttribute("aria-busy", on ? "true" : "false");
-    }
-  }
-
-  function resetTurnstile() {
-    token = null;
-    if (widgetId != null && window.turnstile) {
-      try {
-        window.turnstile.reset(widgetId);
-      } catch (e) {}
-    }
-    setSending(false);
-  }
-
+  var scriptPromise = null;
   function loadTurnstile() {
-    return new Promise(function (resolve, reject) {
-      if (window.turnstile) {
-        resolve();
-        return;
+    if (window.turnstile) return Promise.resolve();
+    if (scriptPromise) return scriptPromise;
+    scriptPromise = new Promise(function (resolve, reject) {
+      var s = document.getElementById(SCRIPT_ID);
+      if (!s) {
+        s = document.createElement("script");
+        s.id = SCRIPT_ID;
+        s.src = SCRIPT_SRC;
+        s.async = true;
+        document.head.appendChild(s);
       }
-      var existing = document.getElementById(SCRIPT_ID);
-      if (existing) {
-        existing.addEventListener("load", function () {
-          resolve();
-        });
-        existing.addEventListener("error", reject);
-        return;
-      }
-      var s = document.createElement("script");
-      s.id = SCRIPT_ID;
-      s.src = SCRIPT_SRC;
-      s.async = true;
-      s.onload = function () {
+      s.addEventListener("load", function () {
         resolve();
-      };
-      s.onerror = reject;
-      document.head.appendChild(s);
+      });
+      s.addEventListener("error", function () {
+        scriptPromise = null;
+        reject(new Error("turnstile"));
+      });
     });
-  }
-
-  function renderWidget() {
-    if (!widgetHost || !window.turnstile) return;
-    widgetHost.replaceChildren();
-    widgetId = window.turnstile.render(widgetHost, {
-      sitekey: SITE_KEY,
-      language: currentLang(),
-      appearance: "always",
-      callback: function (value) {
-        token = value || null;
-        setSending(false);
-      },
-      "expired-callback": function () {
-        token = null;
-        setSending(false);
-      },
-      "error-callback": function () {
-        token = null;
-        setSending(false);
-        setStatus("error", t("notify.captcha"));
-      },
-    });
+    return scriptPromise;
   }
 
   function messageFor(status, code) {
@@ -116,118 +66,259 @@
     if (status === 429 || code === "limited") return t("notify.limited");
     if (status === 403 || code === "captcha") return t("notify.captcha");
     if (status === 400 || code === "invalid") return t("notify.invalid");
-    if (status === 503 || code === "failed") return t("notify.failed");
     return t("notify.failed");
   }
 
-  function onSubmit(e) {
-    e.preventDefault();
-    if (sending) return;
-    if (!emailInput) return;
+  /* One signup form. opts.getMenuId() → UUID or null; opts.onSuccess() runs after an accepted signup. */
+  function createForm(form, opts) {
+    var input = form.querySelector("[data-notify-email]");
+    var submit = form.querySelector('button[type="submit"]');
+    var errorEl = form.querySelector("[data-notify-error]");
+    var statusEl = form.querySelector("[data-notify-status]");
+    var host = form.querySelector("[data-notify-widget]");
+    var widgetId = null;
+    var token = null;
+    var sending = false;
+    var mounted = false;
 
-    var email = String(emailInput.value || "").trim();
-    if (!email) {
-      setStatus("error", t("notify.invalid"));
-      emailInput.focus();
-      return;
+    function setError(message, focusField) {
+      errorEl.textContent = message || "";
+      errorEl.hidden = !message;
+      if (message) {
+        input.setAttribute("aria-invalid", "true");
+        if (focusField) input.focus();
+      } else {
+        input.removeAttribute("aria-invalid");
+      }
     }
-    if (!token) {
-      setStatus("error", t("notify.captcha"));
-      return;
+
+    function setStatus(kind, message) {
+      statusEl.textContent = message || "";
+      statusEl.hidden = !message;
+      statusEl.setAttribute("data-status", kind || "");
     }
 
-    setSending(true);
-    setStatus("pending", t("notify.sending"));
+    function setSending(on) {
+      sending = on;
+      submit.disabled = on;
+      submit.setAttribute("aria-busy", on ? "true" : "false");
+    }
 
-    var body = JSON.stringify({
-      email: email,
-      lang: currentLang(),
-      turnstileToken: token,
-      menuId: null,
+    function removeWidget() {
+      if (widgetId != null && window.turnstile) {
+        try {
+          window.turnstile.remove(widgetId);
+        } catch (e) {}
+      }
+      widgetId = null;
+      token = null;
+      host.replaceChildren();
+    }
+
+    function renderWidget() {
+      if (!window.turnstile || !mounted) return;
+      removeWidget();
+      widgetId = window.turnstile.render(host, {
+        sitekey: SITE_KEY,
+        language: currentLang(),
+        appearance: "always",
+        callback: function (value) {
+          token = value || null;
+        },
+        "expired-callback": function () {
+          token = null;
+        },
+        "error-callback": function () {
+          token = null;
+          setError(t("notify.captcha"), false);
+        },
+      });
+    }
+
+    function resetWidget() {
+      token = null;
+      if (widgetId != null && window.turnstile) {
+        try {
+          window.turnstile.reset(widgetId);
+        } catch (e) {}
+      }
+    }
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (sending) return;
+      setError("");
+      var email = String(input.value || "").trim();
+      if (!EMAIL.test(email)) {
+        setStatus("", "");
+        setError(t("notify.invalid"), true);
+        return;
+      }
+      if (!token) {
+        setStatus("", "");
+        setError(t("notify.captcha"), false);
+        return;
+      }
+      var body = JSON.stringify({
+        email: email,
+        lang: currentLang(),
+        turnstileToken: token,
+        menuId: (opts.getMenuId && opts.getMenuId()) || null,
+      });
+      if (new TextEncoder().encode(body).length > 2048) {
+        setError(t("notify.invalid"), true);
+        return;
+      }
+      setSending(true);
+      setStatus("pending", t("notify.sending"));
+      fetch(API, { method: "POST", headers: { "Content-Type": "application/json" }, body: body })
+        .then(function (res) {
+          return res
+            .json()
+            .catch(function () {
+              return {};
+            })
+            .then(function (data) {
+              return { res: res, data: data || {} };
+            });
+        })
+        .then(function (r) {
+          if (r.res.ok && r.data.ok) {
+            setError("");
+            if (opts.onSuccess) opts.onSuccess(statusEl);
+            else setStatus("ok", messageFor(200));
+          } else {
+            setStatus("", "");
+            setError(messageFor(r.res.status, r.data.code), false);
+            resetWidget();
+          }
+        })
+        .catch(function () {
+          setStatus("", "");
+          setError(t("notify.failed"), false);
+          resetWidget();
+        })
+        .then(function () {
+          setSending(false);
+        });
     });
-    if (new TextEncoder().encode(body).length > 2048) {
-      setStatus("error", t("notify.invalid"));
-      resetTurnstile();
-      return;
-    }
 
-    fetch(API, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: body,
-    })
-      .then(function (res) {
-        return res
-          .json()
+    return {
+      input: input,
+      mount: function () {
+        mounted = true;
+        setError("");
+        setStatus("", "");
+        setSending(false);
+        loadTurnstile()
+          .then(renderWidget)
           .catch(function () {
-            return {};
-          })
-          .then(function (data) {
-            return { res: res, data: data };
+            if (mounted) setError(t("notify.captcha"), false);
           });
-      })
-      .then(function (_ref) {
-        var res = _ref.res;
-        var data = _ref.data || {};
-        var code = data.code;
-        if (res.ok && data.ok) {
-          setStatus("ok", messageFor(200));
-          // Keep email on success too (user asked keep on error; success can stay)
-        } else {
-          setStatus("error", messageFor(res.status, code));
-        }
-      })
-      .catch(function () {
-        setStatus("error", t("notify.failed"));
-      })
-      .finally(function () {
-        resetTurnstile();
-      });
+      },
+      unmount: function () {
+        mounted = false;
+        removeWidget();
+      },
+      clear: function () {
+        input.value = "";
+        setError("");
+        setStatus("", "");
+      },
+    };
   }
 
-  document.addEventListener("thaisweets:lang", function () {
-    if (widgetId != null && window.turnstile) {
-      try {
-        window.turnstile.remove(widgetId);
-      } catch (e) {}
-    }
-    widgetId = null;
-    token = null;
-  });
+  /* ---- Modal dialog (upcoming-round cards) ---- */
+  var dlg = document.getElementById("notify-dialog");
+  var dialogForm = null;
+  var current = null;
+  var titleEl = null;
+  var descEl = null;
 
-  // The form is rendered by js/open-menus.js (inside a round card or the empty state),
-  // so bind whenever a new form is announced.
-  function setup() {
-    var el = document.getElementById("notify-form");
-    if (!el || el === form) return;
-    if (widgetId != null && window.turnstile) {
-      try {
-        window.turnstile.remove(widgetId);
-      } catch (e) {}
-    }
-    form = el;
-    emailInput = document.getElementById("notify-email");
-    submitBtn = form.querySelector('button[type="submit"]');
-    statusEl = document.getElementById("notify-status");
-    widgetHost = document.getElementById("notify-turnstile");
-    widgetId = null;
-    token = null;
-    sending = false;
-    form.addEventListener("submit", onSubmit);
-    setSending(false);
-
-    loadTurnstile()
-      .then(function () {
-        if (form !== el) return;
-        renderWidget();
-        setSending(false);
-      })
-      .catch(function () {
-        setStatus("error", t("notify.captcha"));
-        setSending(false);
-      });
+  function fill(template, values) {
+    return String(template).replace(/\{(\w+)\}/g, function (m, k) {
+      return values[k] != null ? values[k] : m;
+    });
   }
 
-  document.addEventListener("thaisweets:notify-form", setup);
-  setup();
+  if (dlg && typeof dlg.showModal === "function") {
+    titleEl = document.getElementById("notify-title");
+    descEl = document.getElementById("notify-desc");
+
+    dialogForm = createForm(document.getElementById("notify-dialog-form"), {
+      getMenuId: function () {
+        return current && current.menuId;
+      },
+      onSuccess: function () {
+        if (current) current.done = true;
+        dlg.close();
+      },
+    });
+
+    dlg.querySelector("[data-notify-close]").addEventListener("click", function () {
+      dlg.close();
+    });
+    // Click on the backdrop (outside the dialog box) closes it.
+    dlg.addEventListener("click", function (e) {
+      if (e.target === dlg) dlg.close();
+    });
+    dlg.addEventListener("close", function () {
+      document.body.classList.remove("dialog-open");
+      dialogForm.unmount();
+      var c = current;
+      current = null;
+      if (c) {
+        if (c.done && c.onDone) c.onDone();
+        if (c.opener && c.opener.focus) c.opener.focus();
+      }
+    });
+    document.addEventListener("thaisweets:lang", function () {
+      if (dlg.open) dlg.close();
+    });
+  }
+
+  function openDialog(opts) {
+    if (!dlg || !dialogForm) return;
+    current = opts;
+    // With a menu id the signup is for that round; without one it is the general "any menu" signup.
+    if (opts.menuId) {
+      titleEl.textContent = fill(t("home2.dlgTitle"), { title: opts.title });
+      descEl.textContent = opts.opensAt
+        ? fill(t("home2.dlgLine"), { date: opts.opensAt })
+        : t("home2.dlgLineNoDate");
+    } else {
+      titleEl.textContent = t("home2.dlgTitleGeneral");
+      descEl.textContent = fill(opts.opensAt ? t("home2.dlgLineGeneral") : t("home2.dlgLineGeneralNoDate"), {
+        title: opts.title,
+        date: opts.opensAt,
+      });
+    }
+    dialogForm.clear();
+    document.body.classList.add("dialog-open");
+    dlg.showModal();
+    dialogForm.mount();
+    dialogForm.input.focus();
+  }
+
+  window.ThaiSweetsNotify = { open: openDialog };
+
+  /* ---- Inline form in the "no menu open" box ---- */
+  var inline = null;
+  var inlineEl = null;
+  function setupInline() {
+    var el = document.querySelector("form[data-notify-inline]");
+    if (el === inlineEl) return;
+    if (inline) inline.unmount();
+    inline = null;
+    inlineEl = el;
+    if (!el) return;
+    inline = createForm(el, {
+      getMenuId: function () {
+        return null;
+      },
+    });
+    inline.mount();
+  }
+  document.addEventListener("thaisweets:notify-form", setupInline);
+  setupInline();
 })();

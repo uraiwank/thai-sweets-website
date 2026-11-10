@@ -2,7 +2,7 @@
   "use strict";
 
   /* Flip to true to force the local sample (js/open-menus.sample.json).
-     On localhost you can also use ?rounds=sample | upcoming | empty | error. */
+     On localhost you can also use ?rounds=sample (all 3) | mixed (open + upcoming) | open1 | upcoming1 | upcoming2 | empty | error. */
   var USE_MOCK = false;
 
   var API_BASE = "https://order.thaisweets.nl/api/open-menus";
@@ -36,17 +36,6 @@
 
   function safeText(value) {
     return value == null ? "" : String(value);
-  }
-
-  function focusNotifyEmail() {
-    var form = document.getElementById("notify-form");
-    var input = document.getElementById("notify-email");
-    if (form) form.scrollIntoView({ behavior: "smooth", block: "center" });
-    if (input) {
-      window.setTimeout(function () {
-        input.focus();
-      }, 350);
-    }
   }
 
   function mediaFrame(imageUrl, title, status) {
@@ -143,48 +132,90 @@
     return head;
   }
 
-  /* The notify form is created here; js/notify.js binds to it on the event below. */
-  function buildNotifyForm() {
-    var form = document.createElement("form");
-    form.id = "notify-form";
-    form.className = "notify-form";
-    form.noValidate = true;
+  var NOTIFIED_PREFIX = "thaisweets_notified_";
 
-    var label = document.createElement("label");
-    label.setAttribute("for", "notify-email");
-    label.textContent = t("home2.notifyLabel");
-    form.appendChild(label);
+  function isNotified(slug) {
+    try {
+      return localStorage.getItem(NOTIFIED_PREFIX + slug) === "1";
+    } catch (e) {
+      return false;
+    }
+  }
 
-    var row = document.createElement("div");
-    row.className = "notify-form__row";
-    var input = document.createElement("input");
-    input.id = "notify-email";
-    input.name = "email";
-    input.type = "email";
-    input.autocomplete = "email";
-    input.required = true;
-    input.placeholder = t("notify.placeholder");
-    row.appendChild(input);
-    var submit = document.createElement("button");
-    submit.type = "submit";
-    submit.className = "btn btn--outline";
-    submit.textContent = t("home2.notifyButton");
-    row.appendChild(submit);
-    form.appendChild(row);
+  function rememberNotified(slug) {
+    try {
+      localStorage.setItem(NOTIFIED_PREFIX + slug, "1");
+    } catch (e) {}
+  }
 
-    var widget = document.createElement("div");
-    widget.id = "notify-turnstile";
-    widget.className = "notify-turnstile";
-    form.appendChild(widget);
+  function announce(message) {
+    var live = document.querySelector("[data-notify-live]");
+    if (!live) return;
+    live.textContent = "";
+    window.setTimeout(function () {
+      live.textContent = message;
+    }, 60);
+  }
 
-    var status = document.createElement("p");
-    status.id = "notify-status";
-    status.className = "notify-status";
-    status.setAttribute("role", "status");
-    status.setAttribute("aria-live", "polite");
-    status.hidden = true;
-    form.appendChild(status);
-    return form;
+  function bellSvg() {
+    var ns = "http://www.w3.org/2000/svg";
+    var svg = document.createElementNS(ns, "svg");
+    svg.setAttribute("width", "20");
+    svg.setAttribute("height", "20");
+    svg.setAttribute("viewBox", "0 0 24 24");
+    svg.setAttribute("aria-hidden", "true");
+    svg.setAttribute("fill", "none");
+    svg.setAttribute("stroke", "currentColor");
+    svg.setAttribute("stroke-width", "2");
+    svg.setAttribute("stroke-linecap", "round");
+    svg.setAttribute("stroke-linejoin", "round");
+    ["M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9", "M10.3 21a1.94 1.94 0 0 0 3.4 0"].forEach(function (d) {
+      var path = document.createElementNS(ns, "path");
+      path.setAttribute("d", d);
+      svg.appendChild(path);
+    });
+    return svg;
+  }
+
+  function setBellDone(btn) {
+    btn.classList.add("btn--done");
+    btn.setAttribute("aria-disabled", "true");
+    btn.removeAttribute("aria-haspopup");
+    btn.replaceChildren(document.createTextNode(t("home2.bellDone")));
+  }
+
+  /* Upcoming round: one outline button with a bell. It opens the notify dialog (js/notify.js). */
+  function buildBellButton(menu) {
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "btn btn--outline";
+    if (isNotified(menu.slug)) {
+      setBellDone(btn);
+      return btn;
+    }
+    btn.setAttribute("aria-haspopup", "dialog");
+    btn.appendChild(bellSvg());
+    btn.appendChild(document.createTextNode(t("home2.bellBtn")));
+    btn.addEventListener("click", function () {
+      if (btn.getAttribute("aria-disabled") === "true") return;
+      if (!window.ThaiSweetsNotify) return;
+      window.ThaiSweetsNotify.open({
+        title: safeText(menu.title),
+        opensAt: menu.opensAt,
+        menuId: typeof menu.id === "string" ? menu.id : null,
+        opener: btn,
+        onDone: function () {
+          rememberNotified(menu.slug);
+          setBellDone(btn);
+          announce(
+            typeof menu.id === "string"
+              ? t("home2.bellDoneLive").replace("{title}", safeText(menu.title))
+              : t("home2.bellDoneLiveGeneral")
+          );
+        },
+      });
+    });
+    return btn;
   }
 
   function announceNotifyForm() {
@@ -211,7 +242,7 @@
     return article;
   }
 
-  function buildUpcomingCard(menu, withForm) {
+  function buildUpcomingCard(menu) {
     var article = document.createElement("article");
     article.className = "round-card round-card--upcoming";
     var soon = menu.opensAt ? t("rounds.opensPrefix") + safeText(menu.opensAt) : t("rounds.opensSoon");
@@ -221,48 +252,98 @@
     body.className = "round-card__body";
     body.appendChild(cardHead(menu));
     body.appendChild(metaRow(menu));
-
-    if (withForm) {
-      body.appendChild(buildNotifyForm());
-    } else {
-      var btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "btn btn--outline";
-      btn.textContent = t("rounds.notifyWhen");
-      btn.addEventListener("click", focusNotifyEmail);
-      body.appendChild(btn);
-    }
+    body.appendChild(buildBellButton(menu));
 
     article.appendChild(body);
     return article;
   }
 
-  function buildEmptyCard() {
-    var article = document.createElement("article");
-    article.className = "round-card round-card--empty";
+  /* No rounds: soft pink box with the general signup (any menu). */
+  function buildEmptyBox() {
+    var box = document.createElement("div");
+    box.className = "notify-empty";
 
-    var body = document.createElement("div");
-    body.className = "round-card__body";
-
-    var head = document.createElement("div");
-    head.className = "round-card__head";
+    var text = document.createElement("div");
+    text.className = "notify-empty__text";
     var h3 = document.createElement("h3");
-    h3.textContent = t("rounds.emptyTitle");
-    head.appendChild(h3);
+    h3.textContent = t("home2.emptyTitle");
+    text.appendChild(h3);
     var p = document.createElement("p");
-    p.className = "round-card__desc";
-    p.textContent = t("rounds.emptyBody");
-    head.appendChild(p);
-    body.appendChild(head);
+    p.textContent = t("home2.emptyText");
+    text.appendChild(p);
+    var party = document.createElement("p");
+    party.className = "notify-empty__party";
+    party.appendChild(document.createTextNode(t("home2.emptyParty") + " "));
+    var a = document.createElement("a");
+    a.href = ORDER_HOME + "/" + pageLang() + "/";
+    a.textContent = t("home2.emptyPartyLink");
+    party.appendChild(a);
+    text.appendChild(party);
+    box.appendChild(text);
 
-    body.appendChild(buildNotifyForm());
-    article.appendChild(body);
-    return article;
+    var form = document.createElement("form");
+    form.className = "notify-form";
+    form.setAttribute("data-notify-inline", "");
+    form.noValidate = true;
+
+    var label = document.createElement("label");
+    label.setAttribute("for", "notify-inline-email");
+    label.textContent = t("home2.emptyLabel");
+    form.appendChild(label);
+
+    var row = document.createElement("div");
+    row.className = "notify-form__row";
+    var input = document.createElement("input");
+    input.id = "notify-inline-email";
+    input.className = "notify-input";
+    input.name = "email";
+    input.type = "email";
+    input.autocomplete = "email";
+    input.required = true;
+    input.placeholder = t("notify.placeholder");
+    input.setAttribute("data-notify-email", "");
+    input.setAttribute("aria-describedby", "notify-inline-error");
+    row.appendChild(input);
+    var submit = document.createElement("button");
+    submit.type = "submit";
+    submit.className = "btn";
+    submit.textContent = t("home2.notifyButton");
+    row.appendChild(submit);
+    form.appendChild(row);
+
+    var error = document.createElement("p");
+    error.id = "notify-inline-error";
+    error.className = "notify-error";
+    error.setAttribute("role", "alert");
+    error.setAttribute("data-notify-error", "");
+    error.hidden = true;
+    form.appendChild(error);
+
+    var widget = document.createElement("div");
+    widget.className = "notify-turnstile";
+    widget.setAttribute("data-notify-widget", "");
+    form.appendChild(widget);
+
+    var status = document.createElement("p");
+    status.className = "notify-status";
+    status.setAttribute("role", "status");
+    status.setAttribute("data-notify-status", "");
+    status.hidden = true;
+    form.appendChild(status);
+
+    var hint = document.createElement("p");
+    hint.className = "notify-hint";
+    hint.textContent = t("home2.unsub");
+    form.appendChild(hint);
+
+    box.appendChild(form);
+    return box;
   }
 
   /* Static placeholders while loading (no shimmer). */
   function renderSkeletons() {
     gridEl.setAttribute("aria-busy", "true");
+    gridEl.className = "rounds-grid rounds-grid--many";
     gridEl.replaceChildren();
     for (var i = 0; i < 2; i++) {
       var sk = document.createElement("article");
@@ -316,11 +397,23 @@
     if (el && !el.querySelector("a")) el.textContent = t("home2.news");
   }
 
+  /* Heading: "Nu te bestellen" when a round is open, otherwise "Binnenkort te bestellen". With no rounds the
+     pink box carries the message, so the heading stays for screen readers only. */
+  function setHeading(anyOpen, noRounds) {
+    var h = document.getElementById("open-title");
+    if (!h) return;
+    var key = anyOpen ? "home2.openTitle" : "home2.soonTitle";
+    h.setAttribute("data-i18n", key);
+    h.textContent = t(key);
+    h.classList.toggle("visually-hidden", !!noRounds);
+  }
+
   function renderEmpty() {
     setNews(null);
+    setHeading(false, true);
     gridEl.setAttribute("aria-busy", "false");
-    gridEl.replaceChildren();
-    gridEl.appendChild(buildEmptyCard());
+    gridEl.className = "rounds-grid rounds-grid--empty";
+    gridEl.replaceChildren(buildEmptyBox());
     announceNotifyForm();
   }
 
@@ -344,21 +437,22 @@
     }
 
     setNews(list);
+    setHeading(
+      list.some(function (m) {
+        return m.status === "open";
+      }),
+      false
+    );
     gridEl.setAttribute("aria-busy", "false");
+    gridEl.className = "rounds-grid " + (list.length === 1 ? "rounds-grid--one" : "rounds-grid--many");
     gridEl.replaceChildren();
-    var formPlaced = false;
     list.forEach(function (menu) {
-      if (menu.status === "upcoming") {
-        gridEl.appendChild(buildUpcomingCard(menu, !formPlaced));
-        formPlaced = true;
-      } else {
-        gridEl.appendChild(buildOpenCard(menu));
-      }
+      gridEl.appendChild(menu.status === "upcoming" ? buildUpcomingCard(menu) : buildOpenCard(menu));
     });
-    if (formPlaced) announceNotifyForm();
+    announceNotifyForm();
   }
 
-  /* Local testing only (localhost): ?rounds=sample | upcoming | empty | error */
+  /* Local testing only (localhost): ?rounds=sample (all 3) | mixed (open + upcoming) | open1 | upcoming1 | upcoming2 | empty | error */
   function testMode() {
     if (!/^(localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname)) return null;
     try {
@@ -372,14 +466,21 @@
     var mode = testMode();
     if (mode === "empty") return Promise.resolve({ menus: [] });
     if (mode === "error") return Promise.reject(new Error("forced error"));
-    if (USE_MOCK || mode === "sample" || mode === "upcoming") {
+    if (USE_MOCK || /^(sample|mixed|open1|upcoming1|upcoming2|upcoming)$/.test(mode || "")) {
       return fetch("js/open-menus.sample.json", { cache: "no-store" }).then(function (res) {
         if (!res.ok) throw new Error("mock unavailable");
         return res.json();
       }).then(function (data) {
-        if (mode === "upcoming") {
+        var only = {
+          open1: ["thai-desserts-1"],
+        mixed: ["thai-desserts-1", "christmas-2026"],
+          upcoming1: ["christmas-2026"],
+          upcoming: ["christmas-2026"],
+          upcoming2: ["christmas-2026", "thai-dessert-2612"],
+        }[mode];
+        if (only) {
           data.menus = data.menus.filter(function (m) {
-            return m.status === "upcoming";
+            return only.indexOf(m.slug) !== -1;
           });
         }
         return data;
