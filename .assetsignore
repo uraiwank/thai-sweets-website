@@ -32,3 +32,12 @@ node_modules/
 *.key
 .env*
 .wrangler/
+
+# Old multi-page site: not served any more (files stay in the repo until the cleanup)
+/about.html
+/contact.html
+/menu.html
+/how-to-order.html
+/js/i18n/en.js
+/js/i18n/nl.js
+/js/i18n/th.js
