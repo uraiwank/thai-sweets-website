@@ -161,6 +161,19 @@ h1, h2, h3, p { margin: 0; }
 .notify-input--dialog { border: 2px solid var(--green); border-radius: 14px; }
 .notify-input[aria-invalid="true"] { border-color: #a3243b; }
 .notify-form__row .btn { flex: none; padding: 0 24px; }
+.notify-types { border: 0; margin: 0; padding: 0; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.notify-types legend { padding: 0; margin-bottom: 8px; font-size: 14px; font-weight: 600; }
+.notify-types__list { display: flex; flex-direction: column; gap: 8px; }
+.notify-form label.notify-type {
+  display: flex; align-items: flex-start; gap: 12px; min-height: 44px; padding: 12px; border: 1px solid #8a8178;
+  border-radius: 14px; background: #fff; cursor: pointer; font-weight: 400;
+}
+.notify-type:has(input:checked) { border: 2px solid var(--green); padding: 11px; background: var(--band); }
+.notify-type:has(input:focus-visible) { outline: 3px solid var(--ink); outline-offset: 2px; }
+.notify-type input { flex: none; width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--green); }
+.notify-type__text { display: flex; flex-direction: column; gap: 2px; }
+.notify-type__title { font-size: 15px; font-weight: 600; }
+.notify-type__hint { font-size: 14px; color: var(--muted); }
 .notify-hint { font-size: 13px; color: var(--muted); }
 .notify-turnstile:empty { display: none; }
 .notify-turnstile { margin-top: 6px; }

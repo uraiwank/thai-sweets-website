@@ -202,16 +202,12 @@
       window.ThaiSweetsNotify.open({
         title: safeText(menu.title),
         opensAt: menu.opensAt,
-        menuId: typeof menu.id === "string" ? menu.id : null,
+        notifyType: safeText(menu.notifyType),
         opener: btn,
         onDone: function () {
           rememberNotified(menu.slug);
           setBellDone(btn);
-          announce(
-            typeof menu.id === "string"
-              ? t("home2.bellDoneLive").replace("{title}", safeText(menu.title))
-              : t("home2.bellDoneLiveGeneral")
-          );
+          announce(t("home2.bellDoneLive"));
         },
       });
     });
@@ -286,9 +282,28 @@
     form.setAttribute("data-notify-inline", "");
     form.noValidate = true;
 
+    var fieldset = document.createElement("fieldset");
+    fieldset.className = "notify-types";
+    fieldset.setAttribute("data-notify-types", "");
+    var legend = document.createElement("legend");
+    legend.textContent = t("home2.typesLegend");
+    fieldset.appendChild(legend);
+    var list = document.createElement("div");
+    list.className = "notify-types__list";
+    list.setAttribute("data-notify-types-list", "");
+    fieldset.appendChild(list);
+    form.appendChild(fieldset);
+    var typesError = document.createElement("p");
+    typesError.id = "notify-inline-types-error";
+    typesError.className = "notify-error";
+    typesError.setAttribute("role", "alert");
+    typesError.setAttribute("data-notify-types-error", "");
+    typesError.hidden = true;
+    form.appendChild(typesError);
+
     var label = document.createElement("label");
     label.setAttribute("for", "notify-inline-email");
-    label.textContent = t("home2.emptyLabel");
+    label.textContent = t("home2.emailLabel");
     form.appendChild(label);
 
     var row = document.createElement("div");

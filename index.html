@@ -263,6 +263,11 @@
       </button>
     </div>
     <form id="notify-dialog-form" class="notify-form" novalidate>
+      <fieldset class="notify-types" data-notify-types>
+        <legend class="visually-hidden" data-i18n="home2.typesLegend">Waar wil je een mail over?</legend>
+        <div class="notify-types__list" data-notify-types-list></div>
+      </fieldset>
+      <p id="notify-dialog-types-error" class="notify-error" role="alert" data-notify-types-error hidden></p>
       <label for="notify-dialog-email" data-i18n="home2.emailLabel">E-mailadres</label>
       <input id="notify-dialog-email" class="notify-input notify-input--dialog" type="email" name="email" autocomplete="email" autofocus required data-notify-email aria-describedby="notify-dialog-error">
       <p id="notify-dialog-error" class="notify-error" role="alert" data-notify-error hidden></p>

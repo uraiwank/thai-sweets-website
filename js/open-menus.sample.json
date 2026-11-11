@@ -3,6 +3,7 @@
   "menus": [
     {
       "slug": "thai-desserts-1",
+      "notifyType": "thai_desserts",
       "status": "open",
       "tag": "Special",
       "title": "Thai Desserts",
@@ -18,6 +19,7 @@
     },
     {
       "slug": "christmas-2026",
+      "notifyType": "cakes_seasonal",
       "status": "upcoming",
       "tag": "Seasonal special",
       "title": "Christmas 2026",
@@ -33,6 +35,7 @@
     },
     {
       "slug": "thai-dessert-2612",
+      "notifyType": "thai_desserts",
       "status": "upcoming",
       "tag": "Special",
       "title": "Thai Dessert",

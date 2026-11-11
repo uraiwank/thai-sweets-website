@@ -1,15 +1,15 @@
 /**
  * "Mail me when it opens" signup → POST https://order.thaisweets.nl/api/notify
- * Body max 2KB JSON: { email, lang, turnstileToken, menuId }
+ * Body max 2KB JSON: { email, lang, turnstileToken, types: ["thai_desserts" | "cakes_seasonal" | "news_custom", ...] }
  *
  * Two places use it, both rendered/owned elsewhere:
  *  - the modal <dialog id="notify-dialog"> (opened from an upcoming-round card, ThaiSweetsNotify.open)
  *  - the inline form in the "no menu open" box (js/open-menus.js announces it with "thaisweets:notify-form")
  * Turnstile is rendered only while one of these forms is shown, never on the page itself.
  *
- * menuId: the endpoint takes a menu UUID or null (null = every menu that opens). /api/open-menus has no
- * ids yet, so this sends menu.id when the API provides it and null otherwise. The dialog texts follow:
- * per-round texts with an id, the general "when a menu opens" texts without.
+ * Sign-ups are per menu TYPE (the order app ignores menuId when "types" is sent). Each form has three checkboxes
+ * (same names as order.thaisweets.nl). Opened from a card: only that card's notifyType is ticked. The "no menu
+ * open" box: nothing ticked. At least one box is required.
  */
 (function () {
   "use strict";
@@ -19,6 +19,11 @@
   var SCRIPT_SRC = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
   var SCRIPT_ID = "cf-turnstile-script";
   var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  var TYPES = [
+    { value: "thai_desserts", title: "home2.typeThaiTitle", hint: "home2.typeThaiHint" },
+    { value: "cakes_seasonal", title: "home2.typeCakesTitle", hint: "home2.typeCakesHint" },
+    { value: "news_custom", title: "home2.typeNewsTitle", hint: "home2.typeNewsHint" },
+  ];
 
   function t(key) {
     if (window.ThaiSweetsI18n && typeof window.ThaiSweetsI18n.t === "function") {
@@ -69,13 +74,17 @@
     return t("notify.failed");
   }
 
-  /* One signup form. opts.getMenuId() → UUID or null; opts.onSuccess() runs after an accepted signup. */
+  /* One signup form. opts.onSuccess() runs after an accepted signup. */
   function createForm(form, opts) {
     var input = form.querySelector("[data-notify-email]");
     var submit = form.querySelector('button[type="submit"]');
     var errorEl = form.querySelector("[data-notify-error]");
     var statusEl = form.querySelector("[data-notify-status]");
     var host = form.querySelector("[data-notify-widget]");
+    var typesEl = form.querySelector("[data-notify-types]");
+    var typesList = form.querySelector("[data-notify-types-list]");
+    var typesError = form.querySelector("[data-notify-types-error]");
+    var idPrefix = form.id || "notify-inline";
     var widgetId = null;
     var token = null;
     var sending = false;
@@ -90,6 +99,57 @@
       } else {
         input.removeAttribute("aria-invalid");
       }
+    }
+
+    function pickedTypes() {
+      return Array.prototype.map.call(form.querySelectorAll('input[name="types"]:checked'), function (c) {
+        return c.value;
+      });
+    }
+
+    function setTypesError(message, focusField) {
+      typesError.textContent = message || "";
+      typesError.hidden = !message;
+      if (message) {
+        typesEl.setAttribute("aria-describedby", typesError.id);
+        if (focusField) {
+          var first = form.querySelector('input[name="types"]');
+          if (first) first.focus();
+        }
+      } else {
+        typesEl.removeAttribute("aria-describedby");
+      }
+    }
+
+    /* (Re)build the checkboxes; `ticked` = values that start ticked. */
+    function buildTypes(ticked) {
+      typesList.replaceChildren();
+      TYPES.forEach(function (type) {
+        var label = document.createElement("label");
+        label.className = "notify-type";
+        var box = document.createElement("input");
+        box.type = "checkbox";
+        box.name = "types";
+        box.value = type.value;
+        box.id = idPrefix + "-type-" + type.value;
+        box.checked = ticked.indexOf(type.value) !== -1;
+        box.addEventListener("change", function () {
+          if (pickedTypes().length) setTypesError("");
+        });
+        var text = document.createElement("span");
+        text.className = "notify-type__text";
+        var title = document.createElement("span");
+        title.className = "notify-type__title";
+        title.textContent = t(type.title);
+        var hint = document.createElement("span");
+        hint.className = "notify-type__hint";
+        hint.textContent = t(type.hint);
+        text.appendChild(title);
+        text.appendChild(hint);
+        label.appendChild(box);
+        label.appendChild(text);
+        typesList.appendChild(label);
+      });
     }
 
     function setStatus(kind, message) {
@@ -148,6 +208,13 @@
       e.preventDefault();
       if (sending) return;
       setError("");
+      setTypesError("");
+      var types = pickedTypes();
+      if (!types.length) {
+        setStatus("", "");
+        setTypesError(t("home2.typesNone"), true);
+        return;
+      }
       var email = String(input.value || "").trim();
       if (!EMAIL.test(email)) {
         setStatus("", "");
@@ -163,7 +230,7 @@
         email: email,
         lang: currentLang(),
         turnstileToken: token,
-        menuId: (opts.getMenuId && opts.getMenuId()) || null,
+        types: types,
       });
       if (new TextEncoder().encode(body).length > 2048) {
         setError(t("notify.invalid"), true);
@@ -205,9 +272,11 @@
 
     return {
       input: input,
+      buildTypes: buildTypes,
       mount: function () {
         mounted = true;
         setError("");
+        setTypesError("");
         setStatus("", "");
         setSending(false);
         loadTurnstile()
@@ -223,6 +292,7 @@
       clear: function () {
         input.value = "";
         setError("");
+        setTypesError("");
         setStatus("", "");
       },
     };
@@ -246,9 +316,6 @@
     descEl = document.getElementById("notify-desc");
 
     dialogForm = createForm(document.getElementById("notify-dialog-form"), {
-      getMenuId: function () {
-        return current && current.menuId;
-      },
       onSuccess: function () {
         if (current) current.done = true;
         dlg.close();
@@ -280,24 +347,20 @@
   function openDialog(opts) {
     if (!dlg || !dialogForm) return;
     current = opts;
-    // With a menu id the signup is for that round; without one it is the general "any menu" signup.
-    if (opts.menuId) {
-      titleEl.textContent = fill(t("home2.dlgTitle"), { title: opts.title });
-      descEl.textContent = opts.opensAt
-        ? fill(t("home2.dlgLine"), { date: opts.opensAt })
-        : t("home2.dlgLineNoDate");
-    } else {
-      titleEl.textContent = t("home2.dlgTitleGeneral");
-      descEl.textContent = fill(opts.opensAt ? t("home2.dlgLineGeneral") : t("home2.dlgLineGeneralNoDate"), {
-        title: opts.title,
-        date: opts.opensAt,
-      });
-    }
+    titleEl.textContent = t("home2.dlgTitle");
+    descEl.textContent = fill(opts.opensAt ? t("home2.dlgLine") : t("home2.dlgLineNoDate"), {
+      title: opts.title,
+      date: opts.opensAt,
+    });
+    // Only this card's own type starts ticked (none when the API gave no notifyType).
+    dialogForm.buildTypes(opts.notifyType ? [opts.notifyType] : []);
     dialogForm.clear();
     document.body.classList.add("dialog-open");
     dlg.showModal();
     dialogForm.mount();
-    dialogForm.input.focus();
+    // A type is already ticked → straight to the email field; otherwise start at the first checkbox.
+    var firstBox = dlg.querySelector('input[name="types"]:checked') ? dialogForm.input : dlg.querySelector('input[name="types"]');
+    (firstBox || dialogForm.input).focus();
   }
 
   window.ThaiSweetsNotify = { open: openDialog };
@@ -312,11 +375,8 @@
     inline = null;
     inlineEl = el;
     if (!el) return;
-    inline = createForm(el, {
-      getMenuId: function () {
-        return null;
-      },
-    });
+    inline = createForm(el, {});
+    inline.buildTypes([]);
     inline.mount();
   }
   document.addEventListener("thaisweets:notify-form", setupInline);
