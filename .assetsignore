@@ -3,6 +3,7 @@
 
 # Deploy config
 wrangler.jsonc
+worker/
 .assetsignore
 .git*
 

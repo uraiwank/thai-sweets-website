@@ -140,6 +140,16 @@ h1, h2, h3, p { margin: 0; }
 
 /* No rounds: soft pink box with the general signup */
 .rounds-grid--empty { grid-template-columns: minmax(0, 1fr); }
+/* Static fallback inside the rounds grid (no JS / API error); markup in index.html and buildFallback() */
+.rounds-fallback {
+  background: #f7eaee; border-radius: 24px; padding: 40px 48px; display: flex; flex-direction: column; align-items: flex-start; gap: 18px;
+}
+.rounds-fallback p { color: #4f4842; font-size: 18px; max-width: 560px; }
+.rounds-noscript { margin-top: 16px; color: var(--muted); font-size: 15px; }
+@media (max-width: 860px) {
+  .rounds-fallback { padding: 28px; }
+  .rounds-fallback .btn { align-self: stretch; }
+}
 .notify-empty {
   background: #f7eaee; border-radius: 24px; padding: 48px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 48px; align-items: center;
@@ -201,6 +211,41 @@ h1, h2, h3, p { margin: 0; }
 .notify-dialog .notify-submit { margin-top: 8px; width: 100%; }
 .notify-dialog__foot { font-size: 13px; color: var(--muted); }
 body.dialog-open { overflow: hidden; }
+
+/* Cookie banner + settings (js/cookie-consent.js). The banner is a bar, not an overlay; no animation. */
+body { padding-bottom: var(--consent-h, 0px); }
+.consent-banner {
+  position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 100; max-width: 960px; margin-inline: auto;
+  background: #fff; color: var(--ink); border: 1px solid var(--line-strong); border-radius: 20px;
+  box-shadow: var(--shadow-soft); padding: 18px 20px; display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; gap: 16px 20px;
+}
+.consent-banner[hidden] { display: none; }
+.consent-banner__text { flex: 1 1 380px; font-size: 14px; line-height: 1.5; color: var(--muted); }
+.consent-banner__actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.consent-banner .btn { height: 44px; padding: 0 20px; font-size: 15px; min-width: 112px; }
+.consent-dialog { width: min(520px, calc(100% - 32px)); }
+.consent-pref {
+  border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: flex; justify-content: space-between;
+  align-items: flex-start; gap: 16px;
+}
+.consent-pref h3 { font: 600 16px var(--sans); margin-bottom: 4px; }
+.consent-pref p { color: var(--muted); font-size: 14px; }
+.consent-pref input[type="checkbox"] { flex: none; width: 24px; height: 24px; accent-color: var(--green); margin: 0; }
+.consent-pref__always {
+  flex: none; padding: 4px 10px; border-radius: 999px; background: var(--band); color: var(--green-text);
+  font-size: 12px; font-weight: 700; white-space: nowrap;
+}
+.consent-save { width: 100%; margin-top: 4px; }
+.site-footer .linklike {
+  background: none; border: 0; padding: 0; font: inherit; color: #f3eee7; text-align: left; cursor: pointer;
+  text-decoration: underline;
+}
+.site-footer .linklike:hover { color: #fff; }
+@media (max-width: 520px) {
+  .consent-banner { left: 8px; right: 8px; bottom: 8px; padding: 14px; }
+  .consent-banner__actions .btn { flex: 1 1 100%; }
+}
 
 /* Skeleton while loading (static, no shimmer) */
 .round-card--skeleton .skeleton-block { aspect-ratio: 16 / 9; background: var(--band); }
@@ -286,50 +331,6 @@ body[data-page="notfound"] .site-footer { margin-top: auto; }
 .notfound__code { font-size: 13px; font-weight: 600; letter-spacing: 0.1em; color: var(--pink); }
 .notfound h1 { font: 500 clamp(38px, 5vw, 60px)/1.1 var(--serif); }
 .notfound__text { font-size: 18px; color: var(--muted); }
-
-/* Cookie banner + preferences (behaviour in js/cookie-consent.js) */
-.form-hint { font-size: 14px; color: var(--muted); }
-.icon-btn {
-  display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 999px;
-  border: 1px solid var(--line-strong); background: #fff; color: var(--ink); font-size: 24px; cursor: pointer;
-}
-.btn--secondary { background: #fff; color: var(--green); border-color: var(--line-strong); height: 44px; padding: 0 18px; font-size: 15px; }
-.btn--secondary:hover { background: var(--band); color: var(--green-hover); }
-#cookie-consent-banner .btn--primary { height: 44px; padding: 0 18px; font-size: 15px; }
-.cookie-modal .btn { height: 44px; padding: 0 20px; font-size: 15px; }
-#cookie-consent-banner {
-  position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 9999; background: var(--surface); color: var(--ink);
-  border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow-soft); padding: 20px; max-width: 960px;
-  margin-inline: auto;
-}
-#cookie-consent-banner h2 { font: 700 18px var(--sans); margin: 0 0 8px; }
-#cookie-consent-banner p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
-.cookie-banner__inner { display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
-.cookie-banner__actions { display: flex; flex-wrap: wrap; gap: 10px; }
-#cookie-preferences-modal {
-  position: fixed; inset: 0; z-index: 10000; background: rgba(0, 0, 0, 0.65); display: flex; align-items: center;
-  justify-content: center; padding: 16px;
-}
-.cookie-modal {
-  background: var(--surface); color: var(--ink); border-radius: 20px; width: min(640px, 100%); max-height: 90vh;
-  overflow: auto; border: 1px solid var(--line);
-}
-.cookie-modal__head {
-  position: sticky; top: 0; background: var(--green); color: #fff; padding: 18px 22px; display: flex;
-  justify-content: space-between; align-items: center; border-radius: 20px 20px 0 0;
-}
-.cookie-modal__head h2 { color: #fff; font: 600 20px var(--sans); margin: 0; }
-.cookie-modal__head .icon-btn { border-color: rgba(255, 255, 255, 0.35); color: #fff; background: transparent; }
-.cookie-modal__body { padding: 22px; display: grid; gap: 14px; }
-.cookie-pref {
-  border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: flex; justify-content: space-between;
-  gap: 16px; align-items: start;
-}
-.cookie-pref h3 { font: 600 16px var(--sans); margin: 0 0 6px; }
-.cookie-pref p { margin: 0; color: var(--muted); font-size: 14px; }
-.cookie-pref input[type="checkbox"] { width: 22px; height: 22px; }
-.pref-always { display: inline-flex; padding: 4px 10px; border-radius: 999px; background: var(--band); color: var(--green-text); font-size: 12px; font-weight: 700; }
-.cookie-modal__actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
 
 @media (max-width: 860px) {
   .rounds-grid--one .round-card { grid-template-columns: minmax(0, 1fr); }

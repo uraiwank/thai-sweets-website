@@ -1,4 +1,4 @@
-/* Home page: review carousel + cookie settings link. */
+/* Home page: review carousel. */
 (function () {
   "use strict";
 
@@ -9,14 +9,6 @@
     return window.ThaiSweetsI18n && window.ThaiSweetsI18n.t ? window.ThaiSweetsI18n.t(key) : key;
   }
 
-  document.querySelectorAll('[href="#cookie-settings"], [data-cookie-settings]').forEach(function (el) {
-    el.addEventListener("click", function (e) {
-      e.preventDefault();
-      if (window.CookieConsent && window.CookieConsent.showPreferences) {
-        window.CookieConsent.showPreferences();
-      }
-    });
-  });
 
   /* Photo carousel: native scroll-snap, buttons page through the photos. */
   var car = document.querySelector("[data-carousel]");

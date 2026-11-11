@@ -8,7 +8,7 @@
   var API_BASE = "https://order.thaisweets.nl/api/open-menus";
   var ORDER_HOME = "https://order.thaisweets.nl";
   var TIMEOUT_MS = 6000;
-  var LOGO_SRC = "images/logo/logo-horizontal.png";
+  var LOGO_SRC = "images/logo/logo-horizontal-340.webp";
 
   var gridEl = document.querySelector("[data-open-menus-grid]");
   if (!gridEl) return;
@@ -355,6 +355,50 @@
     return box;
   }
 
+  /* Hero button: "Bekijk de rondes ↓" (jump to the rounds) by default; "Bestel nu →" (order app) while a round is open.
+     Uses the data the cards already use: no extra request. */
+  function setHeroCta(anyOpen) {
+    var a = document.querySelector("[data-hero-cta]");
+    if (!a) return;
+    if (anyOpen) {
+      a.setAttribute("data-i18n", "home2.heroCtaOpen");
+      a.setAttribute("data-order-path", "/");
+      a.href = ORDER_HOME + "/" + pageLang() + "/";
+    } else {
+      a.setAttribute("data-i18n", "home2.heroCta");
+      a.removeAttribute("data-order-path");
+      a.setAttribute("href", "#bestellen");
+    }
+    a.textContent = t(anyOpen ? "home2.heroCtaOpen" : "home2.heroCta");
+  }
+
+  /* Same content as the static fallback in index.html. Shown when the API call fails. */
+  function buildFallback() {
+    var box = document.createElement("div");
+    box.className = "rounds-fallback";
+    var p = document.createElement("p");
+    p.setAttribute("data-i18n", "home2.roundsFallbackText");
+    p.textContent = t("home2.roundsFallbackText");
+    box.appendChild(p);
+    var a = document.createElement("a");
+    a.className = "btn";
+    a.href = ORDER_HOME + "/" + pageLang() + "/";
+    a.setAttribute("data-order-path", "/");
+    a.setAttribute("data-i18n", "home2.roundsFallbackLink");
+    a.textContent = t("home2.roundsFallbackLink");
+    box.appendChild(a);
+    return box;
+  }
+
+  function renderFallback() {
+    setNews(null);
+    setHeading(false, true);
+    setHeroCta(false);
+    gridEl.setAttribute("aria-busy", "false");
+    gridEl.className = "rounds-grid rounds-grid--empty";
+    gridEl.replaceChildren(buildFallback());
+  }
+
   /* Static placeholders while loading (no shimmer). */
   function renderSkeletons() {
     gridEl.setAttribute("aria-busy", "true");
@@ -425,6 +469,7 @@
 
   function renderEmpty() {
     setNews(null);
+    setHeroCta(false);
     setHeading(false, true);
     gridEl.setAttribute("aria-busy", "false");
     gridEl.className = "rounds-grid rounds-grid--empty";
@@ -451,13 +496,12 @@
       return;
     }
 
+    var anyOpen = list.some(function (m) {
+      return m.status === "open";
+    });
     setNews(list);
-    setHeading(
-      list.some(function (m) {
-        return m.status === "open";
-      }),
-      false
-    );
+    setHeading(anyOpen, false);
+    setHeroCta(anyOpen);
     gridEl.setAttribute("aria-busy", "false");
     gridEl.className = "rounds-grid " + (list.length === 1 ? "rounds-grid--one" : "rounds-grid--many");
     gridEl.replaceChildren();
@@ -527,7 +571,7 @@
         renderMenus(data && data.menus ? data.menus : []);
       })
       .catch(function () {
-        renderEmpty();
+        renderFallback();
       });
   }
 

@@ -1,10 +1,15 @@
 {
-  // Static site served by a Cloudflare Worker (static assets only: no Worker script, bindings or variables).
+  // Static site served by a Cloudflare Worker. worker/index.js only adds "X-Robots-Tag: noindex, nofollow" on
+  // *.workers.dev (the preview); everything else is static assets (no bindings or variables besides ASSETS).
   // Deployed on push to main with "npx wrangler deploy". The name must match the Worker in the dashboard.
   "name": "thai-sweets-website",
+  "main": "worker/index.js",
   "compatibility_date": "2026-11-01",
   "assets": {
     "directory": "./",
+    "binding": "ASSETS",
+    // Run the Worker for every request (so the header is on all responses, including 404s and static files).
+    "run_worker_first": true,
     // Unknown addresses get /404.html with status 404 (nearest 404.html up the path).
     "not_found_handling": "404-page"
   },

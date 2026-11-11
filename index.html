@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Thai Sweets | Thaise desserts vers op bestelling in Vlaardingen</title>
-  <meta name="description" content="Echte Thaise desserts, snacks en taarten, vers gemaakt in kleine rondes in Vlaardingen. Kies je lekkernijen, kies een tijd en betaal online.">
+  <meta name="description" content="Echte Thaise desserts, snacks en taarten, vers gemaakt in kleine rondes in Vlaardingen. Bekijk de komende rondes en bestel online.">
   <meta name="color-scheme" content="light">
   <link rel="canonical" href="https://www.thaisweets.nl/">
   <meta property="og:title" content="Thai Sweets | Thaise desserts vers op bestelling in Vlaardingen">
-  <meta property="og:description" content="Echte Thaise desserts, snacks en taarten, vers gemaakt in kleine rondes in Vlaardingen. Kies je lekkernijen, kies een tijd en betaal online.">
+  <meta property="og:description" content="Echte Thaise desserts, snacks en taarten, vers gemaakt in kleine rondes in Vlaardingen. Bekijk de komende rondes en bestel online.">
   <meta property="og:image" content="https://www.thaisweets.nl/images/menu/golden-auspicious-set.webp">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.thaisweets.nl/">
@@ -35,6 +35,14 @@
 </head>
 <body data-page="home">
   <a class="skip-link" href="#main" data-i18n="a11y.skip">Naar de inhoud</a>
+  <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookies" data-i18n="consent.bannerLabel" data-i18n-attr="aria-label" hidden>
+    <p class="consent-banner__text"><span data-i18n="consent.text">We gebruiken essentiële opslag om de site te laten werken. Met je toestemming gebruiken we ook analytische cookies (Google Analytics) om te zien hoe de site wordt gebruikt. Lees meer in ons </span><a href="https://order.thaisweets.nl/nl/legal#privacy" data-legal="privacy" rel="noopener noreferrer" target="_blank" data-i18n="home2.privacy">Privacybeleid</a>.</p>
+    <div class="consent-banner__actions">
+      <button type="button" class="btn" data-consent-accept data-i18n="consent.accept">Accepteren</button>
+      <button type="button" class="btn" data-consent-reject data-i18n="consent.reject">Weigeren</button>
+      <button type="button" class="btn btn--outline" data-cookie-settings data-i18n="consent.settings">Instellingen</button>
+    </div>
+  </div>
 
   <!-- News bar: automatic from the rounds API (js/open-menus.js); fallback text = home2.news in js/i18n/home.js -->
   <div class="news" role="region" aria-label="Nieuws" data-i18n="home2.newsLabel" data-i18n-attr="aria-label"><span data-news>Vers gemaakt op bestelling · Vlaardingen</span></div>
@@ -42,7 +50,7 @@
   <header class="site-header">
     <div class="site-header__inner">
       <a class="logo" href="#top" aria-label="Thai Sweets, naar boven" data-i18n="home2.homeLabel" data-i18n-attr="aria-label">
-        <img src="images/logo/logo-horizontal.png" width="1086" height="559" alt="Thai Sweets">
+        <img src="images/logo/logo-horizontal-340.webp" width="340" height="175" alt="Thai Sweets">
       </a>
       <div class="header-actions">
         <div class="lang-switch" role="group" aria-label="Taal">
@@ -59,8 +67,9 @@
       <div class="hero">
         <div class="hero__text">
           <h1 data-i18n="home2.heroTitle" data-i18n-attr="html">Thaise desserts, vers gemaakt <span class="accent">op bestelling</span></h1>
-          <p data-i18n="home2.heroText">Echte Thaise recepten, vers gemaakt in kleine rondes. Kies je lekkernijen, kies een tijd, betaal online – klaar.</p>
-          <a class="btn" href="https://order.thaisweets.nl/nl" data-order-path="/" data-i18n="home2.heroCta">Bestel nu →</a>
+          <p data-i18n="home2.heroText">Echte Thaise recepten, vers gemaakt in kleine rondes. Bekijk wat eraan komt en krijg een mail als de volgende ronde opengaat.</p>
+          <!-- Default: jump to the rounds. js/open-menus.js switches this to "Bestel nu →" (order app) while a round is open. -->
+          <a class="btn" href="#bestellen" data-hero-cta data-i18n="home2.heroCta">Bekijk de rondes ↓</a>
         </div>
         <img class="hero__img" src="images/menu/golden-auspicious-set.webp" srcset="images/menu/golden-auspicious-set-360.webp 360w, images/menu/golden-auspicious-set-480.webp 480w, images/menu/golden-auspicious-set.webp 640w" sizes="(max-width: 860px) 100vw, 536px" width="640" height="360" fetchpriority="high" alt="Gouden geluksset met vijf Thaise desserts" data-i18n="home2.heroAlt" data-i18n-attr="alt">
       </div>
@@ -68,7 +77,14 @@
 
     <section id="bestellen" class="section rounds" aria-labelledby="open-title">
       <h2 class="section-title" id="open-title" data-i18n="home2.openTitle">Nu te bestellen</h2>
-      <div class="rounds-grid" data-open-menus-grid aria-busy="true"></div>
+      <!-- Static fallback (no JS, slow API, API error). js/open-menus.js replaces it; keep markup in sync with buildFallback() there. -->
+      <div class="rounds-grid rounds-grid--empty" data-open-menus-grid>
+        <div class="rounds-fallback">
+          <p data-i18n="home2.roundsFallbackText">Kijk op onze bestelsite welke ronde er open is of binnenkort opengaat.</p>
+          <a class="btn" href="https://order.thaisweets.nl/nl" data-order-path="/" data-i18n="home2.roundsFallbackLink">Naar order.thaisweets.nl →</a>
+        </div>
+      </div>
+      <noscript><p class="rounds-noscript"><span lang="nl">Zonder JavaScript kunnen we de rondes hier niet laten zien. Bekijk ze op <a href="https://order.thaisweets.nl/nl">order.thaisweets.nl</a>.</span> <span lang="en">Without JavaScript we can't show the rounds here. See them at <a href="https://order.thaisweets.nl/en">order.thaisweets.nl</a>.</span></p></noscript>
       <p class="visually-hidden" role="status" aria-live="polite" data-notify-live></p>
       <p class="visually-hidden" role="status" data-open-menus-status></p>
     </section>
@@ -84,7 +100,7 @@
           </div>
           <div class="way">
             <h3 data-i18n="home2.way2Title">Taarten &amp; cupcakes</h3>
-            <p data-i18n="home2.way2Text">Voor een verjaardag of feest, op bestelling gemaakt.</p>
+            <p data-i18n="home2.way2Text">Voor een verjaardag of feest, op bestelling gemaakt. Bestel minstens 14 dagen vooruit.</p>
             <a href="https://order.thaisweets.nl/nl" data-order-path="/" data-i18n="home2.way2Cta">Bestel een taart →</a>
           </div>
           <div class="way">
@@ -102,91 +118,91 @@
       <div class="carousel" data-carousel>
         <div class="carousel__track" data-carousel-track role="region" tabindex="0" aria-label="Wat we maken" data-i18n="home2.galleryTitle" data-i18n-attr="aria-label">
           <figure class="carousel__item">
-            <img src="images/menu/butterfly-pea-layer-cake-sq.webp" width="640" height="640" loading="lazy" decoding="async" alt="">
+            <img src="images/menu/butterfly-pea-layer-cake-sq.webp" width="640" height="640" loading="lazy" decoding="async" alt="Blokjes laagjescake in paars en wit met blauwe vlinderbloemen op een bananenblad" data-i18n="home2.galAlt1" data-i18n-attr="alt">
             <figcaption data-i18n="home2.gal1">Laagjescake met vlinderbloem</figcaption>
           </figure>
           <figure class="carousel__item">
-            <img src="images/menu/mango-sticky-rice.webp" width="640" height="360" loading="lazy" decoding="async" alt="">
+            <img src="images/menu/mango-sticky-rice.webp" width="640" height="360" loading="lazy" decoding="async" alt="Bord met kleefrijst en blokjes gele mango, met een kommetje gele mungbonen ernaast" data-i18n="home2.galAlt2" data-i18n-attr="alt">
             <figcaption data-i18n="home2.gal2">Kleefrijst met mango</figcaption>
           </figure>
           <figure class="carousel__item">
-            <img src="images/menu/young-coconut-cake.webp" width="640" height="360" loading="lazy" decoding="async" alt="">
+            <img src="images/menu/young-coconut-cake.webp" width="640" height="360" loading="lazy" decoding="async" alt="Drie witte taarten met room en kleine groene blaadjes op een bananenblad" data-i18n="home2.galAlt3" data-i18n-attr="alt">
             <figcaption data-i18n="home2.gal3">Cake met jonge kokos</figcaption>
           </figure>
           <figure class="carousel__item">
-            <img src="images/menu/curry-puffs.webp" width="640" height="360" loading="lazy" decoding="async" alt="">
+            <img src="images/menu/curry-puffs.webp" width="640" height="360" loading="lazy" decoding="async" alt="Mandje met gouden, gelaagde currypasteitjes" data-i18n="home2.galAlt4" data-i18n-attr="alt">
             <figcaption data-i18n="home2.gal4">Currypasteitjes met kip</figcaption>
           </figure>
           <figure class="carousel__item">
-            <img src="images/menu/rose-cupcakes.webp" width="640" height="360" loading="lazy" decoding="async" alt="">
+            <img src="images/menu/rose-cupcakes.webp" width="640" height="360" loading="lazy" decoding="async" alt="Vier cupcakes met roze en oranje roosvormig glazuur" data-i18n="home2.galAlt5" data-i18n-attr="alt">
             <figcaption data-i18n="home2.gal5">Rozencupcakes</figcaption>
           </figure>
           <figure class="carousel__item">
-            <img src="images/menu/tong-muan.webp" width="640" height="360" loading="lazy" decoding="async" alt="">
+            <img src="images/menu/tong-muan.webp" width="640" height="360" loading="lazy" decoding="async" alt="Stapel knapperige gouden rolletjes met zwarte sesamzaadjes tussen witte bloemen" data-i18n="home2.galAlt6" data-i18n-attr="alt">
             <figcaption data-i18n="home2.gal6">Tong Muan-rolletjes</figcaption>
           </figure>
           <figure class="carousel__item">
-            <img src="images/menu/golden-auspicious-set.webp" width="640" height="360" loading="lazy" decoding="async" alt="">
+            <img src="images/menu/golden-auspicious-set.webp" width="640" height="360" loading="lazy" decoding="async" alt="Zwarte schaal met drie soorten gouden en oranje Thaise desserts" data-i18n="home2.galAlt7" data-i18n-attr="alt">
             <figcaption data-i18n="home2.gal7">Gouden geluksset</figcaption>
           </figure>
           <figure class="carousel__item">
-            <img src="images/menu/luk-chup.webp" width="640" height="360" loading="lazy" decoding="async" alt="">
+            <img src="images/menu/luk-chup.webp" width="640" height="360" loading="lazy" decoding="async" alt="Drie kleine mandjes aan touwtjes met kleurrijke fruitvormige snoepjes" data-i18n="home2.galAlt8" data-i18n-attr="alt">
             <figcaption data-i18n="home2.gal8">Luk Chup (vruchtjes van mungboon)</figcaption>
           </figure>
           <figure class="carousel__item">
-            <img src="images/menu/khanom-pia-sq.webp" width="640" height="640" loading="lazy" decoding="async" alt="">
+            <img src="images/menu/khanom-pia-sq.webp" width="640" height="640" loading="lazy" decoding="async" alt="Kommetjes met ronde gebakjes in wit, roze en paars, een paar opengebroken met gele en donkere vulling" data-i18n="home2.galAlt9" data-i18n-attr="alt">
             <figcaption data-i18n="home2.gal9">Khanom Pia (gebakjes)</figcaption>
           </figure>
           <figure class="carousel__item">
-            <img src="images/menu/foi-tong.webp" width="640" height="360" loading="lazy" decoding="async" alt="">
+            <img src="images/menu/foi-tong.webp" width="640" height="360" loading="lazy" decoding="async" alt="Zwarte bak met opgerolde gouden eidooierdraadjes" data-i18n="home2.galAlt10" data-i18n-attr="alt">
             <figcaption data-i18n="home2.gal10">Foi Tong</figcaption>
           </figure>
           <figure class="carousel__item">
-            <img src="images/menu/tong-yib.webp" width="640" height="360" loading="lazy" decoding="async" alt="">
+            <img src="images/menu/tong-yib.webp" width="640" height="360" loading="lazy" decoding="async" alt="Zwarte bak met zes gouden bloemvormige kopjes" data-i18n="home2.galAlt11" data-i18n-attr="alt">
             <figcaption data-i18n="home2.gal11">Tong Yib</figcaption>
           </figure>
           <figure class="carousel__item">
-            <img src="images/menu/pan-klib.webp" width="640" height="360" loading="lazy" decoding="async" alt="">
+            <img src="images/menu/pan-klib.webp" width="640" height="360" loading="lazy" decoding="async" alt="Mandje met kleine gouden gefrituurde halvemaanvormige deegjes en een kopje thee erachter" data-i18n="home2.galAlt12" data-i18n-attr="alt">
             <figcaption data-i18n="home2.gal22">Gefrituurde halvemaantjes</figcaption>
           </figure>
           <figure class="carousel__item">
-            <img src="images/menu/pandan-layer-cake.webp" width="640" height="360" loading="lazy" decoding="async" alt="">
+            <img src="images/menu/pandan-layer-cake.webp" width="640" height="360" loading="lazy" decoding="async" alt="Groene blokjes pandan-laagjescake op een bananenblad" data-i18n="home2.galAlt13" data-i18n-attr="alt">
             <figcaption data-i18n="home2.gal12">Pandan-laagjescake</figcaption>
           </figure>
           <figure class="carousel__item">
-            <img src="images/menu/khanom-krok.webp" width="640" height="360" loading="lazy" decoding="async" alt="">
+            <img src="images/menu/khanom-krok.webp" width="640" height="360" loading="lazy" decoding="async" alt="Rooster met ronde kokospannenkoekjes met stukjes gele maïs, naast een paar open koekjes met kokosroom" data-i18n="home2.galAlt14" data-i18n-attr="alt">
             <figcaption data-i18n="home2.gal13">Khanom Krok (kokospannenkoekjes)</figcaption>
           </figure>
           <figure class="carousel__item">
-            <img src="images/menu/khanom-tuay.webp" width="640" height="360" loading="lazy" decoding="async" alt="">
+            <img src="images/menu/khanom-tuay.webp" width="640" height="360" loading="lazy" decoding="async" alt="Zes kleine witte kommetjes met kokosmelk op een houten plank, met twee kokosnoten erachter" data-i18n="home2.galAlt15" data-i18n-attr="alt">
             <figcaption data-i18n="home2.gal14">Khanom Tuay (kokosmelkkopjes)</figcaption>
           </figure>
           <figure class="carousel__item">
-            <img src="images/menu/khanom-bueng.webp" width="640" height="360" loading="lazy" decoding="async" alt="">
+            <img src="images/menu/khanom-bueng.webp" width="640" height="360" loading="lazy" decoding="async" alt="Houten plank met zes kleine crêpes met witte room en gouden draadjes" data-i18n="home2.galAlt16" data-i18n-attr="alt">
             <figcaption data-i18n="home2.gal15">Khanom Bueng (mini Thaise crêpes)</figcaption>
           </figure>
           <figure class="carousel__item">
-            <img src="images/menu/taro-pudding.webp" width="640" height="360" loading="lazy" decoding="async" alt="">
+            <img src="images/menu/taro-pudding.webp" width="640" height="360" loading="lazy" decoding="async" alt="Witte kokosroom met roze stukjes in kleine bladvormige bakjes" data-i18n="home2.galAlt17" data-i18n-attr="alt">
             <figcaption data-i18n="home2.gal16">Taropudding met kokosroom</figcaption>
           </figure>
           <figure class="carousel__item">
-            <img src="images/menu/alua-flower.webp" width="640" height="360" loading="lazy" decoding="async" alt="">
+            <img src="images/menu/alua-flower.webp" width="640" height="360" loading="lazy" decoding="async" alt="Mandje met kleurrijke bloemvormige snoepjes in rood, wit en geel" data-i18n="home2.galAlt18" data-i18n-attr="alt">
             <figcaption data-i18n="home2.gal17">Alua</figcaption>
           </figure>
           <figure class="carousel__item">
-            <img src="images/menu/bouquet-cupcakes.webp" width="640" height="360" loading="lazy" decoding="async" alt="">
+            <img src="images/menu/bouquet-cupcakes.webp" width="640" height="360" loading="lazy" decoding="async" alt="Boeket van roze roosvormige cupcakes in bruin inpakpapier" data-i18n="home2.galAlt19" data-i18n-attr="alt">
             <figcaption data-i18n="home2.gal18">Cupcakeboeket</figcaption>
           </figure>
           <figure class="carousel__item">
-            <img src="images/menu/mini-donut-cakes.webp" width="640" height="360" loading="lazy" decoding="async" alt="">
+            <img src="images/menu/mini-donut-cakes.webp" width="640" height="360" loading="lazy" decoding="async" alt="Kartonnen doos vol mini-donuts met roze, witte en chocoladeglazuur" data-i18n="home2.galAlt20" data-i18n-attr="alt">
             <figcaption data-i18n="home2.gal19">Mini-donutcakes</figcaption>
           </figure>
           <figure class="carousel__item">
-            <img src="images/menu/glass-noodle-sausage.webp" width="640" height="360" loading="lazy" decoding="async" alt="">
+            <img src="images/menu/glass-noodle-sausage.webp" width="640" height="360" loading="lazy" decoding="async" alt="Houten bord met glanzende bruine worstjes naast sla en schijfjes citroen" data-i18n="home2.galAlt21" data-i18n-attr="alt">
             <figcaption data-i18n="home2.gal20">Worst met glasnoedels</figcaption>
           </figure>
           <figure class="carousel__item">
-            <img src="images/menu/flower-bird-dumplings.webp" width="640" height="360" loading="lazy" decoding="async" alt="">
+            <img src="images/menu/flower-bird-dumplings.webp" width="640" height="360" loading="lazy" decoding="async" alt="Bord met sla, paarse bloemvormige dumplings en witte vogelvormige dumplings" data-i18n="home2.galAlt22" data-i18n-attr="alt">
             <figcaption data-i18n="home2.gal21">Gestoomde bloem- en vogeldumplings</figcaption>
           </figure>
         </div>
@@ -245,7 +261,7 @@
           <a href="https://order.thaisweets.nl/nl/legal#terms" data-legal="terms" rel="noopener noreferrer" target="_blank" data-i18n="home2.terms">Algemene voorwaarden</a>
           <a href="https://order.thaisweets.nl/nl/legal#privacy" data-legal="privacy" rel="noopener noreferrer" target="_blank" data-i18n="home2.privacy">Privacybeleid</a>
           <a href="https://order.thaisweets.nl/nl/legal#allergens" data-legal="allergens" rel="noopener noreferrer" target="_blank" data-i18n="home2.allergens">Allergenen</a>
-          <a href="#cookie-settings" data-cookie-settings data-i18n="home2.cookies">Cookie-instellingen</a>
+          <button type="button" class="linklike" data-cookie-settings data-i18n="home2.cookies">Cookie-instellingen</button>
         </div>
       </div>
       <p class="foot-legal" data-i18n="home2.copy">© 2026 Thai Sweets · KVK 73838306 · btw NL002463537B15</p>
@@ -278,71 +294,32 @@
     <p class="notify-dialog__foot"><span data-i18n="home2.unsub">Afmelden kan in elke mail.</span> <a href="https://order.thaisweets.nl/nl/legal#privacy" data-legal="privacy" rel="noopener noreferrer" target="_blank" data-i18n="home2.privacyShort">Privacy</a></p>
   </dialog>
 
-  <div id="cookie-consent-banner" class="hidden" role="dialog" aria-labelledby="cookie-consent-title" aria-describedby="cookie-consent-description" aria-hidden="true">
-    <div class="cookie-banner__inner">
+  <dialog id="consent-dialog" class="notify-dialog consent-dialog" aria-labelledby="consent-dialog-title">
+    <div class="notify-dialog__head">
+      <div class="notify-dialog__intro">
+        <h2 id="consent-dialog-title" data-i18n="home2.cookies">Cookie-instellingen</h2>
+        <p data-i18n="consent.intro">Kies welke cookies we mogen gebruiken. Je kunt je keuze op elk moment wijzigen via “Cookie-instellingen” onderaan de pagina.</p>
+      </div>
+      <button type="button" class="notify-dialog__close" data-consent-close aria-label="Sluiten" data-i18n="home2.dlgClose" data-i18n-attr="aria-label">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+      </button>
+    </div>
+    <div class="consent-pref">
       <div>
-        <h2 id="cookie-consent-title" data-i18n="cookies.title">We gebruiken cookies</h2>
-        <p id="cookie-consent-description"><span data-i18n="cookies.bodyBanner">Deze website gebruikt alleen essentiële cookies. Als we later analytics toevoegen, vragen we eerst om je toestemming. Lees meer in ons </span><a href="https://order.thaisweets.nl/nl/legal#privacy" data-legal="privacy" rel="noopener noreferrer" target="_blank" data-i18n="footer.privacy">Privacybeleid</a>.</p>
+        <h3 data-i18n="consent.essentialTitle">Essentieel</h3>
+        <p data-i18n="consent.essentialBody">Nodig om de site te laten werken: je taal, je thema en of je je hebt aangemeld voor een mail.</p>
       </div>
-      <div class="cookie-banner__actions">
-        <button type="button" id="reject-cookies" class="btn btn--secondary" aria-label="Alles weigeren" data-i18n="cookies.reject" data-i18n-attr="text,aria-label">Alles weigeren</button>
-        <button type="button" id="manage-cookies" class="btn btn--secondary" aria-label="Voorkeuren beheren" data-i18n="cookies.manage" data-i18n-attr="text,aria-label">Voorkeuren beheren</button>
-        <button type="button" id="accept-cookies" class="btn btn--primary" aria-label="Alles accepteren" data-i18n="cookies.accept" data-i18n-attr="text,aria-label">Alles accepteren</button>
-      </div>
+      <span class="consent-pref__always" data-i18n="consent.alwaysOn">Altijd aan</span>
     </div>
-  </div>
-  
-  <div id="cookie-preferences-modal" class="hidden" role="dialog" aria-modal="true" aria-labelledby="preferences-modal-title" aria-hidden="true">
-    <div class="cookie-modal">
-      <div class="cookie-modal__head">
-        <h2 id="preferences-modal-title" data-i18n="cookies.prefsTitle">Cookievoorkeuren</h2>
-        <button type="button" id="close-preferences-modal" class="icon-btn" aria-label="Voorkeuren sluiten" data-i18n="cookies.close" data-i18n-attr="aria-label" style="border-color:rgba(255,255,255,.35);color:#fff;background:transparent">&times;</button>
+    <div class="consent-pref">
+      <div>
+        <h3 id="consent-analytics-title" data-i18n="consent.analyticsTitle">Analytisch (Google Analytics)</h3>
+        <p id="consent-analytics-desc" data-i18n="consent.analyticsBody">Helpt ons te zien hoe de site wordt gebruikt. Alleen met je toestemming.</p>
       </div>
-      <div class="cookie-modal__body">
-        <p data-i18n="cookies.prefsIntro">We gebruiken cookies om je ervaring op onze website te verbeteren. Hieronder kun je per soort cookie je voorkeur instellen.</p>
-        <div class="cookie-pref">
-          <div>
-            <h3 data-i18n="cookies.essentialTitle">Noodzakelijke cookies</h3>
-            <p data-i18n="cookies.essentialBody">Deze cookies zijn nodig om de website te laten werken en kunnen niet worden uitgezet.</p>
-          </div>
-          <span class="pref-always" data-i18n="cookies.alwaysOn">Altijd aan</span>
-        </div>
-        <div class="cookie-pref">
-          <div>
-            <h3 data-i18n="cookies.analyticsTitle">Analytische cookies</h3>
-            <p data-i18n="cookies.analyticsBody">Deze cookies helpen ons te begrijpen hoe bezoekers onze website gebruiken, door anoniem informatie te verzamelen en te rapporteren.</p>
-          </div>
-          <label class="checkbox-label"><span class="visually-hidden" data-i18n="cookies.analyticsTitle">Analytische cookies</span><input type="checkbox" id="pref-analytics" class="checkbox-input"></label>
-        </div>
-        <div class="cookie-pref">
-          <div>
-            <h3 data-i18n="cookies.adsTitle">Advertentiecookies</h3>
-            <p data-i18n="cookies.adsBody">Deze cookies worden gebruikt om advertenties te tonen die passen bij jou en je interesses.</p>
-          </div>
-          <label class="checkbox-label"><span class="visually-hidden" data-i18n="cookies.adsTitle">Advertentiecookies</span><input type="checkbox" id="pref-advertising" class="checkbox-input"></label>
-        </div>
-        <div class="cookie-pref">
-          <div>
-            <h3 data-i18n="cookies.functionalTitle">Functionele cookies</h3>
-            <p data-i18n="cookies.functionalBody">Deze cookies maken extra functies mogelijk, zoals video’s en livechat.</p>
-          </div>
-          <label class="checkbox-label"><span class="visually-hidden" data-i18n="cookies.functionalTitle">Functionele cookies</span><input type="checkbox" id="pref-functional" class="checkbox-input"></label>
-        </div>
-        <div class="cookie-pref">
-          <div>
-            <h3 data-i18n="cookies.personalTitle">Personalisatiecookies</h3>
-            <p data-i18n="cookies.personalBody">Deze cookies worden gebruikt om inhoud en advertenties af te stemmen op je voorkeuren en gedrag.</p>
-          </div>
-          <label class="checkbox-label"><span class="visually-hidden" data-i18n="cookies.personalTitle">Personalisatiecookies</span><input type="checkbox" id="pref-personalization" class="checkbox-input"></label>
-        </div>
-        <div class="cookie-modal__actions">
-          <button type="button" id="save-preferences" class="btn btn--primary" data-i18n="cookies.save">Voorkeuren opslaan</button>
-          <button type="button" class="btn btn--gold" onclick="CookieConsent.accept()" data-i18n="cookies.acceptAll">Alles accepteren</button>
-        </div>
-        <p class="form-hint" style="text-align:center"><span data-i18n="cookies.moreInfoPrefix">Meer informatie vind je in ons </span><a href="https://order.thaisweets.nl/nl/legal#privacy" data-legal="privacy" rel="noopener noreferrer" target="_blank" data-i18n="footer.privacy">Privacybeleid</a>.</p>
-      </div>
+      <input type="checkbox" id="consent-analytics" aria-labelledby="consent-analytics-title" aria-describedby="consent-analytics-desc">
     </div>
-  </div>
+    <button type="button" class="btn consent-save" data-consent-save data-i18n="consent.save">Opslaan</button>
+  </dialog>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",

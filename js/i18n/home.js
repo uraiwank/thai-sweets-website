@@ -18,7 +18,7 @@
     meta: {
       homeTitle: "Thai Sweets | Thaise desserts vers op bestelling in Vlaardingen",
       homeDesc:
-        "Echte Thaise desserts, snacks en taarten, vers gemaakt in kleine rondes in Vlaardingen. Kies je lekkernijen, kies een tijd en betaal online.",
+        "Echte Thaise desserts, snacks en taarten, vers gemaakt in kleine rondes in Vlaardingen. Bekijk de komende rondes en bestel online.",
       notfoundTitle: "Pagina niet gevonden | Thai Sweets",
       notfoundDesc: "Deze pagina bestaat niet (meer)."
     },
@@ -27,6 +27,22 @@
       openNow: "Nu open",
       orderByLabel: "Bestel vóór",
       viewMenuOrder: "Bekijk menu & bestel"
+    },
+    consent: {
+      bannerLabel: "Cookies",
+      text:
+        "We gebruiken essentiële opslag om de site te laten werken. Met je toestemming gebruiken we ook analytische cookies (Google Analytics) om te zien hoe de site wordt gebruikt. Lees meer in ons ",
+      accept: "Accepteren",
+      reject: "Weigeren",
+      settings: "Instellingen",
+      intro:
+        "Kies welke cookies we mogen gebruiken. Je kunt je keuze op elk moment wijzigen via “Cookie-instellingen” onderaan de pagina.",
+      essentialTitle: "Essentieel",
+      essentialBody: "Nodig om de site te laten werken: je taal, je thema en of je je hebt aangemeld voor een mail.",
+      alwaysOn: "Altijd aan",
+      analyticsTitle: "Analytisch (Google Analytics)",
+      analyticsBody: "Helpt ons te zien hoe de site wordt gebruikt. Alleen met je toestemming.",
+      save: "Opslaan"
     },
     home2: {
       // Fallback; the bar shows the live round when /api/open-menus has one (see js/open-menus.js).
@@ -37,8 +53,9 @@
       order: "Bestellen",
       heroTitle: 'Thaise desserts, vers gemaakt <span class="accent">op bestelling</span>',
       heroText:
-        "Echte Thaise recepten, vers gemaakt in kleine rondes. Kies je lekkernijen, kies een tijd, betaal online – klaar.",
-      heroCta: "Bestel nu →",
+        "Echte Thaise recepten, vers gemaakt in kleine rondes. Bekijk wat eraan komt en krijg een mail als de volgende ronde opengaat.",
+      heroCta: "Bekijk de rondes ↓",
+      heroCtaOpen: "Bestel nu →",
       heroAlt: "Gouden geluksset met vijf Thaise desserts",
       openTitle: "Nu te bestellen",
       soonTitle: "Binnenkort te bestellen",
@@ -71,7 +88,7 @@
       way1Text: "Kies zelf een datum, minstens 7 dagen vooruit. Vanaf €200.",
       way1Cta: "Bestel op maat →",
       way2Title: "Taarten & cupcakes",
-      way2Text: "Voor een verjaardag of feest, op bestelling gemaakt.",
+      way2Text: "Voor een verjaardag of feest, op bestelling gemaakt. Bestel minstens 14 dagen vooruit.",
       way2Cta: "Bestel een taart →",
       way3Title: "Zakelijk",
       way3Text: "Voor horeca, toko’s en catering, in grotere aantallen.",
@@ -101,6 +118,28 @@
       gal20: "Worst met glasnoedels",
       gal21: "Gestoomde bloem- en vogeldumplings",
       gal22: "Gefrituurde halvemaantjes",
+      galAlt1: "Blokjes laagjescake in paars en wit met blauwe vlinderbloemen op een bananenblad",
+      galAlt2: "Bord met kleefrijst en blokjes gele mango, met een kommetje gele mungbonen ernaast",
+      galAlt3: "Drie witte taarten met room en kleine groene blaadjes op een bananenblad",
+      galAlt4: "Mandje met gouden, gelaagde currypasteitjes",
+      galAlt5: "Vier cupcakes met roze en oranje roosvormig glazuur",
+      galAlt6: "Stapel knapperige gouden rolletjes met zwarte sesamzaadjes tussen witte bloemen",
+      galAlt7: "Zwarte schaal met drie soorten gouden en oranje Thaise desserts",
+      galAlt8: "Drie kleine mandjes aan touwtjes met kleurrijke fruitvormige snoepjes",
+      galAlt9: "Kommetjes met ronde gebakjes in wit, roze en paars, een paar opengebroken met gele en donkere vulling",
+      galAlt10: "Zwarte bak met opgerolde gouden eidooierdraadjes",
+      galAlt11: "Zwarte bak met zes gouden bloemvormige kopjes",
+      galAlt12: "Mandje met kleine gouden gefrituurde halvemaanvormige deegjes en een kopje thee erachter",
+      galAlt13: "Groene blokjes pandan-laagjescake op een bananenblad",
+      galAlt14: "Rooster met ronde kokospannenkoekjes met stukjes gele maïs, naast een paar open koekjes met kokosroom",
+      galAlt15: "Zes kleine witte kommetjes met kokosmelk op een houten plank, met twee kokosnoten erachter",
+      galAlt16: "Houten plank met zes kleine crêpes met witte room en gouden draadjes",
+      galAlt17: "Witte kokosroom met roze stukjes in kleine bladvormige bakjes",
+      galAlt18: "Mandje met kleurrijke bloemvormige snoepjes in rood, wit en geel",
+      galAlt19: "Boeket van roze roosvormige cupcakes in bruin inpakpapier",
+      galAlt20: "Kartonnen doos vol mini-donuts met roze, witte en chocoladeglazuur",
+      galAlt21: "Houten bord met glanzende bruine worstjes naast sla en schijfjes citroen",
+      galAlt22: "Bord met sla, paarse bloemvormige dumplings en witte vogelvormige dumplings",
       galPrev: "Vorige foto's",
       galNext: "Volgende foto's",
       aboutTitle: "Over ons",
@@ -135,7 +174,9 @@
       nfTitle: "Pagina niet gevonden",
       nfText: "Deze pagina bestaat niet (meer).",
       nfCta: "Naar de startpagina",
-      roundsLoading: "Rondes laden…"
+      roundsLoading: "Rondes laden…",
+      roundsFallbackText: "Kijk op onze bestelsite welke ronde er open is of binnenkort opengaat.",
+      roundsFallbackLink: "Naar order.thaisweets.nl →"
     }
   });
 
@@ -143,7 +184,7 @@
     meta: {
       homeTitle: "Thai Sweets | Thai desserts made fresh to order in Vlaardingen",
       homeDesc:
-        "Real Thai desserts, snacks and cakes, made fresh in small rounds in Vlaardingen. Pick your treats, choose a time and pay online.",
+        "Real Thai desserts, snacks and cakes, made fresh in small rounds in Vlaardingen. See the upcoming rounds and order online.",
       notfoundTitle: "Page not found | Thai Sweets",
       notfoundDesc: "This page doesn't exist (any more)."
     },
@@ -153,6 +194,22 @@
       orderByLabel: "Order by",
       viewMenuOrder: "See menu & order"
     },
+    consent: {
+      bannerLabel: "Cookies",
+      text:
+        "We use essential storage to make the site work. With your permission we also use analytics cookies (Google Analytics) to see how the site is used. Read more in our ",
+      accept: "Accept",
+      reject: "Reject",
+      settings: "Settings",
+      intro:
+        "Choose which cookies we may use. You can change your choice at any time with “Cookie settings” at the bottom of the page.",
+      essentialTitle: "Essential",
+      essentialBody: "Needed to make the site work: your language, your theme and whether you signed up for an email.",
+      alwaysOn: "Always on",
+      analyticsTitle: "Analytics (Google Analytics)",
+      analyticsBody: "Helps us see how the site is used. Only with your permission.",
+      save: "Save"
+    },
     home2: {
       news: "Freshly made to order · Vlaardingen",
       newsOpen: "Open now: {title} · order by {orderBy}",
@@ -161,8 +218,9 @@
       order: "Order",
       heroTitle: 'Thai desserts, freshly made <span class="accent">to order</span>',
       heroText:
-        "Real Thai recipes, made fresh in small rounds. Pick your treats, choose a time, pay online – done.",
-      heroCta: "Order now →",
+        "Real Thai recipes, made fresh in small rounds. See what's coming up and get an email when the next round opens.",
+      heroCta: "See the rounds ↓",
+      heroCtaOpen: "Order now →",
       heroAlt: "Golden lucky set with five Thai desserts",
       openTitle: "Order now",
       soonTitle: "Coming soon",
@@ -195,7 +253,7 @@
       way1Text: "Pick your own date, at least 7 days ahead. From €200.",
       way1Cta: "Custom order →",
       way2Title: "Cakes & cupcakes",
-      way2Text: "For a birthday or party, made to order.",
+      way2Text: "For a birthday or party, made to order. Order at least 14 days ahead.",
       way2Cta: "Order a cake →",
       way3Title: "Business",
       way3Text: "For restaurants, Asian shops and catering, in larger quantities.",
@@ -225,6 +283,28 @@
       gal20: "Glass noodle sausage",
       gal21: "Steamed flower & bird dumplings",
       gal22: "Fried crescent dumplings",
+      galAlt1: "Purple and white layered cake squares with blue butterfly pea flowers on a banana leaf",
+      galAlt2: "Plate of sticky rice with diced yellow mango, and a small bowl of yellow mung beans beside it",
+      galAlt3: "Three white cakes with cream and small green leaves on a banana leaf",
+      galAlt4: "Small basket of golden, flaky curry puffs",
+      galAlt5: "Four cupcakes with pink and orange rose-shaped frosting",
+      galAlt6: "Pile of crispy golden rolls with black sesame seeds among white flowers",
+      galAlt7: "Black tray with three kinds of golden and orange Thai desserts",
+      galAlt8: "Three small hanging baskets with colourful fruit-shaped sweets",
+      galAlt9: "Small bowls of round pastries in white, pink and purple, a few broken open to show yellow and dark fillings",
+      galAlt10: "Black tray of rolled golden egg yolk threads",
+      galAlt11: "Black tray with six golden flower-shaped cups",
+      galAlt12: "Basket of small golden fried crescent-shaped dumplings, with a cup of tea behind",
+      galAlt13: "Green squares of pandan layer cake on a banana leaf",
+      galAlt14: "Rack of round coconut pancakes topped with yellow corn, next to a few open ones with coconut cream",
+      galAlt15: "Six small white bowls of coconut milk pudding on a wooden board, with two coconuts behind",
+      galAlt16: "Wooden board with six small crêpes topped with white cream and golden threads",
+      galAlt17: "White coconut cream with pink pieces in small leaf-shaped cups",
+      galAlt18: "Basket of colourful flower-shaped sweets in red, white and yellow",
+      galAlt19: "Bouquet of pink rose-shaped cupcakes in brown wrapping paper",
+      galAlt20: "Cardboard box full of mini donuts with pink, white and chocolate icing",
+      galAlt21: "Wooden plate of glossy brown sausages next to lettuce and lemon slices",
+      galAlt22: "Plate with lettuce, purple flower-shaped dumplings and white bird-shaped dumplings",
       galPrev: "Previous photos",
       galNext: "Next photos",
       aboutTitle: "About us",
@@ -259,7 +339,9 @@
       nfTitle: "Page not found",
       nfText: "This page doesn't exist (any more).",
       nfCta: "Back to the home page",
-      roundsLoading: "Loading rounds…"
+      roundsLoading: "Loading rounds…",
+      roundsFallbackText: "Check our ordering site to see which round is open or opens soon.",
+      roundsFallbackLink: "Go to order.thaisweets.nl →"
     }
   });
 })();
