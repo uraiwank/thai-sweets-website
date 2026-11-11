@@ -10,6 +10,28 @@
   }
 
 
+  /* FAQPage JSON-LD: static Dutch copy sits in index.html; rebuild it from the visible text so it always matches the language shown. */
+  function updateFaqSchema() {
+    var script = document.getElementById("faq-jsonld");
+    var items = document.querySelectorAll("[data-faq]");
+    if (!script || !items.length) return;
+    var entities = [];
+    items.forEach(function (item) {
+      var q = item.querySelector(".faq__q");
+      var a = item.querySelector(".faq__a");
+      if (!q || !a) return;
+      entities.push({
+        "@type": "Question",
+        name: q.textContent.trim(),
+        acceptedAnswer: { "@type": "Answer", text: a.textContent.trim() },
+      });
+    });
+    script.textContent = JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: entities }, null, 2);
+  }
+  document.addEventListener("thaisweets:lang", updateFaqSchema);
+  if (document.documentElement.getAttribute("data-i18n-ready")) updateFaqSchema();
+  else document.addEventListener("DOMContentLoaded", function () { window.setTimeout(updateFaqSchema, 0); });
+
   /* Photo carousel: native scroll-snap, buttons page through the photos. */
   var car = document.querySelector("[data-carousel]");
   if (car) {

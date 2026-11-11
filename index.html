@@ -89,30 +89,30 @@
       <p class="visually-hidden" role="status" data-open-menus-status></p>
     </section>
 
-    <section class="section band--green" aria-labelledby="ways-title">
-      <div style="max-width:1120px;margin:0 auto">
-        <h2 class="section-title" id="ways-title" data-i18n="home2.waysTitle">Zo bestel je bij ons</h2>
+    <section class="section band--sage" aria-labelledby="ways-title">
+      <div class="band__inner">
+        <h2 class="section-title" id="ways-title" data-i18n="home2.waysTitle">Bestellen voor een gelegenheid</h2>
         <div class="ways">
           <div class="way">
             <h3 data-i18n="home2.way1Title">Feest of evenement</h3>
             <p data-i18n="home2.way1Text">Kies zelf een datum, minstens 7 dagen vooruit. Vanaf €200.</p>
-            <a href="https://order.thaisweets.nl/nl" data-order-path="/" data-i18n="home2.way1Cta">Bestel op maat →</a>
+            <p class="way__soon"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><span data-i18n="home2.waySoon">Online bestellen komt binnenkort</span></p>
           </div>
           <div class="way">
             <h3 data-i18n="home2.way2Title">Taarten &amp; cupcakes</h3>
             <p data-i18n="home2.way2Text">Voor een verjaardag of feest, op bestelling gemaakt. Bestel minstens 14 dagen vooruit.</p>
-            <a href="https://order.thaisweets.nl/nl" data-order-path="/" data-i18n="home2.way2Cta">Bestel een taart →</a>
+            <p class="way__soon"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><span data-i18n="home2.waySoon">Online bestellen komt binnenkort</span></p>
           </div>
           <div class="way">
             <h3 data-i18n="home2.way3Title">Zakelijk</h3>
             <p data-i18n="home2.way3Text">Voor horeca, toko’s en catering, in grotere aantallen.</p>
-            <a href="mailto:info@thaisweets.nl?subject=Zakelijk" data-i18n="home2.way3Mail" data-i18n-attr="href"><span data-i18n="home2.way3Cta">Neem contact op →</span></a>
+            <a class="way__btn" href="mailto:info@thaisweets.nl?subject=Zakelijk" data-i18n="home2.way3Mail" data-i18n-attr="href"><span data-i18n="home2.way3Cta">Neem contact op →</span></a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section gallery">
       <h2 class="gallery-title" id="gallery-title" data-i18n="home2.galleryTitle">Wat we maken</h2>
       <p class="gallery-lead" data-i18n="home2.galleryText">Sommige lekkernijen maken we alleen op maat.</p>
       <div class="carousel" data-carousel>
@@ -213,7 +213,7 @@
       </div>
     </section>
 
-    <section id="over-ons" class="section band--pink" aria-labelledby="about-title">
+    <section id="over-ons" class="section band--sage" aria-labelledby="about-title">
       <div class="about">
         <img class="about__img" src="images/menu/tong-muan.webp" width="640" height="360" loading="lazy" decoding="async" alt="Knapperige Tong Muan-rolletjes" data-i18n="home2.aboutAlt" data-i18n-attr="alt">
         <div class="about__text">
@@ -231,6 +231,60 @@
             </div>
           </figure>
         </div>
+      </div>
+    </section>
+
+    <section id="belofte" class="section promise" aria-labelledby="promise-title">
+      <div class="promise__grid">
+        <div class="promise__text">
+          <h2 class="section-title" id="promise-title" data-i18n="home2.promiseTitle">Onze belofte</h2>
+          <p data-i18n="home2.promiseIntro">Elke bestelling maken we met zorg, zodat de smaken zo dicht mogelijk bij Thailand blijven. We gebruiken alleen verse ingrediënten van hoge kwaliteit en bereiden alles met de hand, in kleine hoeveelheden. Die toewijding zorgt voor de echte, authentieke smaak van Thaise lekkernijen in elke hap.</p>
+          <p class="promise__close" data-i18n="home2.promiseClose">Deze Thaise lekkernijen maken is niet alleen mijn bedrijf, het is mijn manier om verbonden te blijven met thuis en die verbondenheid met jou te delen. Of het nu gaat om een zoet dessert, een hartig hapje of een bijzondere taart: elke bestelling betekent ontzettend veel voor me. Bedankt dat je mijn kleine bedrijf steunt en me een beetje Thailand in jouw leven laat brengen.</p>
+        </div>
+        <ul class="promise__items">
+          <li><span class="promise__icon"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></span><span data-i18n="home2.promiseItem1">Alles is met de hand gemaakt, in kleine hoeveelheden</span></li>
+          <li><span class="promise__icon"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></span><span data-i18n="home2.promiseItem2">De authentieke Thaise smaak op jouw tafel</span></li>
+          <li><span class="promise__icon"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg></span><span data-i18n="home2.promiseItem3">Focus op versheid en kwaliteit in elk ingrediënt</span></li>
+          <li><span class="promise__icon"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></span><span data-i18n="home2.promiseItem4">Minder verspilling: we maken alleen wat is besteld</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="faq" class="section band--sage faq" aria-labelledby="faq-title">
+      <div class="faq__inner">
+        <h2 class="section-title" id="faq-title" data-i18n="home2.faqTitle">Veelgestelde vragen</h2>
+        <details class="faq__item" data-faq>
+          <summary><span class="faq__q" data-i18n="home2.faqQ1">Hoe werkt bestellen?</span><span class="faq__icon" aria-hidden="true"></span></summary>
+          <div class="faq__a"><p data-i18n="home2.faqA1" data-i18n-attr="html">We maken onze lekkernijen in rondes. Elke ronde heeft een openingsdatum en een uiterste besteldatum. Is een ronde open, dan kies je je lekkernijen op onze bestelsite, kies je een afhaal- of bezorgtijd en betaal je online. Meld je aan en krijg een mail als de volgende ronde opengaat.</p></div>
+        </details>
+        <details class="faq__item" data-faq>
+          <summary><span class="faq__q" data-i18n="home2.faqQ2">Waar kan ik mijn bestelling ophalen?</span><span class="faq__icon" aria-hidden="true"></span></summary>
+          <div class="faq__a"><p data-i18n="home2.faqA2" data-i18n-attr="html">Je kunt je bestelling ophalen in Vlaardingen. Het exacte adres sturen we je na betaling.</p></div>
+        </details>
+        <details class="faq__item" data-faq>
+          <summary><span class="faq__q" data-i18n="home2.faqQ3">Bezorgen jullie?</span><span class="faq__icon" aria-hidden="true"></span></summary>
+          <div class="faq__a"><p data-i18n="home2.faqA3" data-i18n-attr="html">Ja, op de bezorgdagen die bij elke ronde staan. De bezorgkosten zie je voordat je betaalt.</p></div>
+        </details>
+        <details class="faq__item" data-faq>
+          <summary><span class="faq__q" data-i18n="home2.faqQ4">Hoe ver vooruit moet ik bestellen?</span><span class="faq__icon" aria-hidden="true"></span></summary>
+          <div class="faq__a"><p data-i18n="home2.faqA4" data-i18n-attr="html">Bij een gewone ronde bestel je vóór de uiterste besteldatum. Voor feesten en evenementen minstens 7 dagen vooruit, voor taarten en cupcakes minstens 14 dagen.</p></div>
+        </details>
+        <details class="faq__item" data-faq>
+          <summary><span class="faq__q" data-i18n="home2.faqQ5">Kan ik bestellen voor een feest of evenement?</span><span class="faq__icon" aria-hidden="true"></span></summary>
+          <div class="faq__a"><p data-i18n="home2.faqA5" data-i18n-attr="html">Ja. Kies zelf een datum, minstens 7 dagen vooruit, vanaf €200 (bezorging niet inbegrepen). Online bestellen voor feesten komt binnenkort; neem tot die tijd <a href="#contact">contact met ons op</a>.</p></div>
+        </details>
+        <details class="faq__item" data-faq>
+          <summary><span class="faq__q" data-i18n="home2.faqQ6">Hoe betaal ik?</span><span class="faq__icon" aria-hidden="true"></span></summary>
+          <div class="faq__a"><p data-i18n="home2.faqA6" data-i18n-attr="html">Je betaalt online met iDEAL wanneer je je bestelling plaatst.</p></div>
+        </details>
+        <details class="faq__item" data-faq>
+          <summary><span class="faq__q" data-i18n="home2.faqQ7">Waar vind ik informatie over allergenen?</span><span class="faq__icon" aria-hidden="true"></span></summary>
+          <div class="faq__a"><p data-i18n="home2.faqA7" data-i18n-attr="html">De allergeneninformatie van elk product vind je op onze <a href="https://order.thaisweets.nl/nl" data-order-path="/">bestelsite</a>.</p></div>
+        </details>
+        <details class="faq__item" data-faq>
+          <summary><span class="faq__q" data-i18n="home2.faqQ8">Hoe bewaar ik de desserts?</span><span class="faq__icon" aria-hidden="true"></span></summary>
+          <div class="faq__a"><p data-i18n="home2.faqA8" data-i18n-attr="html">Elk product heeft zijn eigen bewaaradvies. Dat vind je samen met de allergeneninformatie op onze <a href="https://order.thaisweets.nl/nl" data-order-path="/">bestelsite</a>.</p></div>
+        </details>
       </div>
     </section>
   </main>
@@ -338,6 +392,78 @@
       "https://www.instagram.com/thaisweetsnl/",
       "https://www.facebook.com/thaisweetsnl",
       "https://www.tiktok.com/@thaisweetsnl"
+    ]
+  }
+  </script>
+  <script type="application/ld+json" id="faq-jsonld">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Hoe werkt bestellen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We maken onze lekkernijen in rondes. Elke ronde heeft een openingsdatum en een uiterste besteldatum. Is een ronde open, dan kies je je lekkernijen op onze bestelsite, kies je een afhaal- of bezorgtijd en betaal je online. Meld je aan en krijg een mail als de volgende ronde opengaat."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Waar kan ik mijn bestelling ophalen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Je kunt je bestelling ophalen in Vlaardingen. Het exacte adres sturen we je na betaling."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Bezorgen jullie?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja, op de bezorgdagen die bij elke ronde staan. De bezorgkosten zie je voordat je betaalt."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Hoe ver vooruit moet ik bestellen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bij een gewone ronde bestel je vóór de uiterste besteldatum. Voor feesten en evenementen minstens 7 dagen vooruit, voor taarten en cupcakes minstens 14 dagen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Kan ik bestellen voor een feest of evenement?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja. Kies zelf een datum, minstens 7 dagen vooruit, vanaf €200 (bezorging niet inbegrepen). Online bestellen voor feesten komt binnenkort; neem tot die tijd contact met ons op."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Hoe betaal ik?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Je betaalt online met iDEAL wanneer je je bestelling plaatst."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Waar vind ik informatie over allergenen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "De allergeneninformatie van elk product vind je op onze bestelsite."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Hoe bewaar ik de desserts?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Elk product heeft zijn eigen bewaaradvies. Dat vind je samen met de allergeneninformatie op onze bestelsite."
+        }
+      }
     ]
   }
   </script>
