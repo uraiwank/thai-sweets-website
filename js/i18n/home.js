@@ -22,11 +22,29 @@
       notfoundTitle: "Pagina niet gevonden | Thai Sweets",
       notfoundDesc: "Deze pagina bestaat niet (meer)."
     },
-    a11y: { langNl: "NL, Nederlands", langEn: "EN, English" },
+    a11y: {
+      skip: "Naar de inhoud",
+      language: "Taal",
+      langNl: "NL, Nederlands",
+      langEn: "EN, English"
+    },
     rounds: {
       openNow: "Nu open",
       orderByLabel: "Bestel vóór",
+      pickupLabel: "Afhalen",
+      deliveryLabel: "Bezorgen",
+      opensPrefix: "Opent ",
+      opensSoon: "Opent binnenkort",
       viewMenuOrder: "Bekijk menu & bestel"
+    },
+    notify: {
+      placeholder: "jij@email.nl",
+      done: "Bijna klaar! Kijk in je inbox en tik op de bevestigingslink. We sturen niets tot je hebt bevestigd.",
+      limited: "Te veel pogingen. Probeer het over een uur opnieuw.",
+      captcha: "Voltooi de beveiligingscheck en probeer het opnieuw.",
+      invalid: "Dat is niet gelukt. Controleer je e-mailadres en probeer het opnieuw.",
+      failed: "Tijdelijk niet beschikbaar. Probeer het later opnieuw.",
+      sending: "Versturen…"
     },
     consent: {
       bannerLabel: "Cookies",
@@ -188,11 +206,29 @@
       notfoundTitle: "Page not found | Thai Sweets",
       notfoundDesc: "This page doesn't exist (any more)."
     },
-    a11y: { langNl: "NL, Nederlands", langEn: "EN, English" },
+    a11y: {
+      skip: "Skip to content",
+      language: "Language",
+      langNl: "NL, Nederlands",
+      langEn: "EN, English"
+    },
     rounds: {
       openNow: "Open now",
       orderByLabel: "Order by",
+      pickupLabel: "Pickup",
+      deliveryLabel: "Delivery",
+      opensPrefix: "Opens ",
+      opensSoon: "Opens soon",
       viewMenuOrder: "See menu & order"
+    },
+    notify: {
+      placeholder: "you@email.com",
+      done: "Almost done! Check your inbox and tap the confirmation link. We send nothing until you confirm.",
+      limited: "Too many attempts. Please try again in an hour.",
+      captcha: "Please complete the security check and try again.",
+      invalid: "That did not work. Check your email address and try again.",
+      failed: "Temporarily unavailable. Please try again later.",
+      sending: "Sending…"
     },
     consent: {
       bannerLabel: "Cookies",
