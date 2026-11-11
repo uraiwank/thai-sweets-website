@@ -320,7 +320,7 @@ body { padding-bottom: var(--consent-h, 0px); }
 
 /* Our Promise & Connection */
 .promise { background: #fff; }
-.promise__grid { max-width: 1072px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: start; }
+.promise__grid { max-width: 1072px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: center; }
 .promise__text { display: flex; flex-direction: column; gap: 16px; }
 .promise__text .section-title { margin-bottom: 12px; }
 .promise__text > p { font-size: 17px; color: #4a5a52; }
@@ -344,7 +344,7 @@ body { padding-bottom: var(--consent-h, 0px); }
 .faq__item summary:focus-visible { outline: 3px solid #0b6043; outline-offset: 2px; }
 .faq__icon { flex: none; width: 24px; text-align: center; font-size: 24px; line-height: 1; color: #0b6043; }
 .faq__icon::before { content: "+"; }
-.faq__item[open] .faq__icon::before { content: "2"; }
+.faq__item[open] .faq__icon::before { content: "\2212"; }
 .faq__a { padding: 0 20px 18px; color: #4a5a52; }
 .faq__a a { font-weight: 600; }
 
