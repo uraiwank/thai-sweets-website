@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bezorgen en ophalen | Thai Sweets</title>
+  <meta name="description" content="Zo werkt bezorgen bij Thai Sweets: vaste prijs per gebied bij een menu, prijs per kilometer voor bestellingen op maat. Check je postcode of haal gratis op in Vlaardingen.">
+  <meta name="color-scheme" content="light">
+  <link rel="canonical" href="https://www.thaisweets.nl/bezorgen">
+  <meta property="og:title" content="Bezorgen en ophalen | Thai Sweets">
+  <meta property="og:description" content="Zo werkt bezorgen bij Thai Sweets: vaste prijs per gebied bij een menu, prijs per kilometer voor bestellingen op maat. Check je postcode of haal gratis op in Vlaardingen.">
+  <meta property="og:image" content="https://www.thaisweets.nl/images/og/thai-sweets-og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.thaisweets.nl/bezorgen">
+  <link rel="icon" href="favicon.ico?v=6" sizes="any">
+  <link rel="icon" href="favicon-16.png?v=6" type="image/png" sizes="16x16">
+  <link rel="icon" href="favicon-32.png?v=6" type="image/png" sizes="32x32">
+  <link rel="icon" href="favicon-48.png?v=6" type="image/png" sizes="48x48">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=6" sizes="180x180">
+  <meta name="theme-color" content="#FFFFFF">
+  <link rel="preload" as="font" href="fonts/Lora-normal-latin.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="fonts/Inter-latin.woff2" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="css/bezorgen.css">
+  <script>
+    (function () {
+      document.documentElement.classList.add('js');
+      try {
+        var L = localStorage.getItem('thaisweets_lang');
+        document.documentElement.lang = (L === 'nl' || L === 'en') ? L : 'nl';
+      } catch (e0) { document.documentElement.lang = 'nl'; }
+    })();
+  </script>
+</head>
+<body data-page="bezorgen">
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Naar de inhoud</a>
+  <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookies" data-i18n="consent.bannerLabel" data-i18n-attr="aria-label" hidden>
+    <p class="consent-banner__text"><span data-i18n="consent.text">We gebruiken essentiële opslag om de site te laten werken. Met je toestemming gebruiken we ook analytische cookies (Google Analytics) om te zien hoe de site wordt gebruikt. Lees meer in ons </span><a href="https://order.thaisweets.nl/nl/legal#privacy" data-legal="privacy" rel="noopener noreferrer" target="_blank" data-i18n="home2.privacy">Privacybeleid</a>.</p>
+    <div class="consent-banner__actions">
+      <button type="button" class="btn" data-consent-accept data-i18n="consent.accept">Accepteren</button>
+      <button type="button" class="btn" data-consent-reject data-i18n="consent.reject">Weigeren</button>
+      <button type="button" class="btn btn--outline" data-cookie-settings data-i18n="consent.settings">Instellingen</button>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="index.html" aria-label="Thai Sweets, home" data-i18n="home2.homeLabel" data-i18n-attr="aria-label">
+        <img src="images/logo/logo-horizontal-340.webp" width="340" height="175" alt="Thai Sweets">
+      </a>
+      <nav class="header-nav" aria-label="Hoofdmenu" data-i18n="home2.navLabel" data-i18n-attr="aria-label">
+        <a href="bezorgen.html" aria-current="page" data-i18n="home2.delivery">Bezorgen</a>
+      </nav>
+      <div class="header-actions">
+        <div class="lang-switch" role="group" aria-label="Taal">
+          <button type="button" data-lang="nl" aria-label="NL, Nederlands" aria-pressed="true">NL</button>
+          <button type="button" data-lang="en" aria-label="EN, English" aria-pressed="false">EN</button>
+        </div>
+        <a class="btn btn--sm" href="https://order.thaisweets.nl/nl" data-order-path="/" data-i18n="home2.order">Bestellen</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="bz-hero">
+      <div class="bz-wrap">
+        <h1 data-i18n="bz.title">Bezorgen en ophalen</h1>
+        <p class="bz-lead" data-i18n="bz.intro">We bezorgen vanuit Vlaardingen. Hoe we de bezorgkosten berekenen, hangt af van wat je bestelt.</p>
+        <ul class="bz-choices" aria-label="Kies hoe je bestelt" data-i18n="bz.choicesLabel" data-i18n-attr="aria-label">
+          <li><a class="bz-choice" href="#menu">
+            <span class="bz-choice__title" data-i18n="bz.choiceMenuTitle">Je bestelt uit een menu</span>
+            <span class="bz-choice__text" data-i18n="bz.choiceMenuText">Kerst, Thaise desserts en andere rondes. Vaste prijs per gebied.</span>
+            <span class="bz-choice__arrow" aria-hidden="true">↓</span>
+          </a></li>
+          <li><a class="bz-choice" href="#op-maat">
+            <span class="bz-choice__title" data-i18n="bz.choiceCustomTitle">Je bestelt op maat</span>
+            <span class="bz-choice__text" data-i18n="bz.choiceCustomText">Feest, taart, cupcakes of boeket. Prijs per kilometer.</span>
+            <span class="bz-choice__arrow" aria-hidden="true">↓</span>
+          </a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="menu" class="bz-section">
+      <div class="bz-wrap">
+        <h2 class="section-title" data-i18n="bz.menuTitle">Je bestelt uit een menu</h2>
+
+        <div class="bz-top">
+          <form class="bz-card bz-checker" id="pc-form" novalidate>
+            <label for="pc-input" data-i18n="bz.checkerLabel">Je postcode</label>
+            <p class="bz-hint" id="pc-hint" data-i18n="bz.checkerHint">Vul de 4 cijfers in, bijvoorbeeld 3131.</p>
+            <div class="bz-checker__row">
+              <input id="pc-input" name="postcode" type="text" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="postal-code" aria-describedby="pc-hint pc-result">
+              <button type="submit" class="btn" data-i18n="bz.checkerButton">Check</button>
+            </div>
+            <p class="bz-result" id="pc-result" role="status" aria-live="polite" hidden></p>
+          </form>
+          <div class="bz-card bz-pickup">
+            <h3 data-i18n="bz.pickupTitle">Ophalen</h3>
+            <p data-i18n="bz.pickupText">Gratis en zonder minimum. Gretha Hofstralaan – het precieze adres krijg je na betaling.</p>
+          </div>
+        </div>
+
+        <div class="bz-mapbox">
+          <div id="zone-map" class="bz-map" role="region" aria-label="Kaart van onze bezorggebieden" data-i18n="bz.mapLabel" data-i18n-attr="aria-label"></div>
+          <div class="bz-legend" aria-labelledby="legend-title">
+            <h3 id="legend-title" data-i18n="bz.legendTitle">Bezorgkosten per gebied</h3>
+            <ul id="legend-list"></ul>
+          </div>
+        </div>
+
+        <table class="bz-table" id="zone-table">
+          <caption class="visually-hidden" data-i18n="bz.tableCaption">Bezorggebieden met bezorgkosten, minimumbedrag en gratis bezorgen</caption>
+          <thead>
+            <tr>
+              <th scope="col" data-i18n="bz.colArea">Gebied</th>
+              <th scope="col" data-i18n="bz.colPostcodes">Postcodes</th>
+              <th scope="col" data-i18n="bz.colFee">Bezorgkosten</th>
+              <th scope="col" data-i18n="bz.colMin">Minimum</th>
+              <th scope="col" data-i18n="bz.colFree">Gratis vanaf</th>
+            </tr>
+          </thead>
+          <tbody id="zone-rows"></tbody>
+        </table>
+        <p class="bz-note" data-i18n="bz.tableNote">Bedragen gelden voor de producten in je bestelling, zonder bezorgkosten.</p>
+      </div>
+    </section>
+
+    <section id="op-maat" class="bz-section bz-section--band">
+      <div class="bz-wrap bz-custom">
+        <h2 class="section-title" data-i18n="bz.customTitle">Op maat: prijs per kilometer</h2>
+        <p class="bz-lead" data-i18n="bz.customIntro">Voor feesten, taarten, cupcakes en boeketten rekenen we de bezorgkosten op rijafstand vanaf onze keuken. We rijden dan speciaal voor jou.</p>
+        <dl class="bz-formula" id="formula">
+          <div><dt data-i18n="bz.formulaStart">Starttarief</dt><dd data-formula="start"></dd></div>
+          <div><dt data-i18n="bz.formulaPerKm">Per km (rijafstand)</dt><dd data-formula="perKm"></dd></div>
+          <div><dt data-i18n="bz.formulaRound">Afgerond op</dt><dd data-formula="roundTo"></dd></div>
+          <div><dt data-i18n="bz.formulaMax">Max</dt><dd data-formula="maxKm"></dd></div>
+        </dl>
+        <p data-i18n="bz.formulaSlot">Kies een vrije dag en tijd bij het bestellen.</p>
+        <p class="bz-example"><strong data-i18n="bz.exampleLabel">Voorbeeld</strong>: <span id="formula-example"></span></p>
+        <p class="bz-soon" data-i18n="bz.soon">Binnenkort kun je bestellingen op maat hier online plaatsen. Tot die tijd: stuur ons een bericht, dan rekenen we de prijs voor je uit.</p>
+        <a class="btn" href="mailto:info@thaisweets.nl?subject=Bestelling%20op%20maat" data-i18n="bz.contactButton">Stuur ons een bericht</a>
+      </div>
+    </section>
+
+    <section class="bz-section">
+      <div class="bz-wrap">
+        <ul class="bz-info">
+          <li class="bz-card"><h3 data-i18n="bz.info1Title">Wanneer bezorgen we?</h3><p data-i18n="bz.info1Text">Op vaste dagen per ronde. Bij elk menu zie je de bezorgdagen en tijdvakken.</p></li>
+          <li class="bz-card"><h3 data-i18n="bz.info2Title">Niet thuis?</h3><p data-i18n="bz.info2Text">Dan kun je je bestelling daarna bij ons ophalen in Vlaardingen.</p></li>
+          <li class="bz-card"><h3 data-i18n="bz.info3Title">Verder weg?</h3><p data-i18n="bz.info3Text">Sommige producten versturen we gekoeld met PostNL. Dat zie je bij het menu.</p></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="site-footer">
+    <div class="site-footer__inner">
+      <div class="foot">
+        <div class="foot__col foot__col--lead">
+          <h2 data-i18n="home2.footTitle">Zin in iets lekkers?</h2>
+          <p data-i18n="bz.ctaText">Bekijk wat er nu te bestellen is.</p>
+          <a class="btn btn--gold" href="https://order.thaisweets.nl/nl" data-order-path="/" data-i18n="bz.ctaButton">Naar de menu's</a>
+        </div>
+        <div class="foot__col">
+          <h3 data-i18n="home2.contact">Contact</h3>
+          <a href="mailto:info@thaisweets.nl">info@thaisweets.nl</a>
+          <span data-i18n="home2.pickup">Afhalen: Gretha Hofstralaan, Vlaardingen</span>
+        </div>
+        <div class="foot__col">
+          <h3 data-i18n="home2.follow">Volg ons</h3>
+          <a href="https://www.instagram.com/thaisweetsnl/" rel="noopener noreferrer" target="_blank">Instagram</a>
+          <a href="https://www.facebook.com/thaisweetsnl" rel="noopener noreferrer" target="_blank">Facebook</a>
+          <a href="https://www.tiktok.com/@thaisweetsnl" rel="noopener noreferrer" target="_blank">TikTok</a>
+        </div>
+        <div class="foot__col">
+          <h3 data-i18n="home2.info">Info</h3>
+          <a href="https://order.thaisweets.nl/nl/legal#terms" data-legal="terms" rel="noopener noreferrer" target="_blank" data-i18n="home2.terms">Algemene voorwaarden</a>
+          <a href="https://order.thaisweets.nl/nl/legal#privacy" data-legal="privacy" rel="noopener noreferrer" target="_blank" data-i18n="home2.privacy">Privacybeleid</a>
+          <a href="https://order.thaisweets.nl/nl/legal#allergens" data-legal="allergens" rel="noopener noreferrer" target="_blank" data-i18n="home2.allergens">Allergenen</a>
+          <button type="button" class="linklike" data-cookie-settings data-i18n="home2.cookies">Cookie-instellingen</button>
+        </div>
+      </div>
+      <p class="foot-legal" data-i18n="home2.copy">© 2026 Thai Sweets · KVK 73838306 · btw NL002463537B15</p>
+    </div>
+  </footer>
+
+  <dialog id="consent-dialog" class="notify-dialog consent-dialog" aria-labelledby="consent-dialog-title">
+    <div class="notify-dialog__head">
+      <div class="notify-dialog__intro">
+        <h2 id="consent-dialog-title" data-i18n="home2.cookies">Cookie-instellingen</h2>
+        <p data-i18n="consent.intro">Kies welke cookies we mogen gebruiken. Je kunt je keuze op elk moment wijzigen via “Cookie-instellingen” onderaan de pagina.</p>
+      </div>
+      <button type="button" class="notify-dialog__close" data-consent-close aria-label="Sluiten" data-i18n="home2.dlgClose" data-i18n-attr="aria-label">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+      </button>
+    </div>
+    <div class="consent-pref">
+      <div>
+        <h3 data-i18n="consent.essentialTitle">Essentieel</h3>
+        <p data-i18n="consent.essentialBody">Nodig om de site te laten werken: je taal, je thema en of je je hebt aangemeld voor een mail.</p>
+      </div>
+      <span class="consent-pref__always" data-i18n="consent.alwaysOn">Altijd aan</span>
+    </div>
+    <div class="consent-pref">
+      <div>
+        <h3 id="consent-analytics-title" data-i18n="consent.analyticsTitle">Analytisch (Google Analytics)</h3>
+        <p id="consent-analytics-desc" data-i18n="consent.analyticsBody">Helpt ons te zien hoe de site wordt gebruikt. Alleen met je toestemming.</p>
+      </div>
+      <input type="checkbox" id="consent-analytics" aria-labelledby="consent-analytics-title" aria-describedby="consent-analytics-desc">
+    </div>
+    <button type="button" class="btn consent-save" data-consent-save data-i18n="consent.save">Opslaan</button>
+  </dialog>
+  <script src="vendor/leaflet/leaflet.js" defer></script>
+  <script src="js/zones.config.js" defer></script>
+  <script src="js/i18n/home.js" defer></script>
+  <script src="js/i18n/bezorgen.js" defer></script>
+  <script src="js/i18n.js" defer></script>
+  <script src="js/bezorgen.js" defer></script>
+  <script src="js/cookie-consent.js" defer></script>
+</body>
+</html>

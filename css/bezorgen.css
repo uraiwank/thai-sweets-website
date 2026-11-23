@@ -1,0 +1,107 @@
+/* Bezorgen page. Reuses the tokens and components of home.css (colours, .btn, .section-title, header, footer). */
+.bz-wrap { max-width: 1072px; margin: 0 auto; }
+.bz-hero { padding: 56px 24px 48px; background: var(--bg); border-bottom: 1px solid #eee7dc; }
+.bz-hero h1 { font: 500 clamp(36px, 5vw, 52px)/1.12 var(--serif); }
+.bz-lead { margin-top: 16px; max-width: 640px; font-size: 18px; color: var(--muted); }
+.bz-section { padding: 56px 24px; background: #fff; }
+.bz-section--band { background: var(--band); }
+
+/* Cards */
+.bz-card { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 24px; }
+.bz-card h3 { font: 500 22px/1.25 var(--serif); margin-bottom: 8px; }
+.bz-card p { color: var(--muted); }
+
+/* Two route cards */
+.bz-choices { list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.bz-choice {
+  position: relative; display: flex; flex-direction: column; gap: 6px; min-height: 44px; height: 100%; padding: 24px 56px 24px 24px;
+  background: #fff; border: 1px solid var(--line-strong); border-radius: 20px; color: var(--ink); text-decoration: none;
+}
+.bz-choice:hover { border-color: var(--green); box-shadow: var(--shadow-soft); color: var(--ink); }
+.bz-choice__title { font: 500 22px/1.25 var(--serif); }
+.bz-choice__text { color: var(--muted); }
+.bz-choice__arrow { position: absolute; right: 22px; top: 50%; transform: translateY(-50%); font-size: 24px; color: var(--green-text); }
+
+/* Checker + pickup */
+.bz-top { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; align-items: stretch; margin-bottom: 28px; }
+.bz-checker label { display: block; font-weight: 600; margin-bottom: 2px; }
+.bz-hint { font-size: 14px; margin-bottom: 12px; }
+.bz-checker__row { display: flex; gap: 12px; }
+.bz-checker input {
+  flex: 1 1 auto; min-width: 0; height: 52px; padding: 0 16px; border: 1px solid var(--muted); border-radius: 14px;
+  font: 600 20px var(--sans); letter-spacing: 0.12em; color: var(--ink); background: #fff;
+}
+.bz-checker input[aria-invalid="true"] { border-color: #9b1c1c; border-width: 2px; }
+.bz-result { margin-top: 14px; padding: 12px 16px; border-radius: 14px; font-weight: 500; }
+.bz-result[hidden] { display: none; }
+.bz-card .bz-result--ok, .bz-result--ok { background: #e3f0e9; color: #0b4a34; }
+.bz-card .bz-result--warn, .bz-result--warn { background: #fbf1d3; color: #5a4300; }
+.bz-pickup { background: var(--bg); }
+
+/* Map + legend */
+.bz-mapbox { margin-bottom: 28px; }
+.bz-map { height: 420px; border: 1px solid var(--line-strong); border-radius: 20px; background: var(--band); z-index: 0; }
+.bz-map--error { display: flex; align-items: center; justify-content: center; padding: 24px; text-align: center; color: var(--muted); }
+.bz-legend { margin-top: 14px; }
+.bz-legend h3 { font: 600 14px var(--sans); color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 8px; }
+.bz-legend ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.bz-legend li { display: flex; align-items: center; gap: 8px; }
+.bz-swatch { flex: none; width: 18px; height: 18px; border-radius: 5px; border: 1px solid rgba(26, 25, 23, 0.35); }
+.bz-pin { display: block; width: 22px; height: 22px; background: var(--green); border: 3px solid #fff; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4); }
+.bz-pin-wrap { background: none; border: 0; display: flex; align-items: flex-start; justify-content: center; }
+.bz-pin--legend { flex: none; width: 16px; height: 16px; border-width: 2px; box-shadow: none; }
+/* Leaflet controls: 44px touch targets */
+.leaflet-touch .leaflet-bar a, .leaflet-bar a { width: 44px; height: 44px; line-height: 44px; font-size: 22px; }
+.leaflet-container a { color: var(--green-text); }
+
+/* Zone table */
+.bz-table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--line); }
+.bz-table th, .bz-table td { padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+.bz-table thead th { background: var(--band); font-size: 14px; color: #3f3a34; }
+.bz-table tbody th { font-weight: 600; }
+.bz-table tbody tr:last-child > * { border-bottom: 0; }
+.bz-note { margin-top: 12px; font-size: 14px; color: var(--muted); }
+
+/* Custom orders */
+.bz-custom { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+.bz-custom .section-title { margin-bottom: 0; }
+.bz-custom .bz-lead { margin-top: 0; }
+.bz-formula { margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; width: 100%; }
+.bz-formula > div { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; }
+.bz-formula dt { font-size: 14px; color: var(--muted); }
+.bz-formula dd { margin: 4px 0 0; font: 500 26px/1.2 var(--serif); }
+.bz-example { padding: 12px 16px; background: #fff; border-radius: 14px; border: 1px solid var(--line); }
+.bz-soon { max-width: 640px; }
+
+/* Info cards */
+.bz-info { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+
+@media (max-width: 860px) {
+  .bz-top, .bz-choices { grid-template-columns: minmax(0, 1fr); }
+  .bz-formula { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bz-info { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 600px) {
+  .bz-hero { padding: 36px 16px 32px; }
+  .bz-section { padding: 40px 16px; }
+  .bz-map { height: 320px; }
+  .bz-checker__row { flex-direction: column; }
+  .bz-checker__row .btn { width: 100%; }
+  .bz-custom .btn { width: 100%; }
+  .bz-formula dd { font-size: 22px; }
+  /* Table -> cards */
+  .bz-table, .bz-table tbody, .bz-table tr, .bz-table th, .bz-table td { display: block; }
+  .bz-table { border: 0; background: transparent; }
+  .bz-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
+  .bz-table tr { background: #fff; border: 1px solid var(--line); border-radius: 16px; margin-bottom: 12px; padding: 8px 0; }
+  .bz-table th, .bz-table td { border-bottom: 0; padding: 6px 16px; display: flex; justify-content: space-between; gap: 16px; }
+  .bz-table tbody th { font: 500 20px var(--serif); padding-top: 10px; display: block; }
+  .bz-table td::before { content: attr(data-label); color: var(--muted); font-size: 14px; flex: none; }
+  .bz-table td { text-align: right; }
+}
+
+/* 44px tap targets in the shared header/footer on this page */
+body[data-page="bezorgen"] .logo { min-height: 44px; }
+body[data-page="bezorgen"] .lang-switch button { height: 44px; }
+body[data-page="bezorgen"] .site-footer .foot__col a,
+body[data-page="bezorgen"] .site-footer .linklike { display: inline-flex; align-items: center; min-height: 44px; }

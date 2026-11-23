@@ -69,6 +69,8 @@
       newsUpcoming: "{title} · bestellen vanaf {opensAt}",
       newsLabel: "Nieuws",
       order: "Bestellen",
+      delivery: "Bezorgen",
+      navLabel: "Hoofdmenu",
       heroTitle: 'Thaise desserts, vers gemaakt <span class="accent">op bestelling</span>',
       heroText:
         "Echte Thaise recepten, vers gemaakt in kleine rondes. Bekijk wat eraan komt en krijg een mail als de volgende ronde opengaat.",
@@ -275,6 +277,8 @@
       newsUpcoming: "{title} · orders open {opensAt}",
       newsLabel: "News",
       order: "Order",
+      delivery: "Delivery",
+      navLabel: "Main menu",
       heroTitle: 'Thai desserts, freshly made <span class="accent">to order</span>',
       heroText:
         "Real Thai recipes, made fresh in small rounds. See what's coming up and get an email when the next round opens.",
