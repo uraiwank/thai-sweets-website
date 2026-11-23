@@ -70,7 +70,22 @@
 .bz-formula > div { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; }
 .bz-formula dt { font-size: 14px; color: var(--muted); }
 .bz-formula dd { margin: 4px 0 0; font: 500 26px/1.2 var(--serif); }
-.bz-example { padding: 12px 16px; background: #fff; border-radius: 14px; border: 1px solid var(--line); }
+.bz-calc { width: 100%; max-width: 640px; }
+.bz-calc h3 { margin-bottom: 14px; }
+.bz-calc__row { display: flex; gap: 12px; align-items: flex-start; flex-wrap: wrap; }
+.bz-field { display: flex; flex-direction: column; gap: 4px; flex: 2 1 160px; min-width: 0; }
+.bz-field--nr { flex: 1 1 110px; }
+.bz-field label { font-weight: 600; }
+.bz-field input {
+  height: 52px; padding: 0 16px; border: 1px solid var(--muted); border-radius: 14px; font: 500 18px var(--sans);
+  color: var(--ink); background: #fff; width: 100%; min-width: 0;
+}
+.bz-field input[aria-invalid="true"] { border-color: #9b1c1c; border-width: 2px; }
+.bz-field .bz-hint { margin: 0; }
+.bz-calc__row .btn { margin-top: 26px; }
+.bz-result__line { display: block; }
+.bz-result__fee { font-weight: 700; font-size: 18px; }
+.bz-result__note { display: block; margin-top: 6px; font-size: 14px; font-weight: 400; }
 .bz-soon { max-width: 640px; }
 
 /* Info cards */
@@ -87,7 +102,8 @@
   .bz-map { height: 320px; }
   .bz-checker__row { flex-direction: column; }
   .bz-checker__row .btn { width: 100%; }
-  .bz-custom .btn { width: 100%; }
+  .bz-custom .btn, .bz-calc__row .btn { width: 100%; }
+  .bz-calc__row .btn { margin-top: 4px; }
   .bz-formula dd { font-size: 22px; }
   /* Table -> cards */
   .bz-table, .bz-table tbody, .bz-table tr, .bz-table th, .bz-table td { display: block; }

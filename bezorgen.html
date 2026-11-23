@@ -142,7 +142,22 @@
           <div><dt data-i18n="bz.formulaMax">Max</dt><dd data-formula="maxKm"></dd></div>
         </dl>
         <p data-i18n="bz.formulaSlot">Kies een vrije dag en tijd bij het bestellen.</p>
-        <p class="bz-example"><strong data-i18n="bz.exampleLabel">Voorbeeld</strong>: <span id="formula-example"></span></p>
+        <form class="bz-card bz-calc" id="calc-form" novalidate>
+          <h3 data-i18n="bz.calcTitle">Bereken een indicatie</h3>
+          <div class="bz-calc__row">
+            <div class="bz-field">
+              <label for="calc-pc" data-i18n="bz.calcPostcode">Postcode</label>
+              <input id="calc-pc" name="postcode" type="text" autocomplete="postal-code" maxlength="7" aria-describedby="calc-pc-hint calc-result">
+              <span class="bz-hint" id="calc-pc-hint" data-i18n="bz.calcPostcodeHint">Bijvoorbeeld 3131 AB</span>
+            </div>
+            <div class="bz-field bz-field--nr">
+              <label for="calc-nr" data-i18n="bz.calcNumber">Huisnummer</label>
+              <input id="calc-nr" name="housenumber" type="text" autocomplete="off" maxlength="12" aria-describedby="calc-result">
+            </div>
+            <button type="submit" class="btn" data-i18n="bz.calcButton">Bereken</button>
+          </div>
+          <div class="bz-result" id="calc-result" role="status" aria-live="polite" hidden></div>
+        </form>
         <p class="bz-soon" data-i18n="bz.soon">Binnenkort kun je bestellingen op maat hier online plaatsen. Tot die tijd: stuur ons een bericht, dan rekenen we de prijs voor je uit.</p>
         <a class="btn" href="mailto:info@thaisweets.nl?subject=Bestelling%20op%20maat" data-i18n="bz.contactButton">Stuur ons een bericht</a>
       </div>

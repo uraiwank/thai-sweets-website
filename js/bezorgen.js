@@ -1,4 +1,4 @@
-/* Bezorgen page: postcode checker, zone table, legend, per-km example and map.
+/* Bezorgen page: postcode checker, zone table, legend, per-km estimate calculator and map.
  * All numbers come from js/zones.config.js (ZonesConfig). Map shapes: data/zones-pc4.json (static). */
 (function () {
   "use strict";
@@ -95,13 +95,7 @@
     list.appendChild(k);
   }
 
-  /* Per-km formula and worked example */
-  function perKmPrice(km) {
-    var p = cfg.perKm;
-    var raw = Math.round((p.start + km * p.perKm) * 100) / 100;
-    var rounded = Math.round(Math.round((raw / p.roundTo) * 1e6) / 1e6) * p.roundTo;
-    return { raw: raw, final: rounded };
-  }
+  /* Per-km formula box */
   function renderFormula() {
     var p = cfg.perKm;
     var vals = {
@@ -113,20 +107,103 @@
     document.querySelectorAll("[data-formula]").forEach(function (el) {
       el.textContent = vals[el.getAttribute("data-formula")];
     });
-    var ex = $("#formula-example");
-    if (ex) {
-      var zone = cfg.zones.filter(function (z) { return z.id === cfg.example.zoneId; })[0];
-      var price = perKmPrice(cfg.example.km);
-      var km = num(cfg.example.km, 1, 1);
-      ex.textContent = fill(t("bz.example"), {
-        zone: zone ? zone.name : "",
-        km: km,
-        start: eur(p.start, true),
-        rate: eur(p.perKm, true),
-        raw: eur(price.raw, true),
-        final: eur(price.final, true)
-      });
+  }
+
+  /* Estimate calculator. Same maths as the order app (src/lib/custom/rules.ts): distance = straight line x 1.3 rounded to
+   * 1 decimal; fee = base + per km (cents, half-up), rounded UP to the next 50 cents. */
+  var GEOCODE = "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free";
+  var lastCalc = null;
+
+  function haversineKm(a, b) {
+    var R = 6371;
+    var rad = function (d) { return (d * Math.PI) / 180; };
+    var h = Math.pow(Math.sin(rad(b.lat - a.lat) / 2), 2) +
+      Math.cos(rad(a.lat)) * Math.cos(rad(b.lat)) * Math.pow(Math.sin(rad(b.lon - a.lon) / 2), 2);
+    return 2 * R * Math.asin(Math.sqrt(h));
+  }
+  function estimate(dest) {
+    var km = Math.round(haversineKm(cfg.routeOrigin, dest) * cfg.detourFactor * 10) / 10;
+    var p = cfg.perKm;
+    var baseC = Math.round(p.start * 100), perC = Math.round(p.perKm * 100), step = Math.round(p.roundTo * 100);
+    var rawC = baseC + Math.round((perC * Math.round(km * 10)) / 10);
+    return { km: km, rawC: rawC, feeC: Math.ceil(rawC / step) * step };
+  }
+
+  function showCalc() {
+    var out = $("#calc-result");
+    if (!out || !lastCalc) return;
+    out.hidden = false;
+    out.className = "bz-result";
+    out.replaceChildren();
+    function line(text, cls) {
+      var s = document.createElement("span");
+      s.className = cls || "bz-result__line";
+      s.textContent = text;
+      out.appendChild(s);
     }
+    var c = lastCalc;
+    if (c.kind === "ok") {
+      var p = cfg.perKm;
+      out.classList.add("bz-result--ok");
+      line(fill(t("bz.calcDistance"), { km: num(c.km, 1, 1) }));
+      line(fill(t("bz.calcSum"), { start: eur(p.start), km: num(c.km, 1, 1), rate: eur(p.perKm, true), raw: eur(c.rawC / 100, true) }));
+      line(fill(t("bz.calcFee"), { fee: eur(c.feeC / 100, true) }), "bz-result__line bz-result__fee");
+      line(t("bz.calcEstimate"), "bz-result__note");
+      return;
+    }
+    out.classList.add("bz-result--warn");
+    line(t({ tooFar: "bz.calcTooFar", invalid: "bz.calcInvalid", notFound: "bz.calcNotFound", error: "bz.calcError", busy: "bz.calcBusy" }[c.kind]));
+    if (c.kind === "tooFar") line(fill(t("bz.calcDistance"), { km: num(c.km, 1, 1) }), "bz-result__note");
+  }
+
+  function geocode(postcode, nr, letter, signal) {
+    var fq = ["type:adres", "postcode:" + postcode, "huisnummer:" + nr];
+    if (letter) fq.push("huisletter:" + letter.toLowerCase());
+    var params = new URLSearchParams({ q: "*:*", rows: "1", fl: "weergavenaam,centroide_ll" });
+    fq.forEach(function (f) { params.append("fq", f); });
+    var url = GEOCODE + "?" + params.toString();
+    return fetch(url, { signal: signal }).then(function (r) {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    }).then(function (j) {
+      var d = j && j.response && j.response.docs && j.response.docs[0];
+      var m = d && /POINT\(\s*([-\d.]+)\s+([-\d.]+)\s*\)/.exec(d.centroide_ll || "");
+      if (!m) return letter ? geocode(postcode, nr, "", signal) : null;
+      return { lon: +m[1], lat: +m[2] };
+    });
+  }
+
+  function bindCalc() {
+    var form = $("#calc-form");
+    if (!form) return;
+    var pcEl = $("#calc-pc"), nrEl = $("#calc-nr"), btn = form.querySelector("button[type=submit]");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var postcode = pcEl.value.replace(/\s/g, "").toUpperCase();
+      var nrRaw = nrEl.value.trim().replace(/\s+/g, " ");
+      var okPc = /^[1-9][0-9]{3}[A-Z]{2}$/.test(postcode);
+      var okNr = /^\d{1,5}(\s?[A-Za-z]{1,2}|[-/]\s?[0-9A-Za-z]{1,4})?$/.test(nrRaw);
+      pcEl.setAttribute("aria-invalid", okPc ? "false" : "true");
+      nrEl.setAttribute("aria-invalid", okNr ? "false" : "true");
+      if (!okPc || !okNr) { lastCalc = { kind: "invalid" }; showCalc(); return; }
+      var parts = /^(\d{1,5})\s?([A-Za-z]{1,2})?/.exec(nrRaw);
+      lastCalc = { kind: "busy" };
+      showCalc();
+      btn.disabled = true;
+      var ctl = new AbortController();
+      var timer = window.setTimeout(function () { ctl.abort(); }, 8000);
+      geocode(postcode, parts[1], parts[2] || "", ctl.signal).then(function (pt) {
+        if (!pt) { lastCalc = { kind: "notFound" }; return; }
+        var r = estimate(pt);
+        lastCalc = r.km > cfg.perKm.maxKm ? { kind: "tooFar", km: r.km } : { kind: "ok", km: r.km, rawC: r.rawC, feeC: r.feeC };
+      }).catch(function () {
+        lastCalc = { kind: "error" };
+      }).then(function () {
+        window.clearTimeout(timer);
+        btn.disabled = false;
+        showCalc();
+      });
+    });
   }
 
   /* Postcode checker */
@@ -244,6 +321,7 @@
     renderLegend();
     renderFormula();
     showResult();
+    showCalc();
     if (marker && marker.getElement()) {
       var el = marker.getElement();
       el.setAttribute("title", t("bz.mapKitchen"));
@@ -254,6 +332,7 @@
   function start() {
     renderAll();
     bindChecker();
+    bindCalc();
     initMap();
     document.addEventListener("thaisweets:lang", renderAll);
   }

@@ -2,7 +2,7 @@
  * Must be updated by hand when zones change in the order app admin.
  *
  * Single source for the delivery zones and the per-km formula on /bezorgen. The postcode checker, the zone
- * table, the map legend and the example all read from here. After changing postcode ranges, re-run
+ * table, the map legend and the estimate calculator all read from here. After changing postcode ranges, re-run
  * `node scripts/build-zone-geo.js` to rebuild data/zones-pc4.json (map shapes).
  *
  * Amounts are euros for the products in the order, excluding delivery cost.
@@ -32,7 +32,10 @@
     // Custom orders: price per kilometre driven from the kitchen
     perKm: { start: 5, perKm: 0.75, roundTo: 0.5, maxKm: 40 },
 
-    // Worked example shown on the page (zone id from above, driving distance in km)
-    example: { zoneId: "delft", km: 14.2 }
+    // Estimate calculator: distance = straight line x detourFactor (same fallback as the order app).
+    detourFactor: 1.3,
+    // Start of the distance: "Gretha Hofstralaan, Vlaardingen", geocoded once with PDOK Locatieserver (street centroid).
+    // Used for the calculation only. Never show this point on the map.
+    routeOrigin: { lat: 51.92231203, lon: 4.34361765 }
   };
 });
